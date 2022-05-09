@@ -19,12 +19,18 @@ class DatabaseSeeder extends Seeder
             [
                 'name'=>'Admin',
                 'email'=>'admin@gmail.com',
-                'is_admin'=>'1',
+                'is_admin'=> 1,
                 'password'=> bcrypt('123456'),
             ],
             [
                 'name'=>'User',
                 'email'=>'a@a.com',
+                'password'=> bcrypt('123456'),
+            ],
+            [
+                'name'=>'Seller',
+                'email'=>'seller@gmail.com',
+                'is_seller' => 1,
                 'password'=> bcrypt('123456'),
             ],
         ];
