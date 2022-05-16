@@ -9,37 +9,37 @@
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
                             <i class="feather icon-globe mr-50 font-medium-3"></i>
-                            General
+                            عمومی
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill" href="#account-vertical-password" aria-expanded="false">
                             <i class="feather icon-lock mr-50 font-medium-3"></i>
-                            Change Password
+                            تغییر گذرواژه
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-info" data-toggle="pill" href="#account-vertical-info" aria-expanded="false">
                             <i class="feather icon-info mr-50 font-medium-3"></i>
-                            Info
+                            اطلاعات
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
                             <i class="feather icon-camera mr-50 font-medium-3"></i>
-                            Social links
+                            شبکه های اجتماعی
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-connections" data-toggle="pill" href="#account-vertical-connections" aria-expanded="false">
                             <i class="feather icon-feather mr-50 font-medium-3"></i>
-                            Connections
+                            اتصالات
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-notifications" data-toggle="pill" href="#account-vertical-notifications" aria-expanded="false">
                             <i class="feather icon-message-circle mr-50 font-medium-3"></i>
-                            Notifications
+                            اعلان ها
                         </a>
                     </li>
                 </ul>
@@ -50,110 +50,115 @@
                     <div class="card-content">
                         <div class="card-body">
                             <div class="tab-content">
+                                {{--General--}}
                                 <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
-                                    <div class="media">
-                                        <a href="javascript: void(0);">
-                                            <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" class="rounded mr-75" alt="profile image" height="64" width="64">
-                                        </a>
-                                        <div class="media-body mt-75">
-                                            <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light" for="account-upload">Upload new photo</label>
-                                                <input type="file" id="account-upload" hidden="">
-                                                <button class="btn btn-sm btn-outline-warning ml-50 waves-effect waves-light">Reset</button>
+                                    <form novalidate="" action="{{route('admin.settings.update')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('patch')
+                                        <div class="media">
+                                            <a href="javascript: void(0);">
+                                                <img id="showImage" src="{{(!empty($admin->profile)) ? url('upload/admin_images/'.$admin->profile) : url('upload/no_image.jpg')}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                            </a>
+                                            <div class="media-body mt-75">
+                                                <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                    <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light" for="image">اپلود تصویر</label>
+                                                    <input name="profile" type="file" id="image" hidden="">
+                                                    <button class="btn btn-sm btn-outline-warning ml-50 waves-effect waves-light">ریست</button>
+                                                </div>
+                                                <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG. Max
+                                                        size of
+                                                        800kB</small></p>
                                             </div>
-                                            <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG. Max
-                                                    size of
-                                                    800kB</small></p>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <form novalidate="">
+                                        <hr>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">Username</label>
-                                                        <input type="text" class="form-control" id="account-username" placeholder="Username" value="hermione007" required="" data-validation-required-message="This username field is required">
+                                                        <label for="account-username">نام</label>
+                                                        <input type="text" class="form-control" name="fname" id="account-username" placeholder="نام" value="{{$admin->fname}}" required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-name">Name</label>
-                                                        <input type="text" class="form-control" id="account-name" placeholder="Name" value="Hermione Granger" required="" data-validation-required-message="This name field is required">
+                                                        <label for="account-name">نام خانوادگی</label>
+                                                        <input type="text" class="form-control" name="lname" id="account-name" placeholder="نام خانوادگی" value="{{$admin->lname}}" required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-e-mail">E-mail</label>
-                                                        <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required="" data-validation-required-message="This email field is required">
+                                                        <label for="account-e-mail">ایمیل</label>
+                                                        <input type="email" class="form-control" name="email" id="account-e-mail" placeholder="ایمیل" value="{{$admin->email}}" required="" data-validation-required-message="وارد کردن ایمیل یا شماره تماس اجباری است">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <div class="alert alert-warning alert-dismissible mb-2" role="alert">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                    <p class="mb-0">
-                                                        Your email is not confirmed. Please check your inbox.
-                                                    </p>
-                                                    <a href="javascript: void(0);">Resend confirmation</a>
+                                                <div class="form-group">
+                                                    <label for="number">شماره تماس</label>
+                                                    <input type="number" class="form-control" name="number" id="number" placeholder="شماره تماس" value="{{$admin->number}}" required="" data-validation-required-message="وارد کردن ایمیل یا شماره تماس اجباری است">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="account-company">Company</label>
-                                                    <input type="text" class="form-control" id="account-company" placeholder="Company name">
+                                                    <label for="number">کد پستی</label>
+                                                    <input type="text" class="form-control" name="postcode" id="number" placeholder="کد پستی" value="{{$admin->postcode}}" required="" data-validation-required-message="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">آدرس</label>
+                                                    <input type="text" class="form-control" name="address" id="number" placeholder="آدرس" value="{{$admin->address}}" required="" data-validation-required-message="">
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">Save
-                                                    changes</button>
-                                                <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Cancel</button>
+                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">ذخیره</button>
+                                                <button type="reset" class="btn btn-outline-warning waves-effect waves-light">انصراف</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                                {{--Password--}}
                                 <div class="tab-pane fade" id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
-                                    <form novalidate="">
+                                    <form novalidate="" action="{{route('admin.password.update')}}" method="POST">
+                                        @csrf
+                                        @method('patch')
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-old-password">Old Password</label>
-                                                        <input type="password" class="form-control" id="account-old-password" required="" placeholder="Old Password" data-validation-required-message="This old password field is required">
+                                                        <label for="account-old-password">گذرواژه کنونی</label>
+                                                        <input type="password" name="oldpassword" class="form-control" id="account-old-password" required="" placeholder="گذرواژه کنونی" data-validation-required-message="This old password field is required">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-new-password">New Password</label>
-                                                        <input type="password" name="password" id="account-new-password" class="form-control" placeholder="New Password" required="" data-validation-required-message="The password field is required" minlength="6">
+                                                        <label for="account-new-password">گذرواژه جدید</label>
+                                                        <input type="password" name="password" id="account-new-password" class="form-control" placeholder="گذرواژه جدید" required="" data-validation-required-message="The password field is required" minlength="6">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-retype-new-password">Retype New
-                                                            Password</label>
-                                                        <input type="password" name="con-password" class="form-control" required="" id="account-retype-new-password" data-validation-match-match="password" placeholder="New Password" data-validation-required-message="The Confirm password field is required" minlength="6">
+                                                        <label for="account-retype-new-password">تایید گذرواژه جدید</label>
+                                                        <input type="password" name="password_confirmation" class="form-control" required="" id="account-retype-new-password" data-validation-match-match="password" placeholder="تایید گذرواژه جدید" data-validation-required-message="The Confirm password field is required" minlength="6">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">Save
-                                                    changes</button>
-                                                <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Cancel</button>
+                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">ذخیره</button>
+                                                <button type="reset" class="btn btn-outline-warning waves-effect waves-light">انصراف</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                                {{--Info--}}
                                 <div class="tab-pane fade" id="account-vertical-info" role="tabpanel" aria-labelledby="account-pill-info" aria-expanded="false">
                                     <form novalidate="">
                                         <div class="row">
@@ -248,6 +253,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                {{--Social--}}
                                 <div class="tab-pane fade" id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
                                     <form>
                                         <div class="row">
@@ -295,6 +301,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                {{--Connections--}}
                                 <div class="tab-pane fade" id="account-vertical-connections" role="tabpanel" aria-labelledby="account-pill-connections" aria-expanded="false">
                                     <div class="row">
                                         <div class="col-12 mb-3">
@@ -323,6 +330,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{--Notification--}}
                                 <div class="tab-pane fade" id="account-vertical-notifications" role="tabpanel" aria-labelledby="account-pill-notifications" aria-expanded="false">
                                     <div class="row">
                                         <h6 class="m-1">Activity</h6>

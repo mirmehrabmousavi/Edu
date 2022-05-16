@@ -24,4 +24,7 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
    Route::get('home', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
+   Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
+   Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
+   Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
 });
