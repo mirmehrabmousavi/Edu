@@ -332,7 +332,7 @@
                             </div>
                             <span>
                                 <img class="round"
-                                     src="{{(!empty($admin->profile)) ? url('upload/admin_images/'.$admin->profile) : url('upload/no_image.jpg')}}"
+                                     src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}"
                                      alt="avatar" height="40" width="40">
                             </span>
                         </a>

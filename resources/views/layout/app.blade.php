@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-textdirection="rtl">
+<html class="loading" lang="en" data-textdirection="rtl">
 <!-- BEGIN: Head-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Laravel{{--{{ config('app.name', 'Laravel') }}--}}</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -19,6 +19,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/app-assets/css-rtl/app.css">
     <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/swiper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors-rtl.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/charts/apexcharts.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/tether-theme-arrows.css">
@@ -40,13 +41,14 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css-rtl/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css-rtl/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css-rtl/plugins/tour/tour.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css-rtl/plugins/extensions/swiper.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css-rtl/custom-rtl.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style-rtl.css">
     <!-- END: Custom CSS-->
-
+    @yield('style')
 </head>
 <!-- END: Head-->
 
@@ -600,6 +602,8 @@
 
 <!-- BEGIN: Vendor JS-->
 <script src="/app-assets/vendors/js/vendors.min.js"></script>
+<script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+<script src="/app-assets/vendors/js/extensions/swiper.min.js"></script>
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
@@ -617,8 +621,9 @@
 
 <!-- BEGIN: Page JS-->
 <script src="/app-assets/js/scripts/pages/dashboard-analytics.js"></script>
+<script src="/app-assets/js/scripts/extensions/swiper.js"></script>
 <!-- END: Page JS-->
-
+@yield('script')
 </body>
 <!-- END: Body-->
 
