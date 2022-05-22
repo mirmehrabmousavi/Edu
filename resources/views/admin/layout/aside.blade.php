@@ -15,17 +15,17 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title"
-                                                                                              data-i18n="Dashboard">Dashboard</span><span
-                        class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                <ul class="menu-content">
-                    <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span
-                                class="menu-item" data-i18n="Analytics">Analytics</span></a>
-                    </li>
-                    <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                                                                                    data-i18n="eCommerce">eCommerce</span></a>
-                    </li>
-                </ul>
+            <li class=" nav-item"><a href="{{route('admin.indexCategory')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">دسته بندی</span>
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">2</span>
+                </a>
+            </li>
+            <li class=" nav-item"><a href="{{route('admin.settings')}}">
+                    <i class="feather icon-settings"></i>
+                    <span class="menu-title">تنطیمات</span>
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">2</span>
+                </a>
             </li>
         </ul>
     </div>
