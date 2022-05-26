@@ -20,6 +20,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect(route('home'))->with('error',"You don't have admin access.");
+        return redirect(route('index'))->with('error',"You don't have admin access.");
     }
 }

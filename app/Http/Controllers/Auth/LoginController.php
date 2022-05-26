@@ -48,14 +48,19 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        $notification = array(
+            'message' => 'با موفقیت وارد شدید :)',
+            'alert-type' => 'success'
+        );
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->is_admin == 1) {
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.home')->with($notification);
             }else if(auth()->user()->is_seller == 1) {
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.home')->with($notification);
             }else{
-                return redirect()->route('home');
+                return redirect()->route('home')->with($notification);
             }
         }else{
             return redirect()->route('login')
