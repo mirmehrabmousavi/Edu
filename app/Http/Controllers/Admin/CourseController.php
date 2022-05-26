@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function indexCourse()
     {
         $courses = Course::all();

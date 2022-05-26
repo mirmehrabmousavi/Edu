@@ -9,6 +9,15 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
     public function indexCategory()
     {
