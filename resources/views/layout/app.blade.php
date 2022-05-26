@@ -35,6 +35,7 @@
 <!-- ============================================================== -->
 <div id="main-wrapper">
 
+@include('layout.header')
 
 @yield('content')
 
