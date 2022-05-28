@@ -51,6 +51,24 @@
                     <li class="is-shown"><a href="{{route('admin.createCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دسته بندی</span></a></li>
                 </ul>
             </li>
+            <li class=" nav-item"><a href="{{--{{route('admin.indexCategory')}}--}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">کاربران</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{--{{route('admin.indexCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">کاربران</span></a></li>
+                    <li class="is-shown"><a href="{{--{{route('admin.createCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن کاربر</span></a></li>
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{--{{route('admin.indexCategory')}}--}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">تیکت ها</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{--{{route('admin.indexCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">تیکت ها</span></a></li>
+                    <li class="is-shown"><a href="{{--{{route('admin.createCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن تیکت</span></a></li>
+                </ul>
+            </li>
             <li class=" nav-item"><a href="{{route('admin.settings')}}">
                     <i class="feather icon-settings"></i>
                     <span class="menu-title">تنطیمات</span>
