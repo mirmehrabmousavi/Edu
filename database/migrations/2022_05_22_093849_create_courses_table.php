@@ -17,20 +17,21 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('desc');
-            $table->text('b_desc');
-            $table->string('price');
+            $table->text('desc')->nullable();
+            $table->text('b_desc')->nullable();
+            $table->string('price')->nullable();
             $table->string('price_off')->nullable();
             $table->string('seo_title')->nullable();
             $table->string('seo_desc')->nullable();
             $table->text('c_poster')->nullable();
             $table->text('c_file')->nullable();
             $table->text('c_demo')->nullable();
-            $table->text('c_alt_img')->nullable();
             $table->text('c_slider_img')->nullable();
-            $table->string('time');
-            $table->string('status');
-            $table->string('status_upload');
+            $table->text('c_alt_img')->nullable();
+            $table->string('time')->nullable();
+            $table->string('status')->nullable();
+            $table->string('status_upload')->nullable();
+            $table->string('category_id')->nullable();
             $table->timestamps();
         });
     }

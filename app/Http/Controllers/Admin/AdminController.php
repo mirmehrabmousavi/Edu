@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AdminController extends Controller
 {
@@ -47,6 +46,7 @@ class AdminController extends Controller
         $data->postcode = $request->postcode;
         $data->address = $request->address;
 
+
         if ($request->file('profile')) {
             $file = $request->file('profile');
             @unlink(public_path('upload/admin_images/'.$data->profile));
@@ -67,7 +67,7 @@ class AdminController extends Controller
 
     public function passwordUpdate(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'oldpassword' => 'required',
             'password' => 'required|confirmed'
         ]);
@@ -78,6 +78,7 @@ class AdminController extends Controller
             $admin->password = Hash::make($request->password);
             $admin->save();
             Auth::logout();
+
             $notification = array(
                 'message' => 'گذرواژه با موفقیت بروزرسانی شد.',
                 'alert-type' => 'success'

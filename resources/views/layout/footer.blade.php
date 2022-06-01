@@ -27,7 +27,7 @@
 
                 <div class="col-lg-3 col-md-3">
                     <div class="footer-widget">
-                        <img src="/assets/img/logo-light.png" class="img-footer" alt=""/>
+                        <img src="/assets/img/logo.png" class="img-footer" alt=""/>
                         <div class="footer-add">
                             <p>تهران، خیابان سعادت آباد، خیابان کاج</p>
                             <p>+1 246-345-0695</p>
@@ -40,11 +40,11 @@
                     <div class="footer-widget">
                         <h4 class="widget-title">لینک مفید</h4>
                         <ul class="footer-menu">
-                            <li><a href="about-us.html">درباره ما</a></li>
-                            <li><a href="faq.html">سوالات متداول</a></li>
-                            <li><a href="checkout.html">تسویه حساب</a></li>
-                            <li><a href="contact.html">تماس با ما</a></li>
-                            <li><a href="blog.html">وبلاگ</a></li>
+                            <li><a href="{{route('aboutus')}}">درباره ما</a></li>
+                            <li><a href="#">سوالات متداول</a></li>
+                            <li><a href="#">تسویه حساب</a></li>
+                            <li><a href="{{route('contactus')}}">تماس با ما</a></li>
+                            <li><a href="{{--{{route('blog')}}--}}">وبلاگ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
             <div class="row align-items-center">
 
                 <div class="col-lg-6 col-md-6">
-                    <p class="mb-0">© 2022 LearnUp ارائه شده توسط <a href="#">راست چین</a></p>
+                    <p class="mb-0">© 2022  ارائه شده توسط<a href="/">رایا</a></p>
                 </div>
 
                 <div class="col-lg-6 col-md-6 text-left">

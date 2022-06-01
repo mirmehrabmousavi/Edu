@@ -355,139 +355,32 @@
                 </div>
             </div>
 
+
+
+
+
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-1">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/content.png" class="img-fluid"
-                                                              alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">مهندسی نرم افزار</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>23 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-2">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/briefcase.png" class="img-fluid" alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">کسب و کار</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>58 دوره آموزشی</li>
-                            </ul>
+                @foreach($cat as $cat)
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="edu_cat_2 cat-{{$loop->index+1}}">
+                            <div class="edu_cat_icons">
+                                <a class="pic-main" href="{{route('category.detail',['id' => $cat->id])}}"><img
+                                        src="/assets/img/{{$loop->index+1}}.png" class="img-fluid"
+                                        alt=""/></a>
+                            </div>
+                            <div class="edu_cat_data">
+                                <h4 class="title"><a
+                                        href="{{route('category.detail',['id' => $cat->id])}}">{{$cat->category_name}}</a>
+                                </h4>
+                                <ul class="meta">
+                                    <li class="video"><i class="ti-video-clapper"></i>{{count($course->id)}} دوره آموزشی
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-3">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/career.png" class="img-fluid"
-                                                              alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">حسابداری</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>74 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-4">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/python.png" class="img-fluid"
-                                                              alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">برنامه نویسی وب</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>65 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-10">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/designer.png" class="img-fluid" alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">طراحی و گرافیک</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>43 دوره آوزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-6">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/speaker.png" class="img-fluid"
-                                                              alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">بورس و بازار سهام</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>82 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-7">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/photo.png" class="img-fluid" alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">هنر و عکاسی</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>25 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-8">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/yoga.png" class="img-fluid" alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">ورزش و سلامتی</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>43 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="edu_cat_2 cat-9">
-                        <div class="edu_cat_icons">
-                            <a class="pic-main" href="#"><img src="/assets/img/health.png" class="img-fluid"
-                                                              alt=""/></a>
-                        </div>
-                        <div class="edu_cat_data">
-                            <h4 class="title"><a href="#">سبک زندگی</a></h4>
-                            <ul class="meta">
-                                <li class="video"><i class="ti-video-clapper"></i>38 دوره آموزشی</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
         </div>
     </section>
     <!-- ========================== Featured Category Section =============================== -->
@@ -551,8 +444,7 @@
                                     <div class="less_offer">999ت</div>
                                 </div>
                                 <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
+                                    <a href="course-detail.html" class="_cr_detail_arrow"><i class="fa fa-arrow-left"></i></a>
                                 </div>
                             </div>
 
