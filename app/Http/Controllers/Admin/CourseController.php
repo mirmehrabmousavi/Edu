@@ -51,40 +51,40 @@ class CourseController extends Controller
         $data->status = $request->status;
         $data->status_upload = $request->status_upload;
 
-
         if ($request->file('c_poster')) {
-            $file = $request->file('c_poster');
-            @unlink(public_path('upload/course/'.$request->id.$data->c_poster));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/course/'.$request->id),$filename);
+            $file = $request->c_poster;
+            @unlink(public_path('upload/course/'.$request->id.''.$data->c_poster));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/course/'.$request->id.''), $filename);
             $data['c_poster'] = $filename;
         }
+
         if ($request->file('c_file')) {
             $file = $request->file('c_file');
-            @unlink(public_path('upload/course/'.$request->id.$data->c_file));
+            @unlink(public_path('upload/course/'.$data->c_file));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/course/'.$request->id),$filename);
+            $file->move(public_path('upload/course/'),$filename);
             $data['c_file'] = $filename;
         }
         if ($request->file('c_demo')) {
             $file = $request->file('c_demo');
-            @unlink(public_path('upload/course/'.$request->id.$data->c_demo));
+            @unlink(public_path('upload/course/'.$data->c_demo));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/course/'.$request->id),$filename);
+            $file->move(public_path('upload/course/'),$filename);
             $data['c_demo'] = $filename;
         }
         if ($request->file('c_slider_img')) {
             $file = $request->file('c_slider_img');
-            @unlink(public_path('upload/course/'.$request->id.$data->c_slider_img));
+            @unlink(public_path('upload/course/'.$data->c_slider_img));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/course/'.$request->id),$filename);
+            $file->move(public_path('upload/course/'),$filename);
             $data['c_slider_img'] = $filename;
         }
         if ($request->file('c_alt_img')) {
             $file = $request->file('c_alt_img');
-            @unlink(public_path('upload/course/'.$request->id.$data->c_alt_img));
+            @unlink(public_path('upload/course/'.$data->c_alt_img));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/course/'.$request->id),$filename);
+            $file->move(public_path('upload/course/'),$filename);
             $data['c_alt_img'] = $filename;
         }
 
