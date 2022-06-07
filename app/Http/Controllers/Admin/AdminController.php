@@ -88,4 +88,9 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+    public function fileManager()
+    {
+        return view('admin.file-manager');
+    }
 }

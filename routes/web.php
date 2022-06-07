@@ -53,8 +53,6 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::delete('lesson/delete/{id}', [\App\Http\Controllers\Admin\LessonController::class, 'deleteLesson'])->name('admin.deleteLesson');
     //Users
     Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'indexUser'])->name('admin.indexUser');
-});
-
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function (){
-    \UniSharp\LaravelFilemanager\Lfm::routes();
+    //File Manager
+    Route::get('file-manager', [\App\Http\Controllers\Admin\AdminController::class, 'fileManager'])->name('admin.file-manager');
 });

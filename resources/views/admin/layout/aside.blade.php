@@ -67,6 +67,13 @@
                 </ul>
             </li>
             <li class=" nav-item">
+                <a href="{{route('admin.file-manager')}}">
+                    <i class="feather icon-file"></i>
+                    <span class="menu-title">مدیریت فایل</span>
+                    {{--<span class="badge badge badge-warning badge-pill float-right mr-2">2</span>--}}
+                </a>
+            </li>
+            <li class=" nav-item">
                 <a href="{{route('admin.settings')}}">
                     <i class="feather icon-settings"></i>
                     <span class="menu-title">تنطیمات</span>

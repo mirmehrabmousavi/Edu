@@ -48,11 +48,12 @@
     <!-- END: Custom CSS -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" type="text/css">
+    @yield('style')
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
+<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static rtl " data-open="click"
       data-menu="vertical-menu-modern" data-col="2-columns">
 
 <!-- BEGIN: Header-->
