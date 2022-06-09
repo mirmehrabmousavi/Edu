@@ -122,7 +122,7 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">پوستر دوره</label>
-                                                        <input type="file" class="form-control" name="c_poster"
+                                                        <input type="text" class="form-control" name="c_poster"
                                                                id="account-username" placeholder="پوستر دوره"
                                                                value=""
                                                                required="" data-validation-required-message="">
@@ -134,7 +134,7 @@
                                                     <div class="controls">
                                                         <label for="account-username">فایل دوره
                                                             (اختیاری)</label>
-                                                        <input type="file" class="form-control" name="c_file"
+                                                        <input type="text" class="form-control" name="c_file"
                                                                id="account-username"
                                                                placeholder="فایل دوره (اختیاری)" value=""
                                                                required="" data-validation-required-message="">
@@ -149,7 +149,7 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">دمو دوره</label>
-                                                        <input type="file" class="form-control" name="c_demo"
+                                                        <input type="text" class="form-control" name="c_demo"
                                                                id="account-username" placeholder="دمو دوره"
                                                                value=""
                                                                required="" data-validation-required-message="">
@@ -160,7 +160,7 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">اسلایدر دوره</label>
-                                                        <input type="file" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                name="c_slider_img"
                                                                id="account-username" placeholder="اسلایدر دوره"
                                                                value=""
@@ -176,7 +176,7 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">تصویر شاخص دوره</label>
-                                                        <input type="file" class="form-control" name="c_alt_img"
+                                                        <input type="text" class="form-control" name="c_alt_img"
                                                                id="account-username"
                                                                placeholder="تصویر شاخص دوره" value=""
                                                                required="" data-validation-required-message="">
@@ -239,18 +239,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="progress progress-bar-success progress-lg">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="40"
-                                                         aria-valuemin="40" aria-valuemax="100" style="width:40%">
-                                                        40%
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                         <button type="submit"
                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">
