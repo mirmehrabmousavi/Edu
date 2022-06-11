@@ -18,23 +18,12 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">عنوان دوره</label>
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان دوره"
-                                                               value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">slug دوره</label>
-                                                        <input type="text" class="form-control" name="slug"
-                                                               id="account-username" placeholder="slug دوره"
                                                                value=""
                                                                required="" data-validation-required-message="">
                                                     </div>

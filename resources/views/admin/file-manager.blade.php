@@ -10,7 +10,7 @@
 
 @section('content')
     <h2 style="text-align: center">Upload Center</h2>
-    <div class="row">
+    <div class="row" style="direction: ltr">
         <div class="col-md-12" id="fm-main-block">
             <div id="fm"></div>
         </div>

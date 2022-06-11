@@ -36,7 +36,7 @@
                     <span class="menu-title">درس ها</span>
                 </a>
                 <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.indexLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
                     <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن درس</span></a></li>
                 </ul>
             </li>
@@ -49,22 +49,30 @@
                     <li class="is-shown"><a href="{{route('admin.createCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دسته بندی</span></a></li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="{{route('admin.indexUser')}}">
+            <li class=" nav-item"><a href="{{route('admin.indexBlog')}}">
                     <i class="feather icon-menu"></i>
-                    <span class="menu-title">کاربران</span>
+                    <span class="menu-title">بلاگ</span>
                 </a>
                 <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.indexUser')}}"><i class="feather icon-circle"></i><span class="menu-item">کاربران</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.indexBlog')}}"><i class="feather icon-circle"></i><span class="menu-item">بلاگ ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createBlog')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن بلاگ</span></a></li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="{{--{{route('admin.indexCategory')}}--}}">
-                    <i class="feather icon-menu"></i>
+            <li class=" nav-item">
+                <a href="{{route('admin.tickets')}}">
+                    <i class="feather icon-message-circle"></i>
                     <span class="menu-title">تیکت ها</span>
+                    @php $tickets = \App\Models\Ticket::where('status','باز است')->get(); @endphp
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
                 </a>
-                <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{--{{route('admin.indexCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">تیکت ها</span></a></li>
-                    <li class="is-shown"><a href="{{--{{route('admin.createCategory')}}--}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن تیکت</span></a></li>
-                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="{{route('admin.indexUser')}}">
+                    <i class="feather icon-user"></i>
+                    <span class="menu-title">کاربران</span>
+                    @php $user = \App\Models\User::all(); @endphp
+                    <span class="badge badge badge-success badge-pill float-right mr-2">{{($user) ? count($user) : '0'}}</span>
+                </a>
             </li>
             <li class=" nav-item">
                 <a href="{{route('admin.file-manager')}}">

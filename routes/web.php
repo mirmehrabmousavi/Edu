@@ -14,17 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Index
 Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses'])->name('courses');
+Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
+Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
+Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/courses', [\App\Http\Controllers\HomeController::class, 'courses'])->name('courses');
-Route::get('/teachers', [\App\Http\Controllers\HomeController::class, 'teachers'])->name('teachers');
-Route::get('/aboutus', [\App\Http\Controllers\HomeController::class, 'aboutus'])->name('aboutus');
-Route::get('/contactus', [\App\Http\Controllers\HomeController::class, 'contactus'])->name('contactus');
+//User
+Route::group(['middleware' => 'auth'], function () {
+    //User Dashboard
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //Ticket System
+    Route::get('new-ticket', [\App\Http\Controllers\TicketController::class, 'create'])->name('ticket.create');
+    Route::post('new-ticket', [\App\Http\Controllers\TicketController::class, 'store'])->name('ticket.store');
+    Route::get('my-tickets', [\App\Http\Controllers\TicketController::class, 'index'])->name('myTickets');
+    Route::get('tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'show']);
+    Route::post('comment', [\App\Http\Controllers\TicketController::class, 'postComment']);
+});
 
+//Admin
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
+    //Admin Dashboard
     Route::get('home', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
     //Settings
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
@@ -51,6 +64,16 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('lesson/edit/{id}', [\App\Http\Controllers\Admin\LessonController::class, 'editLesson'])->name('admin.editLesson');
     Route::patch('lesson/edit/{id}', [\App\Http\Controllers\Admin\LessonController::class, 'updateLesson'])->name('admin.updateLesson');
     Route::delete('lesson/delete/{id}', [\App\Http\Controllers\Admin\LessonController::class, 'deleteLesson'])->name('admin.deleteLesson');
+    //Blog
+    Route::get('blog', [\App\Http\Controllers\Admin\BlogController::class, 'indexBlog'])->name('admin.indexBlog');
+    Route::get('blog/create', [\App\Http\Controllers\Admin\BlogController::class, 'createBlog'])->name('admin.createBlog');
+    Route::post('blog/create', [\App\Http\Controllers\Admin\BlogController::class, 'storeBlog'])->name('admin.storeBlog');
+    Route::get('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'editBlog'])->name('admin.editBlog');
+    Route::patch('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'updateBlog'])->name('admin.updateBlog');
+    Route::delete('blog/delete/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'deleteBlog'])->name('admin.deleteBlog');
+    //Ticket
+    Route::get('/tickets', [\App\Http\Controllers\TicketController::class, 'userTickets'])->name('admin.tickets');
+    Route::post('/close_ticket/{ticket_id}', [\App\Http\Controllers\TicketController::class, 'close'])->name('admin.tickets.delete');
     //Users
     Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'indexUser'])->name('admin.indexUser');
     //File Manager
