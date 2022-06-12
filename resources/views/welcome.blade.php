@@ -37,7 +37,8 @@
                         <div class="single_brand" id="brand-slide" dir="rtl">
 
                             <!-- single -->
-                            <div class="single_brands">{{--
+                            <div class="single_brands">
+                                {{--
                                 <img src="/assets/img/lg-1.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
                                    href="/find-teachers/english">
@@ -355,26 +356,29 @@
                 </div>
             </div>
 
-
-
-
-
             <div class="row">
                 @foreach($cat as $cat)
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="edu_cat_2 cat-{{$loop->index+1}}">
                             <div class="edu_cat_icons">
-                                <a class="pic-main" href="{{route('category.detail',['id' => $cat->id])}}"><img
+                                <a class="pic-main" href="{{--{{route('category.detail',['id' => $cat->id])}}--}}"><img
                                         src="/assets/img/{{$loop->index+1}}.png" class="img-fluid"
                                         alt=""/></a>
                             </div>
                             <div class="edu_cat_data">
                                 <h4 class="title"><a
-                                        href="{{route('category.detail',['id' => $cat->id])}}">{{$cat->category_name}}</a>
+                                        href="{{--{{route('category.detail',['id' => $cat->id])}}--}}">{{$cat->category_name}}</a>
                                 </h4>
                                 <ul class="meta">
-                                    <li class="video"><i class="ti-video-clapper"></i>{{count($course->id)}} دوره آموزشی
-                                    </li>
+                                    @php
+                                        $cat = \App\Models\Category::where('parent_id',null)->get();
+                                    @endphp
+                                    @foreach($cat as $catt)
+                                    @php
+                                        $course = \App\Models\Course::where('category_id',$catt->category_name)->get();
+                                    @endphp
+                                    @endforeach
+                                    <li class="video"><i class="ti-video-clapper"></i>{{count($course)}} دوره آموزشی</li>
                                 </ul>
                             </div>
                         </div>
@@ -400,25 +404,27 @@
 
             <div class="row">
 
+                @foreach($courses as $course)
                 <!-- Cource Grid 1 -->
                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="education_block_list_layout style-2">
 
                         <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-2.jpg" class="img-fluid" alt=""></a>
+                            <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{$course->c_posster}}" class="img-fluid" alt="{{$course->c_alt_img}}"></a>
                         </div>
 
                         <div class="list_layout_ecucation_caption">
 
                             <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش ASP.Net - ساخت سایت شخصی</a>
+                                <h4 class="bl-title"><a href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a>
                                 </h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>حسین راد</strong></div>
+                                <div class="_course_admin_ol12">مدرس: <strong>{{$course->user_id}}</strong></div>
 
                                 <div class="_course_less_infor">
                                     <ul>
-                                        <li><i class="ti-desktop ml-1"></i>11 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
+                                      {{--  @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
+                                        <li><i class="ti-desktop ml-1"></i>{{count($lesson)}} درس</li>--}}
+                                        {{--<li><span class="class online"></span>آنلاین</li>--}}
                                     </ul>
                                 </div>
 
@@ -435,16 +441,16 @@
                                             <strong class="mid">4.9</strong>
                                         </div>
                                     </div>
-                                    <div class="_course_category_01"><span class="cat-7">برنامه نویسی</span></div>
+                                    <div class="_course_category_01"><span class="cat-7">{{$course->category_id}}</span></div>
                                 </div>
                             </div>
 
                             <div class="education_block_footer">
-                                <div class="cources_price">890ت
-                                    <div class="less_offer">999ت</div>
+                                <div class="cources_price">{{$course->price_off}}
+                                    <div class="less_offer">{{$course->price}}</div>
                                 </div>
                                 <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i class="fa fa-arrow-left"></i></a>
+                                    <a href="{{route('course.show',['id' => $course->id])}}" class="_cr_detail_arrow"><i class="fa fa-arrow-left"></i></a>
                                 </div>
                             </div>
 
@@ -452,272 +458,7 @@
 
                     </div>
                 </div>
-
-                <!-- Cource Grid 1 -->
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    <div class="education_block_list_layout style-2">
-
-                        <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-3.jpg" class="img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="list_layout_ecucation_caption">
-
-                            <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش ساخت ربات تلگرام با PHP</a></h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>آدام ویکنوی</strong></div>
-
-                                <div class="_course_less_infor">
-                                    <ul>
-                                        <li><i class="ti-desktop ml-1"></i>13 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
-                                    </ul>
-                                </div>
-
-                                <div class="course_rate_system_wrap">
-                                    <div class="course_rate_system">
-                                        <div class="course_ratting">
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="course_reviews_info">
-                                            <strong class="mid">4.6</strong>
-                                        </div>
-                                    </div>
-                                    <div class="_course_category_01"><span class="cat-9">حسابداری</span></div>
-                                </div>
-                            </div>
-
-                            <div class="education_block_footer">
-                                <div class="cources_price">510ت
-                                    <div class="less_offer">799ت</div>
-                                </div>
-                                <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Cource Grid 1 -->
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    <div class="education_block_list_layout style-2">
-
-                        <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-4.jpg" class="img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="list_layout_ecucation_caption">
-
-                            <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش برنامه نویسی‌اندروید</a></h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>مسعود زارعی</strong></div>
-
-                                <div class="_course_less_infor">
-                                    <ul>
-                                        <li><i class="ti-desktop ml-1"></i>15 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
-                                    </ul>
-                                </div>
-
-                                <div class="course_rate_system_wrap">
-                                    <div class="course_rate_system">
-                                        <div class="course_ratting">
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="course_reviews_info">
-                                            <strong class="mid">4.7</strong>
-                                        </div>
-                                    </div>
-                                    <div class="_course_category_01"><span class="cat-4">استارت آپ</span></div>
-                                </div>
-                            </div>
-
-                            <div class="education_block_footer">
-                                <div class="cources_price">549ت
-                                    <div class="less_offer">849ت</div>
-                                </div>
-                                <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Cource Grid 1 -->
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    <div class="education_block_list_layout style-2">
-
-                        <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-5.jpg" class="img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="list_layout_ecucation_caption">
-
-                            <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش تبدیل PSD به HTML (یک)</a></h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>نیلوفر کشاورز</strong></div>
-
-                                <div class="_course_less_infor">
-                                    <ul>
-                                        <li><i class="ti-desktop ml-1"></i>16 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
-                                    </ul>
-                                </div>
-
-                                <div class="course_rate_system_wrap">
-                                    <div class="course_rate_system">
-                                        <div class="course_ratting">
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="course_reviews_info">
-                                            <strong class="mid">4.9</strong>
-                                        </div>
-                                    </div>
-                                    <div class="_course_category_01"><span class="cat-3">گرافیک</span></div>
-                                </div>
-                            </div>
-
-                            <div class="education_block_footer">
-                                <div class="cources_price">449ت
-                                    <div class="less_offer">749ت</div>
-                                </div>
-                                <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Cource Grid 1 -->
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    <div class="education_block_list_layout style-2">
-
-                        <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="list_layout_ecucation_caption">
-
-                            <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش کار با وکتور در فتوشاپ</a></h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>الهام کریمی</strong></div>
-
-                                <div class="_course_less_infor">
-                                    <ul>
-                                        <li><i class="ti-desktop ml-1"></i>10 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
-                                    </ul>
-                                </div>
-
-                                <div class="course_rate_system_wrap">
-                                    <div class="course_rate_system">
-                                        <div class="course_ratting">
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="course_reviews_info">
-                                            <strong class="mid">4.8</strong>
-                                        </div>
-                                    </div>
-                                    <div class="_course_category_01"><span class="cat-2">انیمیشن</span></div>
-                                </div>
-                            </div>
-
-                            <div class="education_block_footer">
-                                <div class="cources_price">599ت
-                                    <div class="less_offer">699ت</div>
-                                </div>
-                                <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Cource Grid 1 -->
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    <div class="education_block_list_layout style-2">
-
-                        <div class="education_block_thumb n-shadow">
-                            <a href="course-detail.html"><img src="/assets/img/co-7.jpg" class="img-fluid" alt=""></a>
-                        </div>
-
-                        <div class="list_layout_ecucation_caption">
-
-                            <div class="education_block_body">
-                                <h4 class="bl-title"><a href="course-detail.html">آموزش طراحی قالب ریسپانسیو</a></h4>
-                                <div class="_course_admin_ol12">مدرس: <strong>رابرت ویلسون</strong></div>
-
-                                <div class="_course_less_infor">
-                                    <ul>
-                                        <li><i class="ti-desktop ml-1"></i>12 دوره</li>
-                                        <li><span class="class online"></span>آنلاین</li>
-                                    </ul>
-                                </div>
-
-                                <div class="course_rate_system_wrap">
-                                    <div class="course_rate_system">
-                                        <div class="course_ratting">
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star filled"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="course_reviews_info">
-                                            <strong class="mid">4.7</strong>
-                                        </div>
-                                    </div>
-                                    <div class="_course_category_01"><span class="cat-1">طراحی سایت</span></div>
-                                </div>
-                            </div>
-
-                            <div class="education_block_footer">
-                                <div class="cources_price">700ت
-                                    <div class="less_offer">1099ت</div>
-                                </div>
-                                <div class="cources_info_style3">
-                                    <a href="course-detail.html" class="_cr_detail_arrow"><i
-                                            class="fa fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
+                @endforeach
 
             </div>
 
@@ -784,6 +525,7 @@
 
                     <div class="four_slide-dots articles arrow_middle" dir="rtl">
 
+                        @foreach($user as $users)
                         <!-- Single Slide -->
                         <div class="singles_items">
                             <div class="instructor_wrap">
@@ -802,82 +544,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Single Slide -->
-                        <div class="singles_items">
-                            <div class="instructor_wrap">
-                                <div class="instructor_thumb">
-                                    <a href="instructor-detail.html"><img src="/assets/img/user-2.jpg" class="img-fluid"
-                                                                          alt=""></a>
-                                </div>
-                                <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">شیلپا سینگ</a></h4>
-                                    <span>مدیر تیم</span>
-                                    <ul>
-                                        <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#" class="cl-linked"><i class="ti-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Slide -->
-                        <div class="singles_items">
-                            <div class="instructor_wrap">
-                                <div class="instructor_thumb">
-                                    <a href="instructor-detail.html"><img src="/assets/img/user-3.jpg" class="img-fluid"
-                                                                          alt=""></a>
-                                </div>
-                                <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">آدام ویستون</a></h4>
-                                    <span>مدیر فروش</span>
-                                    <ul>
-                                        <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#" class="cl-linked"><i class="ti-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Slide -->
-                        <div class="singles_items">
-                            <div class="instructor_wrap">
-                                <div class="instructor_thumb">
-                                    <a href="instructor-detail.html"><img src="/assets/img/user-4.jpg" class="img-fluid"
-                                                                          alt=""></a>
-                                </div>
-                                <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">راگینی سینگ</a></h4>
-                                    <span>مدیر عامل</span>
-                                    <ul>
-                                        <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#" class="cl-linked"><i class="ti-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Slide -->
-                        <div class="singles_items">
-                            <div class="instructor_wrap">
-                                <div class="instructor_thumb">
-                                    <a href="instructor-detail.html"><img src="/assets/img/user-5.jpg" class="img-fluid"
-                                                                          alt=""></a>
-                                </div>
-                                <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">دانیال ویلسون</a></h4>
-                                    <span>برنامه نویس</span>
-                                    <ul>
-                                        <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#" class="cl-linked"><i class="ti-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 

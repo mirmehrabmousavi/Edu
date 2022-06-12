@@ -33,14 +33,12 @@ class CourseController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'slug' => 'required',
             'desc' => 'required',
             'b_desc' => 'required',
         ]);
 
         Course::create([
             'title' => $request->title,
-            'slug' => $request->slug,
             'desc' => $request->desc,
             'b_desc' => $request->b_desc,
             'price' => $request->price,
@@ -55,6 +53,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'user_id' => auth()->user()->email
         ]);
 
         $notification = array(
@@ -76,14 +75,12 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $request->validate([
             'title' => 'required',
-            'slug' => 'required',
             'desc' => 'required',
             'b_desc' => 'required',
         ]);
 
         $course->update([
             'title' => $request->title,
-            'slug' => $request->slug,
             'desc' => $request->desc,
             'b_desc' => $request->b_desc,
             'price' => $request->price,
@@ -98,6 +95,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'user_id' => auth()->user()->email
         ]);
 
         $notification = array(

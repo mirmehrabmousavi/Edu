@@ -30,8 +30,9 @@ class CreateCoursesTable extends Migration
             $table->string('time')->nullable();
             $table->string('status')->nullable();
             $table->string('status_upload')->nullable();
-            $table->string('category_id')->nullable();
             $table->string('language')->nullable();
+            $table->string('category_id')->nullable();
+            $table->string('user_id');
             $table->timestamps();
         });
     }

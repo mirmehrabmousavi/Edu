@@ -380,15 +380,23 @@
     var type = "{{Session::get('alert-type','info')}}";
     switch (type) {
         case 'info':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
             toastr.info("{{Session::get('message')}}");
             break;
         case 'success':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
             toastr.success("{{Session::get('message')}}");
             break;
         case 'warning':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
             toastr.warning("{{Session::get('message')}}");
             break;
         case 'error':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
             toastr.error("{{Session::get('message')}}");
             break;
     }
