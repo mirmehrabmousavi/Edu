@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class CourseController extends Controller
 
     public function createCourse()
     {
-        return view('admin.courses.create');
+        $cat = Category::all();
+        return view('admin.courses.create',compact('cat'));
     }
 
     public function storeFirstCourse(Request $request)

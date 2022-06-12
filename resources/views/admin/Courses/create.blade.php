@@ -218,10 +218,18 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">دسته بندی دوره</label>
-                                                        <input type="text" class="form-control" name="status"
-                                                               id="account-username"
-                                                               placeholder="دسته بندی دوره" value=""
-                                                               required="" data-validation-required-message="">
+                                                        <select name="category_id" id="category" class="form-control">
+                                                                @if($cat)
+                                                                <option value="">بدون دسته بندی</option>
+                                                                    @foreach($cat as $category)
+                                                                        <?php $dash=''; ?>
+                                                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                                        @if(count($category->subcategory))
+                                                                            @include('admin.categories.subCategoryList',['subcategories' => $category->subcategory])
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
