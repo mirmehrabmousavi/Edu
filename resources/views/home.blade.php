@@ -18,18 +18,31 @@
 
                         <div class="d-navigation">
                             <ul id="side-menu">
-                                <li class="active"><a href="{{route('home')}}"><i class="ti-user"></i>داشبورد</a></li>
-                                <li><a href="my-profile.html"><i class="ti-heart"></i>اکانت من</a></li>
-                                <li><a href="add-listing.html"><i class="ti-plus"></i>افزودن دوره جدید</a></li>
-                                <li><a href="saved-courses.html"><i class="ti-heart"></i>دوره های ذخیره شده</a></li>
-                                <li><a href="my-order.html"><i class="ti-shopping-cart"></i>سفارشات من</a></li>
-                                <li><a href="settings.html"><i class="ti-settings"></i>تنظیمات</a></li>
-                                <li><a href="reviews.html"><i class="ti-comment-alt"></i>لیست نظرات</a></li>
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                @if(auth()->user()->is_seller == 1 || auth()->user()->is_admin === 1)
+                                    <li class="active"><a href="{{route('home')}}"><i class="ti-user"></i>داشبورد</a></li>
+                                    <li><a href="my-profile.html"><i class="ti-heart"></i>اکانت من</a></li>
+                                    <li><a href="add-listing.html"><i class="ti-plus"></i>افزودن دوره جدید</a></li>
+                                    <li><a href="saved-courses.html"><i class="ti-heart"></i>دوره های ذخیره شده</a></li>
+                                    <li><a href="my-order.html"><i class="ti-shopping-cart"></i>سفارشات من</a></li>
+                                    <li><a href="settings.html"><i class="ti-settings"></i>تنظیمات</a></li>
+                                    <li><a href="reviews.html"><i class="ti-comment-alt"></i>لیست نظرات</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();"><i class="ti-power-off"></i>خروج</a></li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                @else
+                                    <li class="active"><a href="{{route('home')}}"><i class="ti-user"></i>داشبورد</a></li>
+                                    <li><a href="my-profile.html"><i class="ti-heart"></i>اکانت من</a></li>
+                                    <li><a href="saved-courses.html"><i class="ti-heart"></i>دوره های ذخیره شده</a></li>
+                                    <li><a href="my-order.html"><i class="ti-shopping-cart"></i>سفارشات من</a></li>
+                                    <li><a href="settings.html"><i class="ti-settings"></i>تنظیمات</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="ti-power-off"></i>خروج</a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                @endif
                             </ul>
                         </div>
 

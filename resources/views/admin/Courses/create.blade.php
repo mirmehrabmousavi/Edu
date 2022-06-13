@@ -219,16 +219,16 @@
                                                     <div class="controls">
                                                         <label for="account-username">دسته بندی دوره</label>
                                                         <select name="category_id" id="category" class="form-control">
-                                                                @if($cat)
-                                                                <option value="">بدون دسته بندی</option>
-                                                                    @foreach($cat as $category)
-                                                                        <?php $dash=''; ?>
-                                                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
-                                                                        @if(count($category->subcategory))
-                                                                            @include('admin.categories.subCategoryList',['subcategories' => $category->subcategory])
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
+                                                            @if($cat)
+                                                            <option value="">بدون دسته بندی</option>
+                                                                @foreach($cat as $category)
+                                                                    <?php $dash=''; ?>
+                                                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                                    @if(count($category->subcategory))
+                                                                        @include('admin.categories.subCategoryList',['subcategories' => $category->subcategory])
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
                                                         </select>
                                                     </div>
                                                 </div>

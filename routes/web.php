@@ -27,7 +27,7 @@ Auth::routes();
 //User
 Route::group(['middleware' => 'auth'], function () {
     //User Dashboard
-    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     //Ticket System
     Route::get('new-ticket', [\App\Http\Controllers\TicketController::class, 'create'])->name('ticket.create');
     Route::post('new-ticket', [\App\Http\Controllers\TicketController::class, 'store'])->name('ticket.store');
@@ -39,11 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
 //Admin
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
-    Route::get('home', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
+    Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
     //Settings
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
+    Route::post('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
     //Category
     Route::get('category', [\App\Http\Controllers\Admin\CategoryController::class, 'indexCategory'])->name('admin.indexCategory');
     Route::get('category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('admin.createCategory');

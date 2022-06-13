@@ -58,7 +58,7 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('admin.home')->with($notification);
             }else if(auth()->user()->is_seller == 1) {
-                return redirect()->route('admin.home')->with($notification);
+                return redirect()->route('home')->with($notification);
             }else{
                 return redirect()->route('home')->with($notification);
             }

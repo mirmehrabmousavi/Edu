@@ -53,11 +53,10 @@
                     <div class="footer-widget">
                         <h4 class="widget-title">دسته بندی</h4>
                         <ul class="footer-menu">
-                            <li><a href="#">طراحی وب</a></li>
-                            <li><a href="#">شبکه و امنیت</a></li>
-                            <li><a href="#">برنامه نویسی وب</a></li>
-                            <li><a href="#">پایگاه داده</a></li>
-                            <li><a href="#">برنامه نویسی موبایل</a></li>
+                            @php $cat = \App\Models\Category::where('parent_id',null)->get(); @endphp
+                            @foreach($cat as $cat)
+                            <li><a href="#">{{$cat->category_name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -67,10 +66,8 @@
                         <h4 class="widget-title">راهنما و پشتیبانی</h4>
                         <ul class="footer-menu">
                             <li><a href="#">اسناد</a></li>
-                            <li><a href="#">چت آنلاین</a></li>
-                            <li><a href="#">ارسال ایمیل</a></li>
-                            <li><a href="#">قوانین و شرایط</a></li>
-                            <li><a href="#">سوالات متداول</a></li>
+                            <li><a href="{{route('myTickets')}}">تیکت ها</a></li>
+                            <li><a href="{{route('ticket.create')}}">ارسال تیکت</a></li>
                         </ul>
                     </div>
                 </div>
@@ -112,7 +109,7 @@
             <div class="row align-items-center">
 
                 <div class="col-lg-6 col-md-6">
-                    <p class="mb-0">© 2022  ارائه شده توسط<a href="/">رایا</a></p>
+                    <p class="mb-0">ارائه شده توسط <a href="/"> رایا </a></p>
                 </div>
 
                 <div class="col-lg-6 col-md-6 text-left">

@@ -17,6 +17,7 @@
 
     <!-- Custom Color Option -->
     <link href="/assets/css/colors.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" type="text/css">
 
 </head>
 
@@ -64,6 +65,34 @@
 <!-- This page plugins -->
 <!-- ============================================================== -->
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+    var type = "{{Session::get('alert-type','info')}}";
+    switch (type) {
+        case 'info':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.info("{{Session::get('message')}}");
+            break;
+        case 'success':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.success("{{Session::get('message')}}");
+            break;
+        case 'warning':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.warning("{{Session::get('message')}}");
+            break;
+        case 'error':
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.error("{{Session::get('message')}}");
+            break;
+    }
+    @endif
+</script>
 </body>
 
 </html>
