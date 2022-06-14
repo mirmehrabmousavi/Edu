@@ -1,7 +1,7 @@
 <?php $dash.='-- '; ?>
 @foreach($subcategories as $subcategory)
-    @if($category->id != $subcategory->id )
-        <option value="{{$subcategory->id}}" @if($category->parent_id == $subcategory->id ) selected @endif >
+    @if($category->category_name != $subcategory->category_name )
+        <option value="{{$subcategory->category_name}}" @if($category->parent_id == $subcategory->category_name ) selected @endif >
             {{$dash}}{{$subcategory->category_name}}
         </option>
     @endif

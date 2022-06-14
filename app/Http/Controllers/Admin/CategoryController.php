@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $request->validate([
             'category_name' => 'required',
             'category_slug' => 'required|unique:categories',
-            'parent_id' => 'nullable|numeric'
+            'parent_id' => 'nullable'
         ]);
 
         Category::create([
@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $request->validate([
             'category_name'     => 'required',
             'category_slug' => ['required', Rule::unique('categories')->ignore($category->id)],
-            'parent_id'=> 'nullable|numeric'
+            'parent_id'=> 'nullable'
         ]);
         if($request->category_name != $category->category_name || $request->parent_id != $category->parent_id)
         {

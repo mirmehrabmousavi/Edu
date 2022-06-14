@@ -31,7 +31,7 @@
                                                 @if($categories)
                                                     @foreach($categories as $item)
                                                         <?php $dash=''; ?>
-                                                        <option value="{{$item->id}}" @if($category->parent_id == $item->id ) selected @endif>{{$item->category_name}}</option>
+                                                        <option value="{{$item->category_name}}" @if($category->parent_id == $item->category_name ) selected @endif>{{$item->category_name}}</option>
                                                         @if(count($item->subcategory))
                                                             @include('admin.categories.subCategoryListUpdate',['subcategories' => $item->subcategory])
                                                         @endif

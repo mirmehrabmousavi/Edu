@@ -530,12 +530,12 @@
                         <div class="singles_items">
                             <div class="instructor_wrap">
                                 <div class="instructor_thumb">
-                                    <a href="instructor-detail.html"><img src="/assets/img/user-1.jpg" class="img-fluid"
+                                    <a href="{{route('teacher.show',['id' => $users->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}" class="img-fluid"
                                                                           alt=""></a>
                                 </div>
                                 <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">دانیل دیوانسکر</a></h4>
-                                    <span>طراح وب</span>
+                                    <h4><a href="instructor-detail.html">{{($users->fname) ? $users->fname . ' ' . $users->lname : $users->email}}</a></h4>
+                                    <span>{{--{{$users->job}}--}}طراح</span>
                                     <ul>
                                         <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
                                         <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>

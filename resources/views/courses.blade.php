@@ -9,11 +9,11 @@
                 <div class="col-lg-12 col-md-12">
 
                     <div class="breadcrumbs-wrap">
-                        <h1 class="breadcrumb-title">نمای با نوار کناری</h1>
+                        <h1 class="breadcrumb-title">دوره ها</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">نسخه 1</li>
+                                <li class="breadcrumb-item"><a href="{{route('index')}}">خانه</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">دوره ها</li>
                             </ol>
                         </nav>
                     </div>
@@ -143,58 +143,22 @@
 
                         <h4 class="side_title">دسته بندی دوره</h4>
                         <ul class="no-ul-list mb-3">
+                            @foreach($cat as $cat)
                             <li>
                                 <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
-                                <label for="aa-4" class="checkbox-custom-label">برنامه نویسی (3)</label>
+                                <label for="aa-4" class="checkbox-custom-label">{{$cat->category_name}}</label>
                             </li>
-                            <li>
-                                <input id="aa-5" class="checkbox-custom" name="aa-5" type="checkbox">
-                                <label for="aa-5" class="checkbox-custom-label">طراحی سایت (2)</label>
-                            </li>
-                            <li>
-                                <input id="aa-6" class="checkbox-custom" name="aa-6" type="checkbox">
-                                <label for="aa-6" class="checkbox-custom-label">عمومی (2)</label>
-                            </li>
-                            <li>
-                                <input id="aa-7" class="checkbox-custom" name="aa-7" type="checkbox">
-                                <label for="aa-7" class="checkbox-custom-label">فناوری و اطلاعات (2)</label>
-                            </li>
-                            <li>
-                                <input id="aa-8" class="checkbox-custom" name="aa-8" type="checkbox">
-                                <label for="aa-8" class="checkbox-custom-label">گرافیک (2)</label>
-                            </li>
-                            <li>
-                                <input id="aa-9" class="checkbox-custom" name="aa-9" type="checkbox">
-                                <label for="aa-9" class="checkbox-custom-label">شبکه و امنیت (2)</label>
-                            </li>
+                            @endforeach
                         </ul>
 
                         <h4 class="side_title">مدرسین</h4>
                         <ul class="no-ul-list mb-3">
+                            @foreach($teachers as $teacher)
                             <li>
                                 <input id="aa-41" class="checkbox-custom" name="aa-41" type="checkbox">
-                                <label for="aa-41" class="checkbox-custom-label">حسام موسوی (4)</label>
+                                <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher.lname : $teacher->email}}</label>
                             </li>
-                            <li>
-                                <input id="aa-2" class="checkbox-custom" name="aa-2" type="checkbox">
-                                <label for="aa-2" class="checkbox-custom-label">مهرداد عظیمی (11)</label>
-                            </li>
-                            <li>
-                                <input id="aa-3" class="checkbox-custom" name="aa-3" type="checkbox">
-                                <label for="aa-3" class="checkbox-custom-label">الهام کریمی (4)</label>
-                            </li>
-                            <li>
-                                <input id="aa-71" class="checkbox-custom" name="aa-71" type="checkbox">
-                                <label for="aa-71" class="checkbox-custom-label">مسعود راد (7)</label>
-                            </li>
-                            <li>
-                                <input id="aa-81" class="checkbox-custom" name="aa-81" type="checkbox">
-                                <label for="aa-81" class="checkbox-custom-label">مهدی کشاورز</label>
-                            </li>
-                            <li>
-                                <input id="aa-91" class="checkbox-custom" name="aa-91" type="checkbox">
-                                <label for="aa-91" class="checkbox-custom-label">شادی عبدی</label>
-                            </li>
+                           @endforeach
                         </ul>
 
                         <h4 class="side_title">نوع دوره</h4>
@@ -313,10 +277,10 @@
                     <!-- Row -->
                     <div class="row align-items-center mb-3">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <strong>142</strong> دوره آموزشی یافت شد.
+                            <strong>{{count($courses)}}</strong> دوره آموزشی یافت شد.
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 ordering">
-                            <div class="filter_wraps">
+                          {{--  <div class="filter_wraps">
                                 <div class="dn db-991 mt30 mb0 show-23">
                                     <div id="main2">
                                         <a href="javascript:void(0)" class="btn btn-theme arrow-btn filter_open" onclick="openNav()" id="open2"><span><i class="fas fa-arrow-alt-circle-right"></i></span>باکس فیلتر</a>
@@ -332,193 +296,45 @@
                                         <a class="dropdown-item" href="#">ویژه</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                     <!-- /Row -->
 
                     <div class="row">
 
+                        @foreach($courses as $val)
                         <!-- Cource Grid 1 -->
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="education_block_grid style_2">
                                 <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-1.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">720 ت</div>
+                                    <a href="{{route('course.show',['id' => $val->id])}}"><img src="{{$val->c_poster}}" class="img-fluid" alt=""></a>
+                                    <div class="cources_price">{{$val->price}}</div>
                                 </div>
 
                                 <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش ساخت فروشگاه دیجی استایل با لاراول</a></h4>
+                                    <h4 class="bl-title"><a href="{{route('course.show',['id' => $val->id])}}">{{$val->title}}</a></h4>
                                 </div>
 
                                 <div class="cources_info_style3">
                                     <ul>
                                         <li><i class="ti-eye ml-2"></i>8682 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>1ساعت 5دقیقه</li>
+                                        <li><i class="ti-time ml-2"></i>{{$val->time}}</li>
                                         <li><i class="ti-star text-warning ml-2"></i>4.7 امتیاز</li>
                                     </ul>
                                 </div>
 
                                 <div class="education_block_footer">
                                     <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-1.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">رابرت ویلسون</a></h5>
+                                        <div class="path-img"><a href="{{route('teacher.show',['id' =>auth()->user()->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}" class="img-fluid" alt=""></a></div>
+                                        <h5><a href="{{route('teacher.show',['id' => auth()->user()->id])}}">{{$val->user_id}}</a></h5>
                                     </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>54 دوره آموزشی</div>
+                                    @php $mcourse = \App\Models\Course::where('user_id',$val->user_id)->get(); @endphp
+                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>{{count($mcourse)}} دوره آموزشی</div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-2.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">289 ت</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش ASP.Net - ساخت سایت شخصی</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>9882 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>4ساعت 10دقیقه</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.7 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-2.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">شروتی حسن</a></h5>
-                                    </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>26 دوره آموزشی</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-3.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">788 ت</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش ساخت ربات تلگرام با PHP</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>5893 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>1ساعت 5دقیقه</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.7 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-3.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">آدام ویکنوی</a></h5>
-                                    </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>52 دوره آموزشی</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-4.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">365 ت</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش برنامه نویسی‌اندروید</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>8582 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>2ساعت 20دقیقه</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.6 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-4.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">نازنین عبدی</a></h5>
-                                    </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>43 دوره آموزشی</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-5.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">450 ت</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش تبدیل PSD به HTML (یک)</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>9857 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>30دقیقه</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.9 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-5.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">شاوریا پریت</a></h5>
-                                    </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>32 دوره آموزشی</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="course-detail.html"><img src="assets/img/co-6.jpg" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">895 ت</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="course-detail.html">آموزش کار با وکتور در فتوشاپ</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>6852 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>2ساعت 30دقیقه</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.8 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/user-6.jpg" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="instructor-detail.html">الهام کریمی</a></h5>
-                                    </div>
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>48 دوره آموزشی</div>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
 
                     <!-- Row -->

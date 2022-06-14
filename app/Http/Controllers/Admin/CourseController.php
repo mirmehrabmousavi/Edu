@@ -55,6 +55,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'category_id' => $request->category_id,
             'user_id' => auth()->user()->email
         ]);
 
@@ -69,7 +70,9 @@ class CourseController extends Controller
     public function editCourse($id)
     {
         $course = Course::findOrFail($id);
-        return view('admin.courses.edit',compact('course'));
+        $cat = Category::all();
+        $category = Category::findOrFail($id);
+        return view('admin.courses.edit',compact('course','cat','category'));
     }
 
     public function updateCourse($id,Request $request)
@@ -97,6 +100,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'category_id' => $request->category_id,
             'user_id' => auth()->user()->email
         ]);
 

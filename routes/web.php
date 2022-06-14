@@ -19,6 +19,7 @@ Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('i
 Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'courseShow'])->name('course.show');
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
+Route::get('/teachers/{id}', [\App\Http\Controllers\IndexController::class, 'teacherShow'])->name('teacher.show');
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
 

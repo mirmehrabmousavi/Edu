@@ -13,13 +13,17 @@ class IndexController extends Controller
     {
         $cat = Category::where('parent_id',null)->get();
         $courses = Course::all();
-        $user = User::where('is_seller',1)->get();
+        $user = User::where('is_seller',1)->paginate(4);
         return view('welcome',compact('cat','courses','user'));
     }
 
     public function courses()
     {
-        return view('courses');
+        $courses = Course::all();
+        $users = User::all();
+        $cat = Category::where('parent_id',null)->get();
+        $teachers = User::where('is_seller',1)->get();
+        return view('courses',compact('courses','users','cat','teachers'));
     }
 
     public function courseShow($id)
@@ -30,7 +34,14 @@ class IndexController extends Controller
 
     public function teachers()
     {
-        return view('teachers');
+        $users = User::all();
+        return view('teachers',compact('users'));
+    }
+
+    public function teacherShow($id)
+    {
+        $user = User::findOrFail($id);
+        return view('teacher.show',compact('user'));
     }
 
     public function aboutus()

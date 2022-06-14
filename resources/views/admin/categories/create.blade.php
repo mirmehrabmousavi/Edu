@@ -30,7 +30,7 @@
                                                 @if($categories)
                                                     @foreach($categories as $category)
                                                         <?php $dash=''; ?>
-                                                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                        <option value="{{$category->category_name}}">{{$category->category_name}}</option>
                                                         @if(count($category->subcategory))
                                                             @include('admin.categories.subCategoryList',['subcategories' => $category->subcategory])
                                                         @endif
