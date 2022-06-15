@@ -23,12 +23,20 @@ Route::get('/teachers/{id}', [\App\Http\Controllers\IndexController::class, 'tea
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
 
+//Auth
 Auth::routes();
 
 //User
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','teacher'], function () {
     //User Dashboard
     Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/my-course', [\App\Http\Controllers\HomeController::class, 'myCourse'])->name('myCourse');
+    Route::get('/add-course', [\App\Http\Controllers\HomeController::class, 'addCourse'])->name('addCourse');
+    Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
+    Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
+    Route::get('/saved-course', [\App\Http\Controllers\HomeController::class, 'savedCourse'])->name('savedCourse');
+    Route::get('/my-pays', [\App\Http\Controllers\HomeController::class, 'myPays'])->name('myPays');
+    Route::get('/my-account', [\App\Http\Controllers\HomeController::class, 'myAccount'])->name('myAccount');
     //Ticket System
     Route::get('new-ticket', [\App\Http\Controllers\TicketController::class, 'create'])->name('ticket.create');
     Route::post('new-ticket', [\App\Http\Controllers\TicketController::class, 'store'])->name('ticket.store');
@@ -42,10 +50,10 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
     //Settings
-    Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
+    Route::get('settings'         , [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
-    Route::post('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
+    Route::post('social/create'   , [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
     //Category
     Route::get('category', [\App\Http\Controllers\Admin\CategoryController::class, 'indexCategory'])->name('admin.indexCategory');
     Route::get('category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('admin.createCategory');

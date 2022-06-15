@@ -12,8 +12,7 @@
                             </p>
                         </div>
                         <div class="card-body">
-                            <form novalidate="" action="{{route('admin.storeLesson')}}" method="POST"
-                                  enctype="multipart/form-data">
+                            <form novalidate="" action="{{route('admin.storeLesson')}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -21,9 +20,24 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">عنوان دوره</label>
+                                                        <label for="account-username">عنوان درس</label>
                                                         <input type="text" class="form-control" name="title"
-                                                               id="account-username" placeholder="عنوان دوره"
+                                                               id="account-username" placeholder="عنوان درس"
+                                                               value=""
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">شماره درس</label>
+                                                        <input type="text" class="form-control" name="number"
+                                                               id="account-username" placeholder="شماره درس"
                                                                value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
@@ -39,43 +53,6 @@
                                                           placeholder="توضیحات دوره"
                                                           required=""
                                                           data-validation-required-message=""></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label for="account-username">خلاصه توضیحات دوره</label>
-                                                <input type="text" class="form-control" name="b_desc"
-                                                       id="account-username" placeholder="خلاصه توضیحات دوره"
-                                                       value=""
-                                                       required="" data-validation-required-message="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">قیمت دوره</label>
-                                                        <input type="text" class="form-control" name="price"
-                                                               id="account-username" placeholder="قیمت دوره"
-                                                               value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">قیمت تخفیف خورده</label>
-                                                        <input type="text" class="form-control" name="price_off"
-                                                               id="account-username"
-                                                               placeholder="قیمت تخفیف خورده" value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -110,9 +87,9 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">پوستر دوره</label>
-                                                        <input type="text" class="form-control" name="c_poster"
-                                                               id="account-username" placeholder="پوستر دوره"
+                                                        <label for="account-username">فایل درس</label>
+                                                        <input type="text" class="form-control" name="l_file"
+                                                               id="account-username" placeholder="فایل درس"
                                                                value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
@@ -121,11 +98,10 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">فایل دوره
-                                                            (اختیاری)</label>
-                                                        <input type="text" class="form-control" name="c_file"
+                                                        <label for="account-username">ویدیو درس</label>
+                                                        <input type="text" class="form-control" name="l_video"
                                                                id="account-username"
-                                                               placeholder="فایل دوره (اختیاری)" value=""
+                                                               placeholder="ویدیو درس" value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
@@ -137,51 +113,9 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">دمو دوره</label>
-                                                        <input type="text" class="form-control" name="c_demo"
-                                                               id="account-username" placeholder="دمو دوره"
-                                                               value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">اسلایدر دوره</label>
-                                                        <input type="text" class="form-control"
-                                                               name="c_slider_img"
-                                                               id="account-username" placeholder="اسلایدر دوره"
-                                                               value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">تصویر شاخص دوره</label>
-                                                        <input type="text" class="form-control" name="c_alt_img"
-                                                               id="account-username"
-                                                               placeholder="تصویر شاخص دوره" value=""
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">زمان دوره</label>
+                                                        <label for="account-username">زمان درس</label>
                                                         <input type="text" class="form-control" name="time"
-                                                               id="account-username" placeholder="زمان دوره"
+                                                               id="account-username" placeholder="زمان درس"
                                                                value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
@@ -190,9 +124,9 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">وضعیت دوره</label>
+                                                        <label for="account-username">وضعیت درس</label>
                                                         <input type="text" class="form-control" name="status"
-                                                               id="account-username" placeholder="وضعیت دوره"
+                                                               id="account-username" placeholder="وضعیت درس"
                                                                value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
@@ -205,11 +139,10 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">وضعیت انتشار دوره</label>
-                                                        <input type="text" class="form-control"
-                                                               name="status_upload"
+                                                        <label for="account-username">فصل</label>
+                                                        <input type="number" class="form-control" name="season"
                                                                id="account-username"
-                                                               placeholder="وضعیت انتشار دوره" value=""
+                                                               placeholder="فصل" value=""
                                                                required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
@@ -217,11 +150,31 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">دسته بندی دوره</label>
-                                                        <input type="text" class="form-control" name="status"
-                                                               id="account-username"
-                                                               placeholder="دسته بندی دوره" value=""
-                                                               required="" data-validation-required-message="">
+                                                        <label for="account-username">انتخاب دوره</label>
+                                                        <select name="l_course" id="l_course" class="form-control">
+                                                            @php $course = \App\Models\Course::all(); @endphp
+                                                            @foreach($course as $courses)
+                                                            <option value="{{$courses->title}}">{{$courses->title}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">رایگان</label>
+                                                        <div
+                                                            class="custom-control custom-switch custom-switch-success mr-2 mb-1">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                   name="l_free" id="customSwitch4">
+                                                            <label class="custom-control-label"
+                                                                   for="customSwitch4"></label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

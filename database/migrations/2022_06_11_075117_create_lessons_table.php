@@ -26,6 +26,8 @@ class CreateLessonsTable extends Migration
             $table->string('time')->nullable();
             $table->string('l_free')->nullable();
             $table->string('season')->nullable();
+            $table->string('l_course')->nullable();
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }
