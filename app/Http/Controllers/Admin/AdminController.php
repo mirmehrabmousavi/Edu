@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +30,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $users = User::all();
+        $teachers = User::where('is_seller',1)->get();
+        $courses = Course::all();
+        $tickets = Ticket::all();
+        $categories = Category::all();
+        return view('admin.home',compact('users','teachers','courses','tickets','categories'));
     }
 
     public function settings()

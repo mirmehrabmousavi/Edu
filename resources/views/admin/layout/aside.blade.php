@@ -59,19 +59,18 @@
                 </ul>
             </li>
             <li class=" nav-item">
+                <a href="{{--{{route('admin.pays')}}--}}">
+                    <i class="feather icon-dollar-sign"></i>
+                    <span class="menu-title">پرداخت ها</span>
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">123</span>
+                </a>
+            </li>
+            <li class=" nav-item">
                 <a href="{{route('admin.tickets')}}">
                     <i class="feather icon-message-circle"></i>
                     <span class="menu-title">تیکت ها</span>
                     @php $tickets = \App\Models\Ticket::where('status','باز است')->get(); @endphp
                     <span class="badge badge badge-warning badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
-                </a>
-            </li>
-            <li class=" nav-item">
-                <a href="{{route('admin.indexUser')}}">
-                    <i class="feather icon-user"></i>
-                    <span class="menu-title">کاربران</span>
-                    @php $user = \App\Models\User::all(); @endphp
-                    <span class="badge badge badge-success badge-pill float-right mr-2">{{($user) ? count($user) : '0'}}</span>
                 </a>
             </li>
             <li class=" nav-item">

@@ -50,10 +50,10 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
     //Settings
-    Route::get('settings'         , [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
+    Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
-    Route::post('social/create'   , [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
+    Route::post('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
     //Category
     Route::get('category', [\App\Http\Controllers\Admin\CategoryController::class, 'indexCategory'])->name('admin.indexCategory');
     Route::get('category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('admin.createCategory');
@@ -85,8 +85,6 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Ticket
     Route::get('/tickets', [\App\Http\Controllers\TicketController::class, 'userTickets'])->name('admin.tickets');
     Route::post('/close_ticket/{ticket_id}', [\App\Http\Controllers\TicketController::class, 'close'])->name('admin.tickets.delete');
-    //Users
-    Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'indexUser'])->name('admin.indexUser');
     //File Manager
     Route::get('file-manager', [\App\Http\Controllers\Admin\AdminController::class, 'fileManager'])->name('admin.file-manager');
 });
