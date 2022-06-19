@@ -31,6 +31,7 @@
                     <li><a href="{{route('myTickets')}}"><i class="ti-heart"></i>تیکت ها</a></li>
                     <li><a href="{{route('myPays')}}"><i class="ti-shopping-cart"></i>پرداخت ها</a></li>
                     <li><a href="{{route('myAccount')}}"><i class="ti-settings"></i>تنظیمات</a></li>
+
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="ti-power-off"></i>خروج</a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
