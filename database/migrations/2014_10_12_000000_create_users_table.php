@@ -24,6 +24,12 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->text('postcode')->nullable();
             $table->text('profile')->nullable();
+            $table->string('job')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
             $table->tinyInteger('is_admin')->default(0);
             $table->tinyInteger('is_seller')->default(0);
             $table->rememberToken();

@@ -29,9 +29,12 @@
                     <div class="footer-widget">
                         <img src="/assets/img/logo.png" class="img-footer" alt=""/>
                         <div class="footer-add">
-                            <p>تهران، خیابان سعادت آباد، خیابان کاج</p>
-                            <p>+1 246-345-0695</p>
-                            <p>info@learnup.com</p>
+                            @php $admin = \App\Models\User::where('is_admin',1)->get(); @endphp
+                            @foreach($admin as $user)
+                                <p>{{$user->address}}</p>
+                                <p>{{$user->email}}</p>
+                                <p>{{$user->number}}</p>
+                            @endforeach
                         </div>
 
                     </div>
@@ -44,7 +47,7 @@
                             <li><a href="#">سوالات متداول</a></li>
                             <li><a href="#">تسویه حساب</a></li>
                             <li><a href="{{route('contactus')}}">تماس با ما</a></li>
-                            <li><a href="{{--{{route('blog')}}--}}">وبلاگ</a></li>
+                            <li><a href="{{route('allBlog')}}">وبلاگ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +58,7 @@
                         <ul class="footer-menu">
                             @php $cat = \App\Models\Category::where('parent_id',null)->get(); @endphp
                             @foreach($cat as $cat)
-                            <li><a href="#">{{$cat->category_name}}</a></li>
+                                <li><a href="#">{{$cat->category_name}}</a></li>
                             @endforeach
                         </ul>
                     </div>

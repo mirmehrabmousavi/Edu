@@ -15,7 +15,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">نام</th>
-                                <th scope="col">توضیحات</th>
+                                <th scope="col">محتوا</th>
                                 <th scope="col">کاربر</th>
                                 <th scope="col"></th>
                             </tr>
@@ -25,7 +25,7 @@
                                 <tr>
                                     <th scope="row">{{$loop->index+1}}</th>
                                     <td>{{$value->title}}</td>
-                                    <td>{{$value->desc}}</td>
+                                    <td>{!! $value->desc !!}</td>
                                     <td>{{$value->user_id}}</td>
                                     <td>
                                         <a href="{{Route('admin.editBlog', $value->id)}}" class="btn btn-outline-primary round mr-1 mb-1 waves-effect waves-light">ویرایش</a>

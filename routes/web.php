@@ -19,12 +19,17 @@ Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('i
 Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses'])->name('courses');
 Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'courseShow'])->name('course.show');
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
-Route::get('/teachers/{id}', [\App\Http\Controllers\IndexController::class, 'teacherShow'])->name('teacher.show');
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
+Route::get('/blog', [\App\Http\Controllers\Admin\BlogController::class, 'allBlog'])->name('allBlog');
+Route::get('/blog/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'showBlog'])->name('showBlog');
 
 //Auth
 Auth::routes();
+
+//CKEditor
+Route::get('ckeditor', [\App\Http\Controllers\HomeController::class, 'ckindex']);
+Route::post('ckeditor/upload', [\App\Http\Controllers\HomeController::class, 'ckupdate'])->name('ckeditor.upload');
 
 //User
 Route::group(['middleware' => 'auth','teacher'], function () {
@@ -43,6 +48,9 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::get('my-tickets', [\App\Http\Controllers\TicketController::class, 'index'])->name('myTickets');
     Route::get('tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'show']);
     Route::post('comment', [\App\Http\Controllers\TicketController::class, 'postComment']);
+    //collaboration
+    Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
+    Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
 });
 
 //Admin
@@ -53,7 +61,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
-    Route::post('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
+    Route::patch('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');
     //Category
     Route::get('category', [\App\Http\Controllers\Admin\CategoryController::class, 'indexCategory'])->name('admin.indexCategory');
     Route::get('category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('admin.createCategory');
@@ -82,6 +90,10 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'editBlog'])->name('admin.editBlog');
     Route::patch('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'updateBlog'])->name('admin.updateBlog');
     Route::delete('blog/delete/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'deleteBlog'])->name('admin.deleteBlog');
+    //collaboration
+    Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'showCollaborate'])->name('admin.showCollaborate');
+    Route::get('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'singleCollaborate'])->name('admin.singleCollaborate');
+    Route::delete('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'deleteCollaborate'])->name('admin.deleteCollaborate');
     //Ticket
     Route::get('/tickets', [\App\Http\Controllers\TicketController::class, 'userTickets'])->name('admin.tickets');
     Route::post('/close_ticket/{ticket_id}', [\App\Http\Controllers\TicketController::class, 'close'])->name('admin.tickets.delete');

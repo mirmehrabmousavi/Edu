@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\User;
@@ -14,7 +15,8 @@ class IndexController extends Controller
         $cat = Category::where('parent_id',null)->get();
         $courses = Course::all();
         $user = User::where('is_seller',1)->paginate(4);
-        return view('welcome',compact('cat','courses','user'));
+        $blogs = Blog::latest()->paginate(3);
+        return view('welcome',compact('cat','courses','user','blogs'));
     }
 
     public function courses()
@@ -34,14 +36,10 @@ class IndexController extends Controller
 
     public function teachers()
     {
-        $users = User::all();
-        return view('teachers',compact('users'));
-    }
-
-    public function teacherShow($id)
-    {
-        $user = User::findOrFail($id);
-        return view('teacher.show',compact('user'));
+        $cat = Category::all();
+        $courses = Course::all();
+        $users = User::where('is_seller',1)->get();
+        return view('teachers',compact('users','cat','courses'));
     }
 
     public function aboutus()
@@ -51,6 +49,7 @@ class IndexController extends Controller
 
     public function contactus()
     {
-        return view('contactus');
+        $admin = User::find(1);
+        return view('contactus',compact('admin'));
     }
 }

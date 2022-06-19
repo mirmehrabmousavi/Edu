@@ -62,10 +62,10 @@
                     <div class="card-header d-flex flex-column align-items-start">
                         <div class="avatar bg-rgba-primary p-50 m-0">
                             <div class="avatar-content">
-                                <i class="feather icon-users text-primary font-medium-5"></i>
+                                <i class="feather icon-menu text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">92.6k</h2>
+                        <h2 class="text-bold-700 mt-1">{{count($categories)}}</h2>
                         <p>تعداد دسته بندی</p>
                     </div>
                 </div>
@@ -75,10 +75,10 @@
                     <div class="card-header d-flex flex-column align-items-start">
                         <div class="avatar bg-rgba-primary p-50 m-0">
                             <div class="avatar-content">
-                                <i class="feather icon-users text-primary font-medium-5"></i>
+                                <i class="feather icon-command text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">92.6k</h2>
+                        <h2 class="text-bold-700 mt-1">{{count($courses)}}</h2>
                         <p>تعداد دوره ها</p>
                     </div>
                 </div>
@@ -88,10 +88,10 @@
                     <div class="card-header d-flex flex-column align-items-start">
                         <div class="avatar bg-rgba-primary p-50 m-0">
                             <div class="avatar-content">
-                                <i class="feather icon-users text-primary font-medium-5"></i>
+                                <i class="feather icon-book-open text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">92.6k</h2>
+                        <h2 class="text-bold-700 mt-1">{{count($lessons)}}</h2>
                         <p>تعداد دروس</p>
                     </div>
                 </div>
@@ -101,10 +101,10 @@
                     <div class="card-header d-flex flex-column align-items-start">
                         <div class="avatar bg-rgba-primary p-50 m-0">
                             <div class="avatar-content">
-                                <i class="feather icon-users text-primary font-medium-5"></i>
+                                <i class="feather icon-cloud text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">92.6k</h2>
+                        <h2 class="text-bold-700 mt-1">12</h2>
                         <p>تعداد کلاس ها</p>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">کاربرات</h4>
+                        <h4 class="card-title">کاربران</h4>
                         <p class="float-right"> تعداد کاربران {{count($users)}}</p>
                     </div>
                     <div class="card-content">

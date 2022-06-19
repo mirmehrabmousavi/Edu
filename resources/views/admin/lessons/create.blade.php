@@ -154,7 +154,8 @@
                                                         <select name="l_course" id="l_course" class="form-control">
                                                             @php $course = \App\Models\Course::all(); @endphp
                                                             @foreach($course as $courses)
-                                                            <option value="{{$courses->title}}">{{$courses->title}}</option>
+                                                                <option
+                                                                    value="{{$courses->title}}">{{$courses->title}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -171,7 +172,7 @@
                                                         <div
                                                             class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                                             <input type="checkbox" class="custom-control-input"
-                                                                   name="l_free" id="customSwitch4">
+                                                                   name="l_free" id="customSwitch4" checked>
                                                             <label class="custom-control-label"
                                                                    for="customSwitch4"></label>
                                                         </div>

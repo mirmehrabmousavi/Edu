@@ -11,7 +11,7 @@
                         <h1 class="breadcrumb-title">تماس با ما</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                                <li class="breadcrumb-item"><a href="/">خانه</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">تماس با ما</li>
                             </ol>
                         </nav>
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="cn-info-content">
                                         <h4 class="cn-info-title">آدرس ما</h4>
-                                        ایران، تهران <br>خیابان سعادت آباد،<br> خیابان کاج شمال غربی
+                                        {{$admin->address}}
                                     </div>
                                 </div>
 
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="cn-info-content">
                                         <h4 class="cn-info-title">پست الکترونیکی</h4>
-                                        support@example.com<br>example@gmail.com
+                                        {{$admin->email}}
                                     </div>
                                 </div>
 
@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="cn-info-content">
                                         <h4 class="cn-info-title">شماره تماس</h4>
-                                        (41) 123 521 458<br>+91 235 548 7548
+                                        {{$admin->number}}
                                     </div>
                                 </div>
 

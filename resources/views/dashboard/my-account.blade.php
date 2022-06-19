@@ -32,42 +32,42 @@
 
                                 <div class="form-group col-md-6">
                                     <label>نام کامل</label>
-                                    <input type="text" class="form-control" value="حسام موسوی">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>ایمیل</label>
-                                    <input type="email" class="form-control" value="example@gmail.com">
+                                    <input type="email" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>مقطع آموزش</label>
-                                    <input type="text" class="form-control" value="برنامه نویس وب">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>شماره تماس</label>
-                                    <input type="text" class="form-control" value="123 456 5847">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>آدرس</label>
-                                    <input type="text" class="form-control" value="تهران، سعادت آباد، خیابان سرو غربی">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>استان</label>
-                                    <input type="text" class="form-control" value="تهران">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>شهرستان</label>
-                                    <input type="text" class="form-control" value="کرج">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>کدپستی</label>
-                                    <input type="text" class="form-control" value="160052">
+                                    <input type="text" class="form-control" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -87,22 +87,22 @@
 
                                     <div class="form-group col-md-6">
                                         <label>Facebook</label>
-                                        <input type="text" class="form-control" value="https://facebook.com">
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Twitter</label>
-                                        <input type="email" class="form-control" value="https://twitter.com">
+                                        <input type="email" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Google Plus</label>
-                                        <input type="text" class="form-control" value="https://googleplus.com">
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>LinkedIn</label>
-                                        <input type="text" class="form-control" value="https://linkedin.com">
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-lg-12 col-md-12">

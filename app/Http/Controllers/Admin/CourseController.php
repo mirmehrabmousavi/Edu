@@ -55,6 +55,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'language' => $request->language,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->email
         ]);
@@ -100,6 +101,7 @@ class CourseController extends Controller
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
+            'language' => $request->language,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->email
         ]);

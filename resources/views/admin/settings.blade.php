@@ -13,17 +13,23 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link d-flex py-75" id="account-pill-private" data-toggle="pill" href="#account-vertical-private" aria-expanded="true">
+                            <i class="feather icon-globe mr-50 font-medium-3"></i>
+                            شخصی
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill" href="#account-vertical-password" aria-expanded="false">
                             <i class="feather icon-lock mr-50 font-medium-3"></i>
                             تغییر گذرواژه
                         </a>
-                    </li>{{--
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
                             <i class="feather icon-camera mr-50 font-medium-3"></i>
                             شبکه های اجتماعی
                         </a>
-                    </li>--}}
+                    </li>
                 </ul>
             </div>
             <!-- right content section -->
@@ -39,7 +45,7 @@
                                         @method('patch')
                                         <div class="media">
                                             <a href="javascript: void(0);">
-                                                <img id="showImage" src="{{(!empty($admin->profile)) ? url('upload/admin_images/'.$admin->profile) : url('upload/no_image.jpg')}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                                <img id="showImage" src="{{(!empty($admin->profile)) ? url('upload/admin_images/'.$admin->profile) : url('upload/no-profile.jpg')}}" class="rounded mr-75" alt="profile image" height="64" width="64">
                                             </a>
                                             <div class="media-body mt-75">
                                                 <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
@@ -96,6 +102,101 @@
                                                     <input type="text" class="form-control" name="address" id="number" placeholder="آدرس" value="{{$admin->address}}" required="" data-validation-required-message="">
                                                 </div>
                                             </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">شغل</label>
+                                                    <input type="text" class="form-control" name="job" id="number" placeholder="شغل" value="{{$admin->job}}" required="" data-validation-required-message="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">بیوگرافی</label>
+                                                    <textarea class="form-control" name="bio" id="number" cols="30" rows="3" placeholder="بیوگرافی خود را تکمیل کنید">{{$admin->bio}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">ذخیره</button>
+                                                <button type="reset" class="btn btn-outline-warning waves-effect waves-light">انصراف</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{--Private--}}
+                                <div role="tabpanel" class="tab-pane fade" id="account-vertical-private" aria-labelledby="account-pill-private" aria-expanded="true">
+                                    <form novalidate="" action="{{route('admin.settings.update')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('patch')
+                                        <div class="media">
+                                            <a href="javascript: void(0);">
+                                                <img id="showImage" src="{{(!empty($admin->profile)) ? url('upload/admin_images/'.$admin->profile) : url('upload/no-profile.jpg')}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                            </a>
+                                            <div class="media-body mt-75">
+                                                <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                    <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light" for="image">اپلود تصویر</label>
+                                                    <input name="profile" type="file" id="image" hidden="">
+                                                    <button class="btn btn-sm btn-outline-warning ml-50 waves-effect waves-light">ریست</button>
+                                                </div>
+                                                <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG. Max
+                                                        size of
+                                                        800kB</small></p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">نام</label>
+                                                        <input type="text" class="form-control" name="fname" id="account-username" placeholder="نام" value="{{$admin->fname}}" required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-name">نام خانوادگی</label>
+                                                        <input type="text" class="form-control" name="lname" id="account-name" placeholder="نام خانوادگی" value="{{$admin->lname}}" required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-e-mail">ایمیل</label>
+                                                        <input type="email" class="form-control" name="email" id="account-e-mail" placeholder="ایمیل" value="{{$admin->email}}" required="" data-validation-required-message="وارد کردن ایمیل یا شماره تماس اجباری است">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">شماره تماس</label>
+                                                    <input type="number" class="form-control" name="number" id="number" placeholder="شماره تماس" value="{{$admin->number}}" required="" data-validation-required-message="وارد کردن ایمیل یا شماره تماس اجباری است">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">کد پستی</label>
+                                                    <input type="text" class="form-control" name="postcode" id="number" placeholder="کد پستی" value="{{$admin->postcode}}" required="" data-validation-required-message="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">آدرس</label>
+                                                    <input type="text" class="form-control" name="address" id="number" placeholder="آدرس" value="{{$admin->address}}" required="" data-validation-required-message="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">شغل</label>
+                                                    <input type="text" class="form-control" name="job" id="number" placeholder="شغل" value="{{$admin->job}}" required="" data-validation-required-message="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="number">بیوگرافی</label>
+                                                    <textarea class="form-control" name="bio" id="number" cols="30" rows="3" placeholder="بیوگرافی خود را تکمیل کنید">{{$admin->bio}}</textarea>
+                                                </div>
+                                            </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                 <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">ذخیره</button>
                                                 <button type="reset" class="btn btn-outline-warning waves-effect waves-light">انصراف</button>
@@ -140,45 +241,34 @@
                                         </div>
                                     </form>
                                 </div>
-                              {{--  --}}{{--Social--}}{{--
+                                {{--Social--}}
                                 <div class="tab-pane fade" id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
                                     <form action="{{route('admin.create.social')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @method('patch')
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="account-twitter">Twitter</label>
-                                                    <input type="text" id="account-twitter" class="form-control" placeholder="Add link" value="https://www.twitter.com">
+                                                    <label for="account-facebook">فیسبوک</label>
+                                                    <input type="text" id="account-facebook" name="facebook" class="form-control" value="{{$admin->facebook}}" placeholder="شبکه اجتماعی خود را وارد کنید">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="account-facebook">Facebook</label>
-                                                    <input type="text" id="account-facebook" class="form-control" placeholder="Add link">
+                                                    <label for="account-facebook">تویتر</label>
+                                                    <input type="text" id="account-facebook" name="twitter" class="form-control" value="{{$admin->twitter}}" placeholder="شبکه اجتماعی خود را وارد کنید">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="account-google">Google+</label>
-                                                    <input type="text" id="account-google" class="form-control" placeholder="Add link">
+                                                    <label for="account-facebook">لیکداین</label>
+                                                    <input type="text" id="account-facebook" name="linkedin" class="form-control" value="{{$admin->linkedin}}" placeholder="شبکه اجتماعی خود را وارد کنید">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="account-linkedin">LinkedIn</label>
-                                                    <input type="text" id="account-linkedin" class="form-control" placeholder="Add link" value="https://www.linkedin.com">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="account-instagram">Instagram</label>
-                                                    <input type="text" id="account-instagram" class="form-control" placeholder="Add link">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="account-quora">Quora</label>
-                                                    <input type="text" id="account-quora" class="form-control" placeholder="Add link">
+                                                    <label for="account-facebook">اینستاگرام</label>
+                                                    <input type="text" id="account-facebook" name="instagram" class="form-control" value="{{$admin->instagram}}" placeholder="شبکه اجتماعی خود را وارد کنید">
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
@@ -186,7 +276,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>--}}
+                                </div>
                                </div>
                         </div>
                     </div>

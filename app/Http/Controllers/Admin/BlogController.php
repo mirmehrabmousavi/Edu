@@ -36,10 +36,19 @@ class BlogController extends Controller
             'desc' => 'required',
         ]);
 
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            //@unlink(public_path('upload/admin_images/'.$data->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin/blog'),$filename);
+        }
+
         Blog::create([
            'title' => $request->title,
+           'image' => $filename,
            'desc' => $request->desc,
-           'user_id' => auth()->user()->name
+           'tags' => $request->tags,
+           'user_id' => auth()->user()->email
         ]);
 
         $notification = array(
@@ -65,10 +74,19 @@ class BlogController extends Controller
             'desc' => 'required',
         ]);
 
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            @unlink(public_path('upload/admin/blog/'.$blog->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin/blog'),$filename);
+        }
+
         $blog->update([
             'title' => $request->title,
+            'image' => $filename,
             'desc' => $request->desc,
-            'user_id' => auth()->user()->name
+            'tags' => $request->tags,
+            'user_id' => auth()->user()->email
         ]);
 
         $notification = array(
@@ -82,6 +100,7 @@ class BlogController extends Controller
     public function deleteBlog($id)
     {
         $blog = Blog::findOrFail($id);
+        @unlink(public_path('upload/admin/blog/'.$blog->image));
         $blog->delete();
 
         $notification = array(
@@ -90,5 +109,18 @@ class BlogController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function allBlog()
+    {
+        $blogs = Blog::all();
+        return view('blog.list',compact('blogs'));
+    }
+
+    public function showBlog($id)
+    {
+        $blogs = Blog::latest()->paginate(5);
+        $blog = Blog::findOrFail($id);
+        return view('blog.show',compact('blog','blogs'));
     }
 }

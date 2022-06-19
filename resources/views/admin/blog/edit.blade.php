@@ -27,6 +27,21 @@
                                                                id="account-username" placeholder="عنوان"
                                                                value="{{$blog->title}}"
                                                                required="" data-validation-required-message="">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">پوستر</label>
+                                                        <input type="file" class="form-control" name="image"
+                                                               id="account-username" placeholder="پوستر">
+                                                        <img src="{{'/upload/admin/blog/'.$blog->image}}" alt="" height="70" width="70">
                                                     </div>
                                                 </div>
                                             </div>
@@ -36,17 +51,24 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">توضیحات</label>
-                                                <textarea class="form-control" id="editor" rows="3" name="desc"
-                                                          placeholder="توضیحات"
-                                                          required=""
-                                                          data-validation-required-message="">{{$blog->desc}}</textarea>
+                                                <textarea class="form-control ckeditor" id="editor" name="desc">
+                                                    {{$blog->desc}}
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="account-username">توضیحات</label>
+                                                <textarea class="form-control" name="tags">{{$blog->tags}}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                         <button type="submit"
                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">
-                                            ذخیره
+                                            بروزرسانی
                                         </button>
                                     </div>
                                 </div>
@@ -57,4 +79,15 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+
+    <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('.ckeditor', {
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 @endsection

@@ -236,6 +236,29 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">زبان دوره</label>
+                                                        <select name="language" id="category" class="form-control">
+                                                            <option value="english">English</option>
+                                                            <option value="spanish">Spanish</option>
+                                                            <option value="french">French</option>
+                                                            <option value="russian">Russian</option>
+                                                            <option value="turkish">Turkish</option>
+                                                            <option value="chinese">Chinese</option>
+                                                            <option value="italy">Italy</option>
+                                                            <option value="germany">Germany</option>
+                                                            <option value="arabic">Arabic</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                         <button type="submit"
                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">

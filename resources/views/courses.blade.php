@@ -50,73 +50,37 @@
 
                                 <h4 class="side_title">دسته بندی دوره</h4>
                                 <ul class="no-ul-list mb-3">
-                                    <li>
-                                        <input id="a-4" class="checkbox-custom" name="a-4" type="checkbox">
-                                        <label for="a-4" class="checkbox-custom-label">برنامه نویسی (3)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-5" class="checkbox-custom" name="a-5" type="checkbox">
-                                        <label for="a-5" class="checkbox-custom-label">طراحی سایت (2)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-6" class="checkbox-custom" name="a-6" type="checkbox">
-                                        <label for="a-6" class="checkbox-custom-label">عمومی (2)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-7" class="checkbox-custom" name="a-7" type="checkbox">
-                                        <label for="a-7" class="checkbox-custom-label">فناوری اطلاعات (2)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-8" class="checkbox-custom" name="a-8" type="checkbox">
-                                        <label for="a-8" class="checkbox-custom-label">گرافیک (2)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-9" class="checkbox-custom" name="a-9" type="checkbox">
-                                        <label for="a-9" class="checkbox-custom-label">شبکه و امنیت (2)</label>
-                                    </li>
+                                    @foreach($cat as $cat)
+                                        <li>
+                                            <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
+                                            <label for="aa-4" class="checkbox-custom-label">{{$cat->category_name}}</label>
+                                        </li>
+                                    @endforeach
                                 </ul>
 
                                 <h4 class="side_title">مدرسین</h4>
                                 <ul class="no-ul-list mb-3">
-                                    <li>
-                                        <input id="a-1" class="checkbox-custom" name="a-1" type="checkbox">
-                                        <label for="a-1" class="checkbox-custom-label">حسام موسوی (4)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-2" class="checkbox-custom" name="a-2" type="checkbox">
-                                        <label for="a-2" class="checkbox-custom-label">مهرداد عظیمی (11)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-6" class="checkbox-custom" name="a-6" type="checkbox">
-                                        <label for="a-6" class="checkbox-custom-label">الهام کریمی (4)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-7" class="checkbox-custom" name="a-7" type="checkbox">
-                                        <label for="a-7" class="checkbox-custom-label">مسعود راد (7)</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-8" class="checkbox-custom" name="a-8" type="checkbox">
-                                        <label for="a-8" class="checkbox-custom-label">مهدی کشاورز</label>
-                                    </li>
-                                    <li>
-                                        <input id="a-9" class="checkbox-custom" name="a-9" type="checkbox">
-                                        <label for="a-9" class="checkbox-custom-label">شادی عبدی</label>
-                                    </li>
+                                    @foreach($teachers as $teacher)
+                                        <li>
+                                            <input id="aa-41" class="checkbox-custom" name="aa-41" type="checkbox">
+                                            <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher.lname : $teacher->email}}</label>
+                                        </li>
+                                    @endforeach
                                 </ul>
 
                                 <h4 class="side_title">نوع دوره</h4>
                                 <ul class="no-ul-list mb-3">
                                     <li>
                                         <input id="a-10" class="checkbox-custom" name="a-10" type="checkbox">
-                                        <label for="a-10" class="checkbox-custom-label">همه (75)</label>
+                                        <label for="a-10" class="checkbox-custom-label">همه</label>
                                     </li>
                                     <li>
                                         <input id="a-11" class="checkbox-custom" name="a-11" type="checkbox">
-                                        <label for="a-11" class="checkbox-custom-label">رایگان (15)</label>
+                                        <label for="a-11" class="checkbox-custom-label">رایگان</label>
                                     </li>
                                     <li>
                                         <input id="a-12" class="checkbox-custom" name="a-12" type="checkbox">
-                                        <label for="a-12" class="checkbox-custom-label">نقدی (60)</label>
+                                        <label for="a-12" class="checkbox-custom-label">نقدی</label>
                                     </li>
                                 </ul>
 
@@ -182,90 +146,25 @@
                     <div class="page_sidebar hidden-md-down">
                         <h4 class="side_title">دوره های مرتبط</h4>
                         <div class="related_items mb-4">
+                        @foreach($courses as $course)
                             <!-- Single Related Items -->
-                            <div class="product_item">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="assets/img/book-1.png" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="info">
-                                    <h6 class="product-title"><a href="#">آموزش ساخت فروشگاه اینترنتی با PHP</a></h6>
-                                    <div class="woo_rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
+                                <div class="product_item">
+                                    <div class="thumbnail">
+                                        <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}" class="img-fluid" alt=""></a>
                                     </div>
-                                    <span class="price"><p class="price_ver">9900 تومان<del>14900ت</del>
+                                    <div class="info">
+                                        <h6 class="product-title"><a href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a></h6>
+                                        <div class="woo_rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="price"><p class="price_ver">{{$price}} تومان<del>{{$price_off}}ت</del>
 										</p></span></div>
-                            </div>
-                            <!-- Single Related Items -->
-                            <div class="product_item">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="assets/img/book-2.png" class="img-fluid" alt=""></a>
                                 </div>
-                                <div class="info">
-                                    <h6 class="product-title"><a href="#">آموزش ساخت اپلیکیشن شیپور با اندروید</a></h6>
-                                    <div class="woo_rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    </div>
-                                    <span class="price"><p class="price_ver">8900 تومان<del>17900 ت</del>
-										</p></span></div>
-                            </div>
-                            <!-- Single Related Items -->
-                            <div class="product_item">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="assets/img/book-3.png" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="info">
-                                    <h6 class="product-title"><a href="#">آموزش ساخت یک اپلیکیشن اندرویدی در ۱۲ ساعت</a></h6>
-                                    <div class="woo_rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="price"><p class="price_ver">19900 تومان<del>27900 ت</del>
-										</p></span></div>
-                            </div>
-                            <!-- Single Related Items -->
-                            <div class="product_item">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="assets/img/book-4.png" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="info">
-                                    <h6 class="product-title"><a href="#">آموزش ساخت اپلیکیشن چت با اندروید</a></h6>
-                                    <div class="woo_rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="price"><p class="price_ver">59900 تومان<del>99900 ت</del>
-										</p></span></div>
-                            </div>
-                        </div>
-
-                        <h4 class="side_title">تگ های پرمخاطب</h4>
-                        <div class="popular_tags">
-                            <!-- Tags -->
-                            <div class="tag_cloud">
-                                <a href="#" class="tag-cloud-lin">کسب و کار</a>
-                                <a href="#" class="tag-cloud-lin">طراحی سایت</a>
-                                <a href="#" class="tag-cloud-lin">سئو</a>
-                                <a href="#" class="tag-cloud-lin">php</a>
-                                <a href="#" class="tag-cloud-lin">وردپرس</a>
-                                <a href="#" class="tag-cloud-lin">سی شارپ</a>
-                                <a href="#" class="tag-cloud-lin">مهارت</a>
-                                <a href="#" class="tag-cloud-lin">نرم افزار</a>
-                                <a href="#" class="tag-cloud-lin">حسابداری</a>
-                            </div>
+                            @endforeach
                         </div>
 
                     </div>
@@ -278,25 +177,6 @@
                     <div class="row align-items-center mb-3">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <strong>{{count($courses)}}</strong> دوره آموزشی یافت شد.
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 ordering">
-                          {{--  <div class="filter_wraps">
-                                <div class="dn db-991 mt30 mb0 show-23">
-                                    <div id="main2">
-                                        <a href="javascript:void(0)" class="btn btn-theme arrow-btn filter_open" onclick="openNav()" id="open2"><span><i class="fas fa-arrow-alt-circle-right"></i></span>باکس فیلتر</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown show">
-                                    <a class="btn btn-custom dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        دوره های آموزشی
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">پرمخاطب</a>
-                                        <a class="dropdown-item" href="#">جدید</a>
-                                        <a class="dropdown-item" href="#">ویژه</a>
-                                    </div>
-                                </div>
-                            </div>--}}
                         </div>
                     </div>
                     <!-- /Row -->
@@ -326,7 +206,7 @@
 
                                 <div class="education_block_footer">
                                     <div class="education_block_author">
-                                        <div class="path-img"><a href="{{route('teacher.show',['id' =>auth()->user()->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}" class="img-fluid" alt=""></a></div>
+                                        <div class="path-img"><a href="{{route('teacher.show',['id' =>auth()->user()->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid" alt=""></a></div>
                                         <h5><a href="{{route('teacher.show',['id' => auth()->user()->id])}}">{{$val->user_id}}</a></h5>
                                     </div>
                                     @php $mcourse = \App\Models\Course::where('user_id',$val->user_id)->get(); @endphp

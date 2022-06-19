@@ -62,7 +62,15 @@
                 <a href="{{--{{route('admin.pays')}}--}}">
                     <i class="feather icon-dollar-sign"></i>
                     <span class="menu-title">پرداخت ها</span>
-                    <span class="badge badge badge-warning badge-pill float-right mr-2">123</span>
+                    <span class="badge badge badge-primary badge-pill float-right mr-2">123</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a href="{{route('admin.showCollaborate')}}">
+                    <i class="feather icon-rewind"></i>
+                    <span class="menu-title">درخواست مدرسین</span>
+                    @php $coll = \App\Models\Collaborate::all(); @endphp
+                    <span class="badge badge badge-primary badge-pill float-right mr-2">{{($coll) ? count($coll) : '0'}}</span>
                 </a>
             </li>
             <li class=" nav-item">
@@ -70,7 +78,7 @@
                     <i class="feather icon-message-circle"></i>
                     <span class="menu-title">تیکت ها</span>
                     @php $tickets = \App\Models\Ticket::where('status','باز است')->get(); @endphp
-                    <span class="badge badge badge-warning badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
+                    <span class="badge badge badge-primary badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
                 </a>
             </li>
             <li class=" nav-item">

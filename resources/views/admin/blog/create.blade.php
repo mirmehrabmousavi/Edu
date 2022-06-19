@@ -1,5 +1,9 @@
 @extends('admin.layout.app')
 
+@section('style')
+
+@endsection
+
 @section('content')
     <section id="page-account-settings">
         <div class="row">
@@ -32,13 +36,33 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">پوستر</label>
+                                                        <input type="file" class="form-control" name="image"
+                                                               id="account-username" placeholder="پوستر"
+                                                               value=""
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">توضیحات</label>
-                                                <textarea class="form-control" id="editor" rows="3" name="desc"
-                                                          placeholder="توضیحات"
-                                                          required=""
-                                                          data-validation-required-message=""></textarea>
+                                                <textarea class="form-control ckeditor" id="editor" name="desc"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="account-username">برچسب (با , برچسب های خود را وارد کنید)</label>
+                                                <textarea class="form-control" name="tags"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -56,4 +80,15 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+
+    <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+    <script type="text/javascript">
+       CKEDITOR.replace('.ckeditor', {
+           filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+           filebrowserUploadMethod: 'form'
+       });
+    </script>
 @endsection

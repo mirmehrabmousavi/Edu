@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class AdminController extends Controller
         $courses = Course::all();
         $tickets = Ticket::all();
         $categories = Category::all();
-        return view('admin.home',compact('users','teachers','courses','tickets','categories'));
+        $lessons = Lesson::all();
+        return view('admin.home',compact('users','teachers','courses','tickets','categories','lessons'));
     }
 
     public function settings()
@@ -53,6 +55,8 @@ class AdminController extends Controller
         $data->number = $request->number;
         $data->postcode = $request->postcode;
         $data->address = $request->address;
+        $data->job = $request->job;
+        $data->bio = $request->bio;
 
 
         if ($request->file('profile')) {
@@ -95,6 +99,30 @@ class AdminController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+
+    public function createSocial(Request $request)
+    {
+        $request->validate([
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'linkedin' => 'required',
+            'instagram' => 'required',
+        ]);
+
+        $data = User::find(1);
+        $data->facebook = $request->facebook;
+        $data->twitter = $request->twitter;
+        $data->linkedin = $request->linkedin;
+        $data->instagram = $request->instagram;
+        $data->save();
+
+        $notification = array(
+            'message' => 'تنظیمات با موفقیت ذخیره شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.settings')->with($notification);
     }
 
     public function fileManager()

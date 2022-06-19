@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>آموزشگاه زبان های خارجی رایا</title>
     <link rel="apple-touch-icon" href="/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -49,6 +49,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" type="text/css">
     @yield('style')
+    @yield('scriptHead')
 </head>
 <!-- END: Head-->
 
@@ -195,7 +196,7 @@
                             </div>
                             <span>
                                 <img class="round"
-                                     src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}"
+                                     src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}"
                                      alt="avatar" height="40" width="40">
                             </span>
                         </a>
@@ -338,19 +339,11 @@
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
-<!-- BEGIN: Footer-->
-<footer class="footer footer-static footer-light">
-    <p class="clearfix blue-grey lighten-2 mb-0">
-        <span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020
-            <a class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent,</a>
-            All rights Reserved
-        </span>
-        <span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i
-                class="feather icon-heart pink"></i></span>
-        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-    </p>
-</footer>
-<!-- END: Footer-->
+
+
+
+@yield('script')
+
 
 
 <!-- BEGIN: Vendor JS-->
@@ -402,7 +395,6 @@
     }
     @endif
 </script>
-@yield('script')
 </body>
 <!-- END: Body-->
 </html>

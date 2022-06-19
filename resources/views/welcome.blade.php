@@ -422,9 +422,9 @@
 
                                 <div class="_course_less_infor">
                                     <ul>
-                                      {{--  @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
-                                        <li><i class="ti-desktop ml-1"></i>{{count($lesson)}} درس</li>--}}
-                                        {{--<li><span class="class online"></span>آنلاین</li>--}}
+                                        @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
+                                        <li><i class="ti-desktop ml-1"></i>{{count($lesson)}} درس</li>
+                                        <li><span class="class online"></span>آنلاین</li>
                                     </ul>
                                 </div>
 
@@ -530,16 +530,17 @@
                         <div class="singles_items">
                             <div class="instructor_wrap">
                                 <div class="instructor_thumb">
-                                    <a href="{{route('teacher.show',['id' => $users->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no_image.jpg')}}" class="img-fluid"
+                                    <a href="{{--{{route('teacher.show',['id' => $users->id])}}--}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid"
                                                                           alt=""></a>
                                 </div>
                                 <div class="instructor_caption">
-                                    <h4><a href="instructor-detail.html">{{($users->fname) ? $users->fname . ' ' . $users->lname : $users->email}}</a></h4>
-                                    <span>{{--{{$users->job}}--}}طراح</span>
+                                    <h4><a href="#">{{($users->fname) ? $users->fname . ' ' . $users->lname : $users->email}}</a></h4>
+                                    <span>{{$users->job}}</span>
                                     <ul>
-                                        <li><a href="#" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#" class="cl-linked"><i class="ti-linkedin"></i></a></li>
+                                        <li><a href="{{$users->facebook}}" class="cl-fb"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="{{$users->twitter}}" class="cl-twitter"><i class="ti-twitter"></i></a></li>
+                                        <li><a href="{{$users->linkedin}}" class="cl-linked"><i class="ti-linkedin"></i></a></li>
+                                        <li><a href="{{$users->instagram}}" class="cl-linked"><i class="ti-instagram"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -562,67 +563,31 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
                     <div class="sec-heading-flex">
-                        <h2 class="pl-2">آخرین اخبار</h2>
+                        <h2 class="pl-2">آخرین بلاگ ها</h2>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-
+                @foreach($blogs as $blog)
                 <!-- Single Article -->
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="articles_grid_style">
                         <div class="articles_grid_thumb">
-                            <a href="blog-detail.html"><img src="/assets/img/b-1.jpg" class="img-fluid" alt=""/></a>
+                            <a href="{{route('showBlog',['id' => $blog->id])}}"><img src="{{($blog->image != null) ? $blog->image : url('/upload/no-image.png')}}" class="img-fluid" alt=""/></a>
                         </div>
 
                         <div class="articles_grid_caption">
-                            <h4>چطور زبان انگلیسی را سریع یاد بگیریم؟</h4>
+                            <h4>{{$blog->title}}</h4>
                             <div class="articles_grid_author">
-                                <div class="articles_grid_author_img"><img src="/assets/img/user-1.jpg"
+                                <div class="articles_grid_author_img"><img src="/uploads/no-profile.jpg"
                                                                            class="img-fluid" alt=""/></div>
-                                <h4>آدام ویلسون</h4>
+                                <h4>{{$blog->user_id}}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Article -->
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="articles_grid_style">
-                        <div class="articles_grid_thumb">
-                            <a href="blog-detail.html"><img src="/assets/img/b-2.jpg" class="img-fluid" alt=""/></a>
-                        </div>
-
-                        <div class="articles_grid_caption">
-                            <h4>لزوم یادگیری زبان در دنیای امروزی!</h4>
-                            <div class="articles_grid_author">
-                                <div class="articles_grid_author_img"><img src="/assets/img/user-2.jpg"
-                                                                           class="img-fluid" alt=""/></div>
-                                <h4>جان اسمیت</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Article -->
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="articles_grid_style">
-                        <div class="articles_grid_thumb">
-                            <a href="blog-detail.html"><img src="/assets/img/b-3.jpg" class="img-fluid" alt=""/></a>
-                        </div>
-
-                        <div class="articles_grid_caption">
-                            <h4>چطور امتحان حضوری موفقی داشته باشیم؟</h4>
-                            <div class="articles_grid_author">
-                                <div class="articles_grid_author_img"><img src="/assets/img/user-3.jpg"
-                                                                           class="img-fluid" alt=""/></div>
-                                <h4>دنیل ویکیونز</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>
