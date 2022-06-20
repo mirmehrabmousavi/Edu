@@ -389,7 +389,7 @@
     </section>
     <!-- ========================== Featured Category Section =============================== -->
 
-    <!-- ============================ Featured Courses Start ================================== -->
+    <!-- ============================ Featured courses Start ================================== -->
     <section class="light-2">
         <div class="container">
 
@@ -410,7 +410,7 @@
                     <div class="education_block_list_layout style-2">
 
                         <div class="education_block_thumb n-shadow">
-                            <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{$course->c_posster}}" class="img-fluid" alt="{{$course->c_alt_img}}"></a>
+                            <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{$course->c_poster}}" class="img-fluid" alt="{{$course->c_alt_img}}"></a>
                         </div>
 
                         <div class="list_layout_ecucation_caption">
@@ -464,7 +464,7 @@
 
         </div>
     </section>
-    <!-- ============================ Featured Courses End ================================== -->
+    <!-- ============================ Featured courses End ================================== -->
 
     <!-- ========================== About Facts List Section =============================== -->
     <section>

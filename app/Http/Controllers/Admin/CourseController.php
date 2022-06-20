@@ -73,7 +73,7 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $cat = Category::all();
         $category = Category::findOrFail($id);
-        return view('admin.courses.edit',compact('course','cat','category'));
+        return view('admin.courses.edit',compact('course','cat'));
     }
 
     public function updateCourse($id,Request $request)

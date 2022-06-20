@@ -25,7 +25,7 @@
     <!-- ============================ Page Title End ================================== -->
 
 
-    <!-- ============================ Find Courses with Sidebar ================================== -->
+    <!-- ============================ Find courses with Sidebar ================================== -->
     <section class="pt-0">
         <div class="container">
 
@@ -50,10 +50,10 @@
 
                                 <h4 class="side_title">دسته بندی دوره</h4>
                                 <ul class="no-ul-list mb-3">
-                                    @foreach($cat as $cat)
+                                    @foreach($cat as $catt)
                                         <li>
                                             <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
-                                            <label for="aa-4" class="checkbox-custom-label">{{$cat->category_name}}</label>
+                                            <label for="aa-4" class="checkbox-custom-label">{{$catt->category_name}}</label>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -107,10 +107,10 @@
 
                         <h4 class="side_title">دسته بندی دوره</h4>
                         <ul class="no-ul-list mb-3">
-                            @foreach($cat as $cat)
+                            @foreach($cat as $catt)
                             <li>
                                 <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
-                                <label for="aa-4" class="checkbox-custom-label">{{$cat->category_name}}</label>
+                                <label for="aa-4" class="checkbox-custom-label">{{$catt->category_name}}</label>
                             </li>
                             @endforeach
                         </ul>
@@ -120,7 +120,7 @@
                             @foreach($teachers as $teacher)
                             <li>
                                 <input id="aa-41" class="checkbox-custom" name="aa-41" type="checkbox">
-                                <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher.lname : $teacher->email}}</label>
+                                <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher->lname : $teacher->email}}</label>
                             </li>
                            @endforeach
                         </ul>
@@ -161,7 +161,7 @@
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star"></i>
                                         </div>
-                                        <span class="price"><p class="price_ver">{{$price}} تومان<del>{{$price_off}}ت</del>
+                                        <span class="price"><p class="price_ver">{{$course->price}} تومان<del>{{$course->price_off}}ت</del>
 										</p></span></div>
                                 </div>
                             @endforeach
@@ -206,8 +206,8 @@
 
                                 <div class="education_block_footer">
                                     <div class="education_block_author">
-                                        <div class="path-img"><a href="{{route('teacher.show',['id' =>auth()->user()->id])}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="{{route('teacher.show',['id' => auth()->user()->id])}}">{{$val->user_id}}</a></h5>
+                                        <div class="path-img"><a href="{{--{{route('teacher.show',['id' =>auth()->user()->id])}}--}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid" alt=""></a></div>
+                                        <h5><a href="{{--{{route('teacher.show',['id' => auth()->user()->id])}}--}}">{{$val->user_id}}</a></h5>
                                     </div>
                                     @php $mcourse = \App\Models\Course::where('user_id',$val->user_id)->get(); @endphp
                                     <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>{{count($mcourse)}} دوره آموزشی</div>
@@ -257,6 +257,6 @@
 
         </div>
     </section>
-    <!-- ============================ Find Courses with Sidebar End ================================== -->
+    <!-- ============================ Find courses with Sidebar End ================================== -->
 
 @endsection

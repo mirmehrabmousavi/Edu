@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-header">
-                            <p class="card-title">ویرایش دوره #{{$course->title}}</p>
+                            <p class="card-title">ویرایش دوره</p>
                         </div>
                         <div class="card-body">
                             <form novalidate="" action="{{route('admin.updateCourse',['id' => $course->id])}}" method="POST">

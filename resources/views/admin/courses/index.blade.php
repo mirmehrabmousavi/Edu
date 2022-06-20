@@ -15,7 +15,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">نام دوره</th>
-                                <th scope="col">slug</th>
                                 <th scope="col">توضیحات</th>
                                 <th scope="col">خلاصه توضیحات</th>
                                 <th scope="col">قیمت</th>
@@ -30,7 +29,6 @@
                                 <tr>
                                     <th scope="row">{{$loop->index+1}}</th>
                                     <td>{{$course->title}}</td>
-                                    <td>{{$course->slug}}</td>
                                     <td>{{$course->desc}}</td>
                                     <td>{{$course->b_desc}}</td>
                                     <td>{{$course->price}}</td>
@@ -38,7 +36,7 @@
                                     <td>{{$course->time}}</td>
                                     <td>{{$course->status}}</td>
                                     <td>
-                                        <a href="{{Route('admin.editCourse', $course->id)}}" class="btn btn-outline-primary round mr-1 mb-1 waves-effect waves-light">ویرایش</a>
+                                        <a href="{{Route('admin.editCourse', ['id' => $course->id])}}" class="btn btn-outline-primary round mr-1 mb-1 waves-effect waves-light">ویرایش</a>
                                         <a class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light" href="{{ route('admin.deleteCourse',['id' => $course->id]) }}" onclick="event.preventDefault();
                                                      document.getElementById('del').submit();">حذف</a>
                                         <form id="del" action="{{ route('admin.deleteCourse',['id' => $course->id]) }}" method="POST" class="d-none">
