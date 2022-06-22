@@ -9,9 +9,9 @@
                 <div class="col-lg-12 col-md-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb simple">
-                            <li class="breadcrumb-item"><a href="#" class="theme-cl">خانه</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="theme-cl">لیست دوره</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">دوره آموزش پلاگین نویسی وردپرس</li>
+                            <li class="breadcrumb-item"><a href="{{route('index')}}" class="theme-cl">خانه</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('courses')}}" class="theme-cl">لیست دوره</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$course->title}}</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,9 +22,9 @@
                 <div class="col-lg-8 col-md-8">
 
                     <div class="inline_edu_wraps mb-4">
-                        <h2>دوره آموزش پلاگین نویسی وردپرس</h2>
+                        <h2>{{$course->title}}</h2>
                         <div class="ed_rate_info">
-                            <span class="ml-2 text-danger bg-light-danger px-2 py-1 rounded">برنامه نویسی</span>
+                            <span class="ml-2 text-danger bg-light-danger px-2 py-1 rounded">{{$course->category_id}}</span>
                             <div class="review_counter mr-2">
                                 <strong class="good">4.5</strong>
                             </div>
@@ -44,7 +44,7 @@
                                 <ul>
                                     <li>
                                         <span>آخرین آپدیت</span>
-                                        10 بهمن 1399
+                                        {{$course->updated_at->diffForHumans()}}
                                     </li>
                                     <li>
                                         <span>سطح دوره</span>
@@ -56,7 +56,7 @@
                                     </li>
                                     <li>
                                         <span>زبان</span>
-                                        فارسی
+                                        {{$course->language}}
                                     </li>
                                 </ul>
                             </div>
@@ -68,12 +68,12 @@
 
                     <div class="property_video xl mb-4">
                         <div class="thumb">
-                            <img class="pro_img img-fluid w100" src="assets/img/banner-5.jpg" alt="7.jpg">
+                            <img class="pro_img img-fluid w100" src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}" alt="7.jpg">
                             <div class="overlay_icon">
                                 <div class="bb-video-box">
                                     <div class="bb-video-box-inner">
                                         <div class="bb-video-box-innerup">
-                                            <a href="https://www.aparat.com/video/video/embed/videohash/cNpW0/vt/frame" data-toggle="modal" data-target="#popup-video" class="theme-cl"><i class="ti-control-play"></i></a>
+                                            <a href="{{($course->c_demo != null) ? $course->c_demo : ($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}" data-toggle="modal" data-target="#popup-video" class="theme-cl"><i class="ti-control-play"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -85,22 +85,15 @@
                     <!-- Overview -->
                     <div class="edu_wraper border">
                         <h4 class="edu_title">توضیحات</h4>
-                        <p>طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                        <p>از آنجایی که گنجاندن امکانات بیشتر باعث سنگین‌تر شدن آن می‌شود، و از طرف دیگر همه کاربران وردپرس به آن نیازی ندارند، این افزونه‌های وردپرس هستند که کار توسعه امکانات وردپرس را به عهده دارند. در ادامه مطلب با آکادمی لرن آپ مرجع آموزش برنامه نویسی همراه باشید. اگر علاقمند به کسب اطلاعات بیشتر درباره وردپرس هستید پیشنهاد میکنیم  به سایت رسمی وردپرس مراجعه نمایید.</p>
-                        <h6>پیشنیازهای این دوره</h6>
-                        <ul class="lists-3">
-                            <li>دوره تصویری آموزش HTML به زبان فارسی</li>
-                            <li>دوره تصویری آموزش PHP به زبان فارسی</li>
-                            <li>دوره تصویری آموزش وردپرس به زبان فارسی</li>
-                            <li>آشنایی نسبی با MySQL</li>
-                            <li>آشنایی به نصب و مدیریت وردپرس</li>
-                        </ul>
+                        {!! $course->desc !!}
+
                     </div>
 
                     <div class="edu_wraper border">
                         <h4 class="edu_title">سرفصل های دوره</h4>
                         <div id="accordionExample" class="accordion shadow circullum">
-
+                            @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
+                            @foreach($lesson as $val)
                             <!-- Part 1 -->
                             <div class="card">
                                 <div id="headingOne" class="card-header bg-white shadow-sm border-0">
@@ -118,61 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Part 2 -->
-                            <div class="card">
-                                <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark collapsible-link py-2">دوره دوم: پیاده سازی پلاگین آمار بازدید مطالب</a></h6>
-                                </div>
-                                <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 01</div>معرفی دوره</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 02</div>ساخت منوها در بخش مدیریت</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 03</div>متاباکس و ذخیره اطلاعات برای پست ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 04</div>استفاده از قالب استاندارد وردپرس در پلاگین ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 05</div>ذخیره و بازیابی تنظیمات در وردپرس</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Part 3 -->
-                            <div class="card">
-                                <div id="headingThree" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-block position-relative collapsed text-dark collapsible-link py-2">دوره سوم: پیاده سازی پلاگین رای دادن به مطالب توسط بازدید کنندگان</a></h6>
-                                </div>
-                                <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 01</div>معرفی دوره</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 02</div>ساخت منوها در بخش مدیریت</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 03</div>متاباکس و ذخیره اطلاعات برای پست ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 04</div>استفاده از قالب استاندارد وردپرس در پلاگین ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 05</div>ذخیره و بازیابی تنظیمات در وردپرس</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Part 04 -->
-                            <div class="card">
-                                <div id="headingFour" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="d-block position-relative collapsed text-dark collapsible-link py-2">دوره نهایی: پیاده سازی پلاگین فروشگاه اینترنتی با درگاه پرداخت</a></h6>
-                                </div>
-                                <div id="collapseFour" aria-labelledby="headingFour" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 01</div>معرفی دوره</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 02</div>ساخت منوها در بخش مدیریت</li>
-                                            <li><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 03</div>متاباکس و ذخیره اطلاعات برای پست ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 04</div>استفاده از قالب استاندارد وردپرس در پلاگین ها</li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="ti-control-play"></i>دوره: 05</div>ذخیره و بازیابی تنظیمات در وردپرس</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
 
@@ -225,29 +164,32 @@
                         </div>
                     </div>
 
+                @php $user = \App\Models\User::where('email',$course->user_id)->get(); @endphp
+                @foreach($user as $us)
                     <!-- instructor -->
                     <div class="single_instructor border">
                         <div class="single_instructor_thumb">
-                            <a href="#"><img src="assets/img/user-3.jpg" class="img-fluid" alt=""></a>
+                            <a href="#"><img src="{{($us->profile == null) ? '/upload/no-profile.jpg' : $us->profile}}" class="img-fluid" alt=""></a>
                         </div>
                         <div class="single_instructor_caption">
-                            <h4><a href="#">مهندس رضایی</a></h4>
+                            <h4><a href="#">{{($us->fname == null) ? $us->email : $us->fname.' '.$us->lname}}</a></h4>
                             <ul class="instructor_info">
                                 <li><i class="ti-video-camera"></i>72 ویدئو</li>
                                 <li><i class="ti-control-forward"></i>102 دوره</li>
                                 <li><i class="ti-user"></i>آپدیت بهمن ماه</li>
                             </ul>
-                            <p>اول داستان، طراح گرافیک بودم و ۲ سالی به عنوان طراح مشغول بودم، بعد به برنامه‌نویسی علاقمند شدم و الان بیشتر از ۱۰ ساله که عاشق کدزنی و چالش‌های پروژه‌های مختلفم.</p>
+                            <p>{{$us->bio}}</p>
                             <ul class="social_info">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                <li><a href="{{$us->facebook}}"><i class="ti-facebook"></i></a></li>
+                                <li><a href="{{$us->twitter}}"><i class="ti-twitter"></i></a></li>
+                                <li><a href="{{$us->linkedin}}"><i class="ti-linkedin"></i></a></li>
+                                <li><a href="{{$us->instagram}}"><i class="ti-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
+                    @endforeach
 
-                    <!-- Reviews -->
+                   {{-- <!-- Reviews -->
                     <div class="list-single-main-item fl-wrap border">
                         <div class="list-single-main-item-title fl-wrap">
                             <h3>تاکنون <span> 3 </span> دیدگاه ثبت شده است!</h3>
@@ -354,7 +296,7 @@
                             </form>
                         </div>
                     </div>
-
+--}}
                 </div>
 
                 <div class="col-lg-4 col-md-4">
@@ -364,40 +306,42 @@
 
                         <div class="ed_view_price pr-4">
                             <span>قیمت آموزش</span>
-                            <h2 class="theme-cl mb-0">149هزار تومان</h2>
-                            <div class="offer-box"><span class="old-prc">199.20ت</span><span class="offer-box">25% تخفیف</span></div>
+                            <h2 class="theme-cl mb-0">{{$course->price}}</h2>
+                            <div class="offer-box"><span class="offer-box">{{$course->price_off}}</span></div>
                         </div>
 
                         <div class="ed_view_short pl-4 pr-4 pb-2 b-b">
-                            <p>در این دوره ما سعی داریم قدم به قدم و به شکل کامل پلاگین نویسی را به شما به شکل کامل آموزش دهیم.</p>
+                            <p>{{$course->b_desc}}</p>
                         </div>
 
                         <div class="p-4">
                             <h5 class="edu_title">ویژگی های دوره</h5>
                             <ul class="edu_list right">
                                 <li><i class="ti-user"></i>شرکت کنندگان:<strong>1740 نفر</strong></li>
-                                <li><i class="ti-files"></i>تعداد دوره:<strong>10</strong></li>
-                                <li><i class="ti-game"></i>جلسات:<strong>4</strong></li>
-                                <li><i class="ti-time"></i>مدت دوره:<strong>60 ساعت</strong></li>
-                                <li><i class="ti-tag"></i>سطح دوره:<strong>مقدماتی</strong></li>
-                                <li><i class="ti-flag-alt"></i>زبان:<strong>فارسی</strong></li>
-                                <li><i class="ti-shine"></i>نوع دوره:<strong>رایگان</strong></li>
+                                @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
+                                <li><i class="ti-game"></i>جلسات:<strong>{{count($lesson)}}</strong></li>
+                                <li><i class="ti-time"></i>مدت دوره:<strong>{{$course->time}}</strong></li>
+                                <li><i class="ti-tag"></i>وضعیت دوره:<strong>{{$course->status}}</strong></li>
+                                <li><i class="ti-flag-alt"></i>زبان:<strong>{{$course->language}}</strong></li>
+                                <li><i class="ti-shine"></i>نوع دوره:<strong>{{($course->price == '0') ? 'رایگان' : 'غیر رایگان'}}</strong></li>
                             </ul>
                         </div>
                         <div class="ed_view_link pb-3">
-                            <a href="#" class="btn btn-theme enroll-btn">پارت 1<i class="ti-angle-left"></i></a>
-                            <a href="#" class="btn btn-outline-theme enroll-btn">پارت 2<i class="ti-angle-left"></i></a>
+                            <a href="#" class="btn btn-outline-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
                         </div>
 
+
+                        @php $user = \App\Models\User::where('email',$course->user_id)->get(); @endphp
+                        @foreach($user as $us)
                         <div class="px-4 pt-4 pb-0 b-t">
                             <h5 class="mb-3">درباره مدرس</h5>
                             <div class="ins_info">
                                 <div class="ins_info_thumb">
-                                    <img src="assets/img/user-8.jpg" class="img-fluid" alt="">
+                                    <img src="{{($us->profile == null) ? '/upload/no-profile.jpg' : $us->profile}}" class="img-fluid" alt="">
                                 </div>
                                 <div class="ins_info_caption">
-                                    <h4 class="text-dark">مهندس شادی کریمی</h4>
-                                    <span class="text-dark">موسس لرن آپ</span>
+                                    <h4 class="text-dark">{{($us->fname == null) ? $us->email : $us->fname.' '.$us->lname}}</h4>
+                                    <span class="text-dark">{{$us->job}}</span>
                                 </div>
                             </div>
                             <div class="inline_edu_wrap mt-4">
@@ -416,10 +360,12 @@
                                     </div>
                                 </div>
                                 <div class="inline_edu_last">
-                                    <i class="fa fa-file ml-2"></i>42 دوره
+                                    @php $courses = \App\Models\Course::where('user_id',$us->email)->get(); @endphp
+                                    <i class="fa fa-file ml-2"></i>{{count($courses)}} دوره
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
                     </div>
 
@@ -430,12 +376,4 @@
         </div>
     </section>
     <!-- ============================ Course Detail ================================== -->
-    <ul>
-        <li>{{$course->title}}</li>
-        <li>{{$course->desc}}</li>
-        <li>{{$course->b_desc}}</li>
-        <li>{{$course->c_poster}}</li>
-        <li>{{$course->time}}</li>
-        <li>{{$course->status}}</li>
-    </ul>
 @endsection
