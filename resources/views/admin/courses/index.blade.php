@@ -15,10 +15,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">نام دوره</th>
-                                <th scope="col">توضیحات</th>
                                 <th scope="col">خلاصه توضیحات</th>
                                 <th scope="col">قیمت</th>
-                                <th scope="col">قیمت با تخفیف</th>
+                                <th scope="col">قیمت به دلار</th>
                                 <th scope="col">زمان دوره</th>
                                 <th scope="col">وضعیت دوره</th>
                                 <th scope="col"></th>
@@ -29,10 +28,9 @@
                                 <tr>
                                     <th scope="row">{{$loop->index+1}}</th>
                                     <td>{{$course->title}}</td>
-                                    <td>{{$course->desc}}</td>
                                     <td>{{$course->b_desc}}</td>
                                     <td>{{$course->price}}</td>
-                                    <td>{{$course->pricea_off}}</td>
+                                    <td>{{$course->d_price}}</td>
                                     <td>{{$course->time}}</td>
                                     <td>{{$course->status}}</td>
                                     <td>

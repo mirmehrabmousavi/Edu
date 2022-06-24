@@ -56,7 +56,7 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexBlog'))->with($notification);
     }
 
     public function editBlog($id)
@@ -94,7 +94,7 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexBlog'))->with($notification);
     }
 
     public function deleteBlog($id)
@@ -108,19 +108,8 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexBlog'))->with($notification);
     }
 
-    public function allBlog()
-    {
-        $blogs = Blog::all();
-        return view('blog.list',compact('blogs'));
-    }
 
-    public function showBlog($id)
-    {
-        $blogs = Blog::latest()->paginate(5);
-        $blog = Blog::findOrFail($id);
-        return view('blog.show',compact('blog','blogs'));
-    }
 }

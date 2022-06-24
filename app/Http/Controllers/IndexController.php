@@ -21,7 +21,7 @@ class IndexController extends Controller
 
     public function courses()
     {
-        $courses = Course::all();
+        $courses = Course::latest()->paginate(8);
         $users = User::all();
         $cat = Category::where('parent_id',null)->get();
         $teachers = User::where('is_seller',1)->get();
@@ -38,7 +38,7 @@ class IndexController extends Controller
     {
         $cat = Category::all();
         $courses = Course::all();
-        $users = User::where('is_seller',1)->get();
+        $users = User::where('is_seller',1)->paginate(6);
         return view('teachers',compact('users','cat','courses'));
     }
 
@@ -51,5 +51,18 @@ class IndexController extends Controller
     {
         $admin = User::find(1);
         return view('contactus',compact('admin'));
+    }
+
+    public function allBlog()
+    {
+        $blogs = Blog::all();
+        return view('blog.list',compact('blogs'));
+    }
+
+    public function showBlog($id)
+    {
+        $blogs = Blog::latest()->paginate(5);
+        $blog = Blog::findOrFail($id);
+        return view('blog.show',compact('blog','blogs'));
     }
 }

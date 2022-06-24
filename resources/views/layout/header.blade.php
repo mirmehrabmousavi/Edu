@@ -12,9 +12,11 @@
             <div class="nav-menus-wrapper" style="transition-property: none;">
                 <ul class="nav-menu">
                     <li><a href="{{route('courses')}}">آخرین دوره ها</a></li>
+                    <li><a href="{{route('courses')}}">آخرین کلاس ها</a></li>
                     <li><a href="{{route('teachers')}}">مدرسین</a></li>
                     <li><a href="{{route('allBlog')}}">بلاگ</a></li>
                     <li><a href="{{route('addCollaborate')}}">همکاری با رایا</a></li>
+                    <li><a href="{{route('addCollaborate')}}">تعیین سطح</a></li>
                     <li><a href="{{route('contactus')}}">تماس با ما</a></li>
                     <li><a href="{{route('aboutus')}}">درباره ما</a></li>
                 </ul>

@@ -33,10 +33,10 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">توضیحات دوره</label>
-                                                <textarea class="form-control" id="editor" rows="3" name="desc"
+                                                <textarea class="form-control ckeditor" id="editor" rows="3" name="desc"
                                                           placeholder="توضیحات دوره"
                                                           required=""
-                                                          data-validation-required-message="">{{$course->desc}}</textarea>
+                                                          data-validation-required-message="">{!! $course->desc !!}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -71,6 +71,32 @@
                                                         <input type="text" class="form-control" name="price_off"
                                                                id="account-username"
                                                                placeholder="قیمت تخفیف خورده" value="{{$course->price_off}}"
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">قیمت دوره(دلار)</label>
+                                                        <input type="text" class="form-control" name="d_price"
+                                                               id="account-username" placeholder="قیمت دوره(دلار)"
+                                                               value="{{$course->d_price}}"
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">قیمت تخفیف خورده(دلار)</label>
+                                                        <input type="text" class="form-control" name="d_price_off"
+                                                               id="account-username"
+                                                               placeholder="قیمت تخفیف خورده(دلار)" value="{{$course->d_price_off}}"
                                                                required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
@@ -119,53 +145,10 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">فایل دوره
-                                                            (اختیاری)</label>
-                                                        <input type="text" class="form-control" name="c_file"
-                                                               id="account-username"
-                                                               placeholder="فایل دوره (اختیاری)" value="{{$course->c_file}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
                                                         <label for="account-username">دمو دوره</label>
                                                         <input type="text" class="form-control" name="c_demo"
-                                                               id="account-username" placeholder="دمو دوره"
-                                                               value="{{$course->c_demo}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">اسلایدر دوره</label>
-                                                        <input type="text" class="form-control"
-                                                               name="c_slider_img"
-                                                               id="account-username" placeholder="اسلایدر دوره"
-                                                               value="{{$course->c_slider_img}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">تصویر شاخص دوره</label>
-                                                        <input type="text" class="form-control" name="c_alt_img"
                                                                id="account-username"
-                                                               placeholder="تصویر شاخص دوره" value="{{$course->c_alt_img}}"
+                                                               placeholder="دمو دوره" value="{{$course->c_demo}}"
                                                                required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
@@ -189,10 +172,14 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">وضعیت دوره</label>
-                                                        <input type="text" class="form-control" name="status"
-                                                               id="account-username" placeholder="وضعیت دوره"
-                                                               value="{{$course->status}}"
-                                                               required="" data-validation-required-message="">
+                                                        <select name="status" id="category" class="form-control">
+                                                            @if(!empty($course->status))
+                                                                <option value="{{$course->status}}">{{$course->status}}</option>
+                                                            @else
+                                                                <option value="در حال برگذاری">در حال برگذاری</option>
+                                                                <option value="تکمیل شده">تکمیل شده</option>
+                                                            @endif
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,11 +191,14 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">وضعیت انتشار دوره</label>
-                                                        <input type="text" class="form-control"
-                                                               name="status_upload"
-                                                               id="account-username"
-                                                               placeholder="وضعیت انتشار دوره" value="{{$course->status_upload}}"
-                                                               required="" data-validation-required-message="">
+                                                        <select name="status_upload" id="status_upload">
+                                                            @if(!empty($course->status_upload))
+                                                                <option value="{{$course->status_upload}}">{{$course->status_upload}}</option>
+                                                            @else
+                                                                <option value="منتشر شده">منتشر شده</option>
+                                                                <option value="پیش نویس">پیش نویس</option>
+                                                            @endif
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,20 +230,20 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">زبان دوره</label>
+                                                        <label for="account-username">دسته زبان دوره</label>
                                                         <select name="language" id="category" class="form-control">
-                                                            @if($course->language)
+                                                            @if(!empty($course->language))
                                                                 <option value="{{$course->language}}">{{$course->language}}</option>
                                                             @else
-                                                                <option value="english">English</option>
-                                                                <option value="spanish">Spanish</option>
-                                                                <option value="french">French</option>
-                                                                <option value="russian">Russian</option>
-                                                                <option value="turkish">Turkish</option>
-                                                                <option value="chinese">Chinese</option>
-                                                                <option value="italy">Italy</option>
-                                                                <option value="germany">Germany</option>
-                                                                <option value="arabic">Arabic</option>
+                                                                <option value="english">انگلیسی</option>
+                                                                <option value="spanish">اسپانیایی</option>
+                                                                <option value="french">فرانسوی</option>
+                                                                <option value="russian">روسی</option>
+                                                                <option value="turkish">ترکی</option>
+                                                                <option value="chinese">چینی</option>
+                                                                <option value="italy">ایتالیایی</option>
+                                                                <option value="germany">آلمانی</option>
+                                                                <option value="arabic">عربی</option>
                                                             @endif
                                                         </select>
                                                     </div>
@@ -276,4 +266,15 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+
+    <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('.ckeditor', {
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 @endsection

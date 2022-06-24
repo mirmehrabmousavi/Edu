@@ -45,16 +45,15 @@ class CourseController extends Controller
             'b_desc' => $request->b_desc,
             'price' => $request->price,
             'price_off' => $request->price_off,
+            'd_price' => $request->d_price,
+            'd_price_off' => $request->d_price_off,
             'seo_title' => $request->seo_title,
             'seo_desc' => $request->seo_desc,
             'c_poster' => $request->c_poster,
-            'c_file' => $request->c_file,
             'c_demo' => $request->c_demo,
-            'c_slider_img' => $request->c_slider_img,
-            'c_alt_img' => $request->c_alt_img,
             'time' => $request->time,
             'status' => $request->status,
-            'status_upload' => $request->status_upload,
+            'status_upload' => 'پیش نویس',
             'language' => $request->language,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->email
@@ -65,7 +64,7 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexCourse'))->with($notification);
     }
 
     public function editCourse($id)
@@ -73,7 +72,7 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $cat = Category::all();
         $category = Category::findOrFail($id);
-        return view('admin.courses.edit',compact('course','cat'));
+        return view('admin.courses.edit',compact('course','cat','category'));
     }
 
     public function updateCourse($id,Request $request)
@@ -91,13 +90,12 @@ class CourseController extends Controller
             'b_desc' => $request->b_desc,
             'price' => $request->price,
             'price_off' => $request->price_off,
+            'd_price' => $request->d_price,
+            'd_price_off' => $request->d_price_off,
             'seo_title' => $request->seo_title,
             'seo_desc' => $request->seo_desc,
             'c_poster' => $request->c_poster,
-            'c_file' => $request->c_file,
             'c_demo' => $request->c_demo,
-            'c_slider_img' => $request->c_slider_img,
-            'c_alt_img' => $request->c_alt_img,
             'time' => $request->time,
             'status' => $request->status,
             'status_upload' => $request->status_upload,
@@ -111,7 +109,7 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexCourse'))->with($notification);
     }
 
     public function deleteCourse($id)
@@ -124,6 +122,6 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect(route('admin.indexCourse'))->with($notification);
     }
 }

@@ -574,13 +574,13 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="articles_grid_style">
                         <div class="articles_grid_thumb">
-                            <a href="{{route('showBlog',['id' => $blog->id])}}"><img src="{{($blog->image != null) ? $blog->image : url('/upload/no-image.png')}}" class="img-fluid" alt=""/></a>
+                            <a href="{{route('showBlog',['id' => $blog->id])}}"><img src="{{($blog->image != null) ? '/upload/admin/blog/'.$blog->image : url('/upload/no-image.png')}}" class="img-fluid" alt=""/></a>
                         </div>
 
                         <div class="articles_grid_caption">
                             <h4>{{$blog->title}}</h4>
                             <div class="articles_grid_author">
-                                <div class="articles_grid_author_img"><img src="/uploads/no-profile.jpg"
+                                <div class="articles_grid_author_img"><img src="/upload/no-profile.jpg"
                                                                            class="img-fluid" alt=""/></div>
                                 <h4>{{$blog->user_id}}</h4>
                             </div>

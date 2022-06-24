@@ -53,6 +53,11 @@ class LoginController extends Controller
             'alert-type' => 'success'
         );
 
+        $notificationDanger = array(
+            'message' => 'ایمیل یا گذرواژه اشتباه می باشد',
+            'alert-type' => 'danger'
+        );
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->is_admin == 1) {
@@ -64,7 +69,7 @@ class LoginController extends Controller
             }
         }else{
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with($notificationDanger);
         }
 
     }

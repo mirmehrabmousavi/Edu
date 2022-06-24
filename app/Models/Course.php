@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title','desc','b_desc','price','price_off','seo_title','seo_desc','c_poster','c_file','c_demo','c_alt_img','c_slider_img',
+        'title','desc','b_desc','price','price_off','d_price','d_price_off','seo_title','seo_desc','c_poster','c_demo',
         'time','status','status_upload','language','category_id','user_id'
     ];
 }

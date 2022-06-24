@@ -23,9 +23,9 @@
     <section class="pt-0">
         <div class="container">
 
+            @foreach($blogs as $value)
             <div class="row">
 
-                @foreach($blogs as $value)
                 <!-- Single Article -->
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="articles_grid_style">
@@ -42,10 +42,19 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+
 
             </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
 
+                    {{$blogs->links('pagination.paginate')}}
+
+                </div>
+            </div>
+            <!-- /Row -->
+            @endforeach
         </div>
     </section>
 @endsection

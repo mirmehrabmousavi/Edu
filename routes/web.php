@@ -21,8 +21,8 @@ Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'cour
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
-Route::get('/blog', [\App\Http\Controllers\Admin\BlogController::class, 'allBlog'])->name('allBlog');
-Route::get('/blog/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'showBlog'])->name('showBlog');
+Route::get('/blog', [\App\Http\Controllers\IndexController::class, 'allBlog'])->name('allBlog');
+Route::get('/blog/{id}', [\App\Http\Controllers\IndexController::class, 'showBlog'])->name('showBlog');
 
 //Auth
 Auth::routes();
@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/my-course', [\App\Http\Controllers\HomeController::class, 'myCourse'])->name('myCourse');
     Route::get('/add-course', [\App\Http\Controllers\HomeController::class, 'addCourse'])->name('addCourse');
+    Route::post('/add-course', [\App\Http\Controllers\HomeController::class, 'storeCourse'])->name('storeCourse');
     Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
     Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
     Route::get('/saved-course', [\App\Http\Controllers\HomeController::class, 'savedCourse'])->name('savedCourse');

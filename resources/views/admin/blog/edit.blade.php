@@ -60,7 +60,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label for="account-username">توضیحات</label>
+                                                <label for="account-username">بر چسب ها</label>
                                                 <textarea class="form-control" name="tags">{{$blog->tags}}</textarea>
                                             </div>
                                         </div>

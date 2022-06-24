@@ -181,9 +181,9 @@
                     </div>
                     <!-- /Row -->
 
+                    @foreach($courses as $val)
                     <div class="row">
 
-                        @foreach($courses as $val)
                         <!-- Cource Grid 1 -->
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="education_block_grid style_2">
@@ -214,41 +214,16 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
 
                     <!-- Row -->
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-
-                            <!-- Pagination -->
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <ul class="pagination p-center">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span class="ti-arrow-right"></span>
-                                                <span class="sr-only">قبل</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">18</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span class="ti-arrow-left"></span>
-                                                <span class="sr-only">بعد</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
+                            {{$val->links('pagination.paginate')}}
                         </div>
                     </div>
                     <!-- /Row -->
+                    @endforeach
 
                 </div>
 

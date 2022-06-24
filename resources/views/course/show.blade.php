@@ -47,10 +47,6 @@
                                         {{$course->updated_at->diffForHumans()}}
                                     </li>
                                     <li>
-                                        <span>سطح دوره</span>
-                                        پایه
-                                    </li>
-                                    <li>
                                         <span>شرکت کننده</span>
                                         742,614
                                     </li>
@@ -310,6 +306,12 @@
                             <div class="offer-box"><span class="offer-box">{{$course->price_off}}</span></div>
                         </div>
 
+                        <div class="ed_view_price pr-4">
+                            <span>قیمت آموزش(دلار)</span>
+                            <h2 class="theme-cl mb-0">{{$course->d_price}}</h2>
+                            <div class="offer-box"><span class="offer-box">{{$course->d_price_off}}</span></div>
+                        </div>
+
                         <div class="ed_view_short pl-4 pr-4 pb-2 b-b">
                             <p>{{$course->b_desc}}</p>
                         </div>
@@ -327,6 +329,7 @@
                             </ul>
                         </div>
                         <div class="ed_view_link pb-3">
+                            <a href="#" class="btn btn-outline-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
                             <a href="#" class="btn btn-outline-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
                         </div>
 

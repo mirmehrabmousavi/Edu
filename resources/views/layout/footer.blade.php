@@ -80,24 +80,25 @@
                         <h4 class="widget-title">دانلود اپلیکیشن</h4>
                         <a href="#" class="other-store-link">
                             <div class="other-store-app">
-                                <div class="os-app-icon">
+                                {{--<div class="os-app-icon">
                                     <i class="lni-playstore theme-cl"></i>
                                 </div>
                                 <div class="os-app-caps">
                                     گوگل پلی
                                     <span>دریافت اپلیکیشن</span>
-                                </div>
+                                </div>--}}
+                                <img src="/upload/paypal.png" alt="" width="50" height="50">
                             </div>
                         </a>
                         <a href="#" class="other-store-link">
                             <div class="other-store-app">
-                                <div class="os-app-icon">
+                              {{--  <div class="os-app-icon">
                                     <i class="lni-apple theme-cl"></i>
                                 </div>
                                 <div class="os-app-caps">
                                     اپ استور
                                     <span>دریافت اپلیکیشن</span>
-                                </div>
+                                </div>--}}<img src="/upload/zarinpal.png" alt="" width="50" height="50">
                             </div>
                         </a>
                     </div>
@@ -117,10 +118,13 @@
 
                 <div class="col-lg-6 col-md-6 text-left">
                     <ul class="footer-bottom-social">
-                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                        <li><a href="#"><i class="ti-twitter"></i></a></li>
-                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                        @php $admin = \App\Models\User::where('is_admin',1)->get(); @endphp
+                        @foreach($admin as $user)
+                        <li><a href="{{$user->facebook}}"><i class="ti-facebook"></i></a></li>
+                        <li><a href="{{$user->twitter}}"><i class="ti-twitter"></i></a></li>
+                        <li><a href="{{$user->instagram}}"><i class="ti-instagram"></i></a></li>
+                        <li><a href="{{$user->linkedin}}"><i class="ti-linkedin"></i></a></li>
+                        @endforeach
                     </ul>
                 </div>
 
