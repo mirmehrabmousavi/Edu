@@ -11,6 +11,6 @@ class Course extends Model
 
     protected $fillable = [
         'title','desc','b_desc','price','price_off','d_price','d_price_off','seo_title','seo_desc','c_poster','c_demo',
-        'time','status','status_upload','language','category_id','user_id'
+        'time','status','status_upload','language','category_id','user_id','saved'
     ];
 }

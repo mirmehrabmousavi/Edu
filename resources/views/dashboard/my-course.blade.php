@@ -43,8 +43,7 @@
                         </div>
                     </div>
                     <div class="dashboard_container_body">
-                    @php $courses = \App\Models\Course::where('user_id',auth()->user()->email)->paginate(5); @endphp
-                    @foreach($courses as $course)
+                        @foreach($courses as $course)
                         <!-- Single Course -->
                             <div class="dashboard_single_course">
                                 <div class="dashboard_single_course_thumb">
@@ -52,7 +51,7 @@
                                         src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}"
                                         class="img-fluid" alt="">
                                     <div class="dashboard_action">
-                                        <a href="#" class="btn btn-ect">ویرایش</a>
+                                        <a href="{{route('editCourse',['id' => $course->id])}}" class="btn btn-ect">ویرایش</a>
                                         <a href="{{route('course.show',['id' => $course->id])}}" class="btn btn-ect">مشاهده</a>
                                     </div>
                                 </div>
@@ -60,7 +59,7 @@
                                     <div class="dashboard_single_course_head">
                                         <div class="dashboard_single_course_head_flex">
                                             <span
-                                                class="dashboard_instructor">{{auth()->user()->fname.' '.auth()->user()->lname}}</span>
+                                                class="dashboard_instructor">{{(auth()->user()->fname == null) ? auth()->user()->email : auth()->user()->fname.' '.auth()->user()->lname}}</span>
                                             <h4 class="dashboard_course_title">{{$course->title}}</h4>
                                             <div class="dashboard_rats">
                                                 <div class="dashboard_rating">
@@ -84,6 +83,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{$courses->links('pagination.paginate')}}
                 </div>
 
             </div>

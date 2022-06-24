@@ -38,9 +38,12 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::get('/my-course', [\App\Http\Controllers\HomeController::class, 'myCourse'])->name('myCourse');
     Route::get('/add-course', [\App\Http\Controllers\HomeController::class, 'addCourse'])->name('addCourse');
     Route::post('/add-course', [\App\Http\Controllers\HomeController::class, 'storeCourse'])->name('storeCourse');
+    Route::get('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'editCourse'])->name('editCourse');
+    Route::patch('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'updateCourse'])->name('updateCourse');
     Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
     Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
     Route::get('/saved-course', [\App\Http\Controllers\HomeController::class, 'savedCourse'])->name('savedCourse');
+    Route::patch('/addToSavedCourse/{id}', [\App\Http\Controllers\HomeController::class, 'addToSavedCourse'])->name('addToSavedCourse');
     Route::get('/my-pays', [\App\Http\Controllers\HomeController::class, 'myPays'])->name('myPays');
     Route::get('/my-account', [\App\Http\Controllers\HomeController::class, 'myAccount'])->name('myAccount');
     //Ticket System

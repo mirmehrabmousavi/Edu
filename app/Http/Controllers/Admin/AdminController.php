@@ -42,13 +42,13 @@ class AdminController extends Controller
 
     public function settings()
     {
-        $admin = User::where('is_admin',1)->first();
+        $admin = Auth::user();
         return view('admin.settings',compact('admin'));
     }
 
     public function settingsUpdate(Request $request)
     {
-        $data = User::find(1);
+        $data = Auth::user();
         $data->fname = $request->fname;
         $data->lname = $request->lname;
         $data->email = $request->email;
@@ -84,7 +84,7 @@ class AdminController extends Controller
             'password' => 'required|confirmed'
         ]);
 
-        $hashedPassword = User::find(1)->password;
+        $hashedPassword = Auth::user()->password;
         if (Hash::check($request->oldpassword, $hashedPassword)) {
             $admin = User::find(1);
             $admin->password = Hash::make($request->password);
@@ -110,7 +110,7 @@ class AdminController extends Controller
             'instagram' => 'required',
         ]);
 
-        $data = User::find(1);
+        $data = Auth::user();
         $data->facebook = $request->facebook;
         $data->twitter = $request->twitter;
         $data->linkedin = $request->linkedin;

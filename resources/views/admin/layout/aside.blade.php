@@ -16,11 +16,15 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
-                <a href="{{route('admin.home')}}">
+            <li class=" nav-item"><a href="{{route('admin.home')}}">
                     <i class="feather icon-home"></i>
-                    <span class="menu-title">داشبورد</span>
+                    <span class="menu-title">داشبورد ها</span>
                 </a>
+                <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{route('index')}}"><i class="feather icon-circle"></i><span class="menu-item">صفحه اصلی</span></a></li>
+                    <li class="is-shown"><a href="{{route('home')}}"><i class="feather icon-circle"></i><span class="menu-item">داشبورد مدرس</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.home')}}"><i class="feather icon-circle"></i><span class="menu-item">داشبورد ادمین</span></a></li>
+                </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexCourse')}}">
                     <i class="feather icon-menu"></i>

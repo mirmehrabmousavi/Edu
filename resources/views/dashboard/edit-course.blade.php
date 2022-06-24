@@ -15,15 +15,16 @@
         </div>
         <!-- /Row -->
 
-        <form action="{{route('storeCourse')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <!-- Row -->
+        <form action="{{route('updateCourse',['id' => $course->id])}}" method="POST" enctype="multipart/form-data">
+        @csrf
+            @method('patch')
+        <!-- Row -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="dashboard_container">
                         <div class="dashboard_container_header">
                             <div class="dashboard_fl_1">
-                                <h4>افزودن دوره جدید</h4>
+                                <h4>ویرایش دوره</h4>
                             </div>
                         </div>
                         <div class="dashboard_container_body p-4">
@@ -33,62 +34,63 @@
 
                                     <div class="form-group col-md-12">
                                         <label>عنوان</label>
-                                        <input type="text" class="form-control" name="title" placeholder="عنوان" required>
+                                        <input type="text" value="{{$course->title}}" class="form-control" name="title" placeholder="عنوان" required>
                                     </div>
 
                                     <div class="form-group col-md-12">
                                         <label>توضیحات</label>
-                                        <textarea class="form-control" name="desc" placeholder="توضیحات" required></textarea>
+                                        <textarea class="form-control" name="desc" placeholder="توضیحات" required>{{$course->desc}}</textarea>
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <label>توضیحات</label>
-                                        <input class="form-control" name="b_desc" placeholder="خلاصه توضیحات" required>
+                                        <label>خلاصه توضیحات</label>
+                                        <input type="text" value="{{$course->b_desc}}" class="form-control" name="b_desc" placeholder="خلاصه توضیحات" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت</label>
-                                        <input type="text" name="price" class="form-control" placeholder="قیمت">
+                                        <input type="text" value="{{$course->price}}" name="price" class="form-control" placeholder="قیمت">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده</label>
-                                        <input type="text" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده">
+                                        <input type="text" value="{{$course->price_off}}" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت (دلار)</label>
-                                        <input type="text" name="d_price" class="form-control" placeholder="قیمت (دلار)">
+                                        <input type="text" value="{{$course->d_price}}" name="d_price" class="form-control" placeholder="قیمت (دلار)">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده (دلار)</label>
-                                        <input type="text" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)">
+                                        <input type="text" value="{{$course->d_price_off}}" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>پوستر دوره</label>
-                                        <input type="file" name="c_poster" class="form-control" placeholder="پوستر دوره" required>
+                                        <input type="file" name="c_poster" class="form-control" placeholder="پوستر دوره">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>دمو دوره</label>
-                                        <input type="file" name="c_demo" class="form-control" placeholder="دمو دوره" required>
+                                        <input type="file" name="c_demo" class="form-control" placeholder="دمو دوره">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>مدت زمان دوره</label>
-                                        <input type="text" name="time" class="form-control" placeholder="مدت زمان دوره">
+                                        <input type="text" value="{{$course->time}}" name="time" class="form-control" placeholder="مدت زمان دوره">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>وضعیت دوره</label>
-                                        <input type="text" name="status" class="form-control" placeholder="وضعیت دوره">
+                                        <input type="text" value="{{$course->status}}" name="status" class="form-control" placeholder="وضعیت دوره">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>زبان دوره</label>
                                         <select class="form-control" name="language">
+                                            <option value="{{$course->language}}">{{$course->language}}</option>
                                             <option value="english">انگلیسی</option>
                                             <option value="spanish">اسپانیایی</option>
                                             <option value="french">فرانسوی</option>
@@ -127,7 +129,7 @@
                     </div>
                 </div>
                 <div class="form-group col-lg-12 col-md-12">
-                    <button class="btn btn-theme" type="submit">ذخیره</button>
+                    <button class="btn btn-theme" type="submit">بروزرسانی</button>
                 </div>
             </div>
             <!-- /Row -->

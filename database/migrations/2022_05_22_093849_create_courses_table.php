@@ -32,6 +32,7 @@ class CreateCoursesTable extends Migration
             $table->string('language')->nullable();
             $table->string('category_id')->nullable();
             $table->string('user_id');
+            $table->integer('saved')->default(0);
             $table->timestamps();
         });
     }
