@@ -84,22 +84,24 @@
 
                                     <div class="form-group col-md-6">
                                         <label>وضعیت دوره</label>
-                                        <input type="text" value="{{$course->status}}" name="status" class="form-control" placeholder="وضعیت دوره">
+                                        <select name="status" id="category" class="form-control">
+                                            <option value="در حال برگذاری"  {{ $course->status == 'در حال برگذاری' ? 'selected' : '' }}>در حال برگذاری</option>
+                                            <option value="تکمیل شده"  {{ $course->status == 'تکمیل شده' ? 'selected' : '' }}>تکمیل شده</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>زبان دوره</label>
                                         <select class="form-control" name="language">
-                                            <option value="{{$course->language}}">{{$course->language}}</option>
-                                            <option value="english">انگلیسی</option>
-                                            <option value="spanish">اسپانیایی</option>
-                                            <option value="french">فرانسوی</option>
-                                            <option value="russian">روسی</option>
-                                            <option value="turkish">ترکی</option>
-                                            <option value="chinese">چینی</option>
-                                            <option value="italy">ایتالیایی</option>
-                                            <option value="germany">آلمانی</option>
-                                            <option value="arabic">عربی</option>
+                                            <option value="english" {{ $course->language == 'english' ? 'selected' : '' }}>انگلیسی</option>
+                                            <option value="spanish" {{ $course->language == 'spanish' ? 'selected' : '' }}>اسپانیایی</option>
+                                            <option value="french" {{ $course->language == 'french' ? 'selected' : '' }}>فرانسوی</option>
+                                            <option value="russian" {{ $course->language == 'russian' ? 'selected' : '' }}>روسی</option>
+                                            <option value="turkish" {{ $course->language == 'turkish' ? 'selected' : '' }}>ترکی</option>
+                                            <option value="chinese" {{ $course->language == 'chinese' ? 'selected' : '' }}>چینی</option>
+                                            <option value="italy" {{ $course->language == 'italy' ? 'selected' : '' }}>ایتالیایی</option>
+                                            <option value="germany" {{ $course->language == 'germany' ? 'selected' : '' }}>آلمانی</option>
+                                            <option value="arabic" {{ $course->language == 'arabic' ? 'selected' : '' }}>عربی</option>
                                         </select>
                                     </div>
 
@@ -108,11 +110,11 @@
                                         <select name="category_id" id="category" class="form-control">
                                             @if(!empty($cat))
                                                 <option value="">بدون دسته بندی</option>
-                                                @foreach($cat as $category)
+                                                @foreach($cat as $val)
                                                     <?php $dash=''; ?>
-                                                    <option value="{{$category->category_name}}">{{$category->category_name}}</option>
-                                                    @if(count($category->subcategory))
-                                                        @include('admin.categories.subCategoryList',['subcategories' => $category->subcategory])
+                                                    <option value="{{$val->category_name}}" {{ $val->category_name == $val->category_name ? 'selected' : '' }}>{{$val->category_name}}</option>
+                                                    @if(count($val->subcategory))
+                                                        @include('admin.categories.subCategoryList',['subcategories' => $val->subcategory])
                                                     @endif
                                                 @endforeach
                                             @else

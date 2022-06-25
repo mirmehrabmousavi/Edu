@@ -8,10 +8,10 @@
                 <div class="prc_wrap">
 
                     <div class="prc_wrap_header">
-                        <h4 class="property_block_title">تکمیل فرم درخواست</h4>
+                        <h4 class="property_block_title">تعیین سطح</h4>
                     </div>
 
-                    <form class="prc_wrap-body" action="{{route('storeCollaborate')}}" method="POST">
+                    <form class="prc_wrap-body" action="{{route('storePlacement')}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-theme" type="submit">ارسال درخواست</button>
+                            <button class="btn btn-theme" type="submit">ارسال</button>
                         </div>
                     </form>
 

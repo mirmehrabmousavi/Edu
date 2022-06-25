@@ -9,7 +9,7 @@
                 <div class="col-lg-12 col-md-12">
 
                     <div class="breadcrumbs-wrap">
-                        <h1 class="breadcrumb-title">دوره ها</h1>
+                        <h1 class="breadcrumb-title">دوره های زبان {{substr(strrchr(request()->url(), '/'), 1);}}</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('index')}}">خانه</a></li>
@@ -108,21 +108,21 @@
                         <h4 class="side_title">دسته بندی دوره</h4>
                         <ul class="no-ul-list mb-3">
                             @foreach($cat as $catt)
-                            <li>
-                                <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
-                                <label for="aa-4" class="checkbox-custom-label">{{$catt->category_name}}</label>
-                            </li>
+                                <li>
+                                    <input id="aa-4" class="checkbox-custom" name="aa-4" type="checkbox">
+                                    <label for="aa-4" class="checkbox-custom-label">{{$catt->category_name}}</label>
+                                </li>
                             @endforeach
                         </ul>
 
                         <h4 class="side_title">مدرسین</h4>
                         <ul class="no-ul-list mb-3">
                             @foreach($teachers as $teacher)
-                            <li>
-                                <input id="aa-41" class="checkbox-custom" name="aa-41" type="checkbox">
-                                <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher->lname : $teacher->email}}</label>
-                            </li>
-                           @endforeach
+                                <li>
+                                    <input id="aa-41" class="checkbox-custom" name="aa-41" type="checkbox">
+                                    <label for="aa-41" class="checkbox-custom-label">{{($teacher->fname) ? $teacher->fname.' '.$teacher->lname : $teacher->email}}</label>
+                                </li>
+                            @endforeach
                         </ul>
 
                         <h4 class="side_title">نوع دوره</h4>
@@ -182,47 +182,47 @@
                     <!-- /Row -->
 
                     @foreach($courses as $val)
-                    <div class="row">
+                        <div class="row">
 
-                        <!-- Cource Grid 1 -->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="education_block_grid style_2">
-                                <div class="education_block_thumb n-shadow">
-                                    <a href="{{route('course.show',['id' => $val->id])}}"><img src="{{$val->c_poster}}" class="img-fluid" alt=""></a>
-                                    <div class="cources_price">{{$val->price}}</div>
-                                </div>
-
-                                <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="{{route('course.show',['id' => $val->id])}}">{{$val->title}}</a></h4>
-                                </div>
-
-                                <div class="cources_info_style3">
-                                    <ul>
-                                        <li><i class="ti-eye ml-2"></i>8682 بازدید</li>
-                                        <li><i class="ti-time ml-2"></i>{{$val->time}}</li>
-                                        <li><i class="ti-star text-warning ml-2"></i>4.7 امتیاز</li>
-                                    </ul>
-                                </div>
-
-                                <div class="education_block_footer">
-                                    <div class="education_block_author">
-                                        <div class="path-img"><a href="{{--{{route('teacher.show',['id' =>auth()->user()->id])}}--}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid" alt=""></a></div>
-                                        <h5><a href="{{--{{route('teacher.show',['id' => auth()->user()->id])}}--}}">{{$val->user_id}}</a></h5>
+                            <!-- Cource Grid 1 -->
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="education_block_grid style_2">
+                                    <div class="education_block_thumb n-shadow">
+                                        <a href="{{route('course.show',['id' => $val->id])}}"><img src="{{$val->c_poster}}" class="img-fluid" alt=""></a>
+                                        <div class="cources_price">{{$val->price}}</div>
                                     </div>
-                                    @php $mcourse = \App\Models\Course::where('user_id',$val->user_id)->get(); @endphp
-                                    <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>{{count($mcourse)}} دوره آموزشی</div>
+
+                                    <div class="education_block_body">
+                                        <h4 class="bl-title"><a href="{{route('course.show',['id' => $val->id])}}">{{$val->title}}</a></h4>
+                                    </div>
+
+                                    <div class="cources_info_style3">
+                                        <ul>
+                                            <li><i class="ti-eye ml-2"></i>8682 بازدید</li>
+                                            <li><i class="ti-time ml-2"></i>{{$val->time}}</li>
+                                            <li><i class="ti-star text-warning ml-2"></i>4.7 امتیاز</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="education_block_footer">
+                                        <div class="education_block_author">
+                                            <div class="path-img"><a href="{{--{{route('teacher.show',['id' =>auth()->user()->id])}}--}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid" alt=""></a></div>
+                                            <h5><a href="{{--{{route('teacher.show',['id' => auth()->user()->id])}}--}}">{{$val->user_id}}</a></h5>
+                                        </div>
+                                        @php $mcourse = \App\Models\Course::where('user_id',$val->user_id)->get(); @endphp
+                                        <div class="foot_lecture"><i class="ti-control-skip-forward ml-2"></i>{{count($mcourse)}} دوره آموزشی</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            {{$courses->links('pagination.paginate')}}
+                        <!-- Row -->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                {{$val->links('pagination.paginate')}}
+                            </div>
                         </div>
-                    </div>
-                    <!-- /Row -->
+                        <!-- /Row -->
                     @endforeach
 
                 </div>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -153,7 +155,7 @@ class HomeController extends Controller
 
     public function savedCourse()
     {
-        $courses = Course::where('user_id',auth()->user()->email)->where('saved',1)->paginate(5);
+        $courses = Course::where('status_upload','منتشر شده')->where('user_id',auth()->user()->email)->where('saved',1)->paginate(5);
         return view('dashboard.saved-course',compact('courses'));
     }
 
@@ -181,5 +183,49 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         return view('dashboard.my-account',compact('user'));
+    }
+
+    public function settingsUpdate(Request $request)
+    {
+        $data = Auth::user();
+        $data->fname = $request->fname;
+        $data->lname = $request->lname;
+        $data->email = $request->email;
+        $data->number = $request->number;
+        $data->postcode = $request->postcode;
+        $data->address = $request->address;
+        $data->job = $request->job;
+        $data->bio = $request->bio;
+
+
+        if ($request->file('profile')) {
+            $file = $request->file('profile');
+            @unlink(public_path('upload/admin/settings/'.$data->profile));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'),$filename);
+            $data['profile'] = $filename;
+        }
+
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
+
+            $data->password = Hash::make($request->password);
+            $data->save();
+            Auth::logout();
+        }
+
+        $data->facebook = $request->facebook;
+        $data->twitter = $request->twitter;
+        $data->linkedin = $request->linkedin;
+        $data->instagram = $request->instagram;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'تنظیمات با موفقیت بروزرسانی شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('my-account')->with($notification);
     }
 }

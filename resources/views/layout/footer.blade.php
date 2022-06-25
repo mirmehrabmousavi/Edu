@@ -57,8 +57,8 @@
                         <h4 class="widget-title">دسته بندی</h4>
                         <ul class="footer-menu">
                             @php $cat = \App\Models\Category::where('parent_id',null)->get(); @endphp
-                            @foreach($cat as $cat)
-                            <li><a href="#">{{$cat->category_name}}</a></li>
+                            @foreach($cat as $catt)
+                            <li><a href="{{route('coursesCat',['id' => $catt->id])}}">{{$catt->category_name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -77,28 +77,15 @@
 
                 <div class="col-lg-3 col-md-12">
                     <div class="footer-widget">
-                        <h4 class="widget-title">دانلود اپلیکیشن</h4>
+                        <h4 class="widget-title">درگاه های پرداخت</h4>
                         <a href="#" class="other-store-link">
                             <div class="other-store-app">
-                                {{--<div class="os-app-icon">
-                                    <i class="lni-playstore theme-cl"></i>
-                                </div>
-                                <div class="os-app-caps">
-                                    گوگل پلی
-                                    <span>دریافت اپلیکیشن</span>
-                                </div>--}}
                                 <img src="/upload/paypal.png" alt="" width="50" height="50">
                             </div>
                         </a>
                         <a href="#" class="other-store-link">
                             <div class="other-store-app">
-                              {{--  <div class="os-app-icon">
-                                    <i class="lni-apple theme-cl"></i>
-                                </div>
-                                <div class="os-app-caps">
-                                    اپ استور
-                                    <span>دریافت اپلیکیشن</span>
-                                </div>--}}<img src="/upload/zarinpal.png" alt="" width="50" height="50">
+                              <img src="/upload/zarinpal.png" alt="" width="50" height="50">
                             </div>
                         </a>
                     </div>

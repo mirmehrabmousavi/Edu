@@ -173,12 +173,8 @@
                                                     <div class="controls">
                                                         <label for="account-username">وضعیت دوره</label>
                                                         <select name="status" id="category" class="form-control">
-                                                            @if(!empty($course->status))
-                                                                <option value="{{$course->status}}">{{$course->status}}</option>
-                                                            @else
-                                                                <option value="در حال برگذاری">در حال برگذاری</option>
-                                                                <option value="تکمیل شده">تکمیل شده</option>
-                                                            @endif
+                                                            <option value="در حال برگذاری"  {{ $course->status == 'در حال برگذاری' ? 'selected' : '' }}>در حال برگذاری</option>
+                                                            <option value="تکمیل شده"  {{ $course->status == 'تکمیل شده' ? 'selected' : '' }}>تکمیل شده</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -190,18 +186,22 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">وضعیت انتشار دوره</label>
-                                                        <select name="status_upload" id="status_upload">
-                                                            @if(!empty($course->status_upload))
-                                                                <option value="{{$course->status_upload}}">{{$course->status_upload}}</option>
-                                                            @else
-                                                                <option value="منتشر شده">منتشر شده</option>
-                                                                <option value="پیش نویس">پیش نویس</option>
-                                                            @endif
+                                                        <label for="account-username">دسته زبان دوره</label>
+                                                        <select name="language" id="category" class="form-control">
+                                                            <option value="english" {{ $course->language == 'english' ? 'selected' : '' }}>انگلیسی</option>
+                                                            <option value="spanish" {{ $course->language == 'spanish' ? 'selected' : '' }}>اسپانیایی</option>
+                                                            <option value="french" {{ $course->language == 'french' ? 'selected' : '' }}>فرانسوی</option>
+                                                            <option value="russian" {{ $course->language == 'russian' ? 'selected' : '' }}>روسی</option>
+                                                            <option value="turkish" {{ $course->language == 'turkish' ? 'selected' : '' }}>ترکی</option>
+                                                            <option value="chinese" {{ $course->language == 'chinese' ? 'selected' : '' }}>چینی</option>
+                                                            <option value="italy" {{ $course->language == 'italy' ? 'selected' : '' }}>ایتالیایی</option>
+                                                            <option value="germany" {{ $course->language == 'germany' ? 'selected' : '' }}>آلمانی</option>
+                                                            <option value="arabic" {{ $course->language == 'arabic' ? 'selected' : '' }}>عربی</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
@@ -211,7 +211,7 @@
                                                             @if($cat)
                                                                 @foreach($cat as $item)
                                                                     <?php $dash=''; ?>
-                                                                    <option value="{{$item->category_name}}" @if($category->parent_id == $item->category_name ) selected @endif>{{$item->category_name}}</option>
+                                                                    <option value="{{$item->category_name}}" {{ $item->category_name == $category->parent_id ? 'selected' : '' }}>{{$item->category_name}}</option>
                                                                     @if(count($item->subcategory))
                                                                         @include('admin.categories.subCategoryListUpdate',['subcategories' => $item->subcategory])
                                                                     @endif
@@ -230,21 +230,10 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">دسته زبان دوره</label>
-                                                        <select name="language" id="category" class="form-control">
-                                                            @if(!empty($course->language))
-                                                                <option value="{{$course->language}}">{{$course->language}}</option>
-                                                            @else
-                                                                <option value="english">انگلیسی</option>
-                                                                <option value="spanish">اسپانیایی</option>
-                                                                <option value="french">فرانسوی</option>
-                                                                <option value="russian">روسی</option>
-                                                                <option value="turkish">ترکی</option>
-                                                                <option value="chinese">چینی</option>
-                                                                <option value="italy">ایتالیایی</option>
-                                                                <option value="germany">آلمانی</option>
-                                                                <option value="arabic">عربی</option>
-                                                            @endif
+                                                        <label for="account-username">وضعیت انتشار دوره</label>
+                                                        <select name="status_upload" class="form-control" id="status_upload">
+                                                            <option value="منتشر شده" {{ $course->status_upload == 'منتشر شده' ? 'selected' : '' }}>منتشر شده</option>
+                                                            <option value="پیش نویس" {{ $course->status_upload == 'پیش نویس' ? 'selected' : '' }}>پیش نویس</option>
                                                         </select>
                                                     </div>
                                                 </div>

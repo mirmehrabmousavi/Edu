@@ -78,6 +78,7 @@
                                     </div>
                                     <div class="dashboard_single_course_des">
                                         <p>{{$course->b_desc}}</p>
+                                        <div class="badge badge-{{($course->status_upload == 'منتشر شده') ? 'success' : 'danger' }}">{{($course->status_upload == 'منتشر شده') ? 'تایید شده' : 'در انتظار تایید' }}</div>
                                     </div>
                                 </div>
                             </div>

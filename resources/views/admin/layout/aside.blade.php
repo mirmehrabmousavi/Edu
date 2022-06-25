@@ -70,6 +70,12 @@
                 </a>
             </li>
             <li class=" nav-item">
+                <a href="{{route('admin.showPlacement')}}">
+                    <i class="feather icon-rewind"></i>
+                    <span class="menu-title">درخواست تعیین سطح</span>
+                </a>
+            </li>
+            <li class=" nav-item">
                 <a href="{{route('admin.showCollaborate')}}">
                     <i class="feather icon-rewind"></i>
                     <span class="menu-title">درخواست مدرسین</span>

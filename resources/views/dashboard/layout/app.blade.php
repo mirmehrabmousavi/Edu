@@ -36,7 +36,7 @@
 <!-- ============================================================== -->
 <div id="main-wrapper">
 
-    @include('dashboard.layout.header')
+    @include('layout.header')
 
     <!-- ============================ Dashboard: Dashboard Start ================================== -->
         <section class="gray pt-5">
@@ -52,7 +52,7 @@
             </div>
         </section>
         <!-- ============================ Dashboard: Dashboard End ================================== -->
-    @include('dashboard.layout.footer')
+    @include('layout.footer')
 
     <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 

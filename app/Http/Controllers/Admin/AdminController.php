@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Placement;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -123,6 +124,32 @@ class AdminController extends Controller
         );
 
         return redirect()->route('admin.settings')->with($notification);
+    }
+
+
+    public function showPlacement()
+    {
+        $placement = Placement::all();
+        return view('admin.placement.index',compact('placement'));
+    }
+
+    public function singlePlacement($id)
+    {
+        $val = Placement::findOrFail($id);
+        return view('admin.placement.show',compact('val'));
+    }
+
+    public function deletePlacement($id)
+    {
+        $placement = Placement::findOrFail($id);
+        $placement->delete();
+
+        $notification = array(
+            'message' => 'با موفقیت حذف شدید :)',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     public function fileManager()

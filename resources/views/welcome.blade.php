@@ -41,7 +41,7 @@
                                 {{--
                                 <img src="/assets/img/lg-1.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/english">
+                                   href="{{route('course.english')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <defs>
                                             <style>.united-kingdom_svg__cls-2 {
@@ -121,7 +121,7 @@
                             <div class="single_brands">
                                 {{--<img src="/assets/img/lg-2.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/french">
+                                   href="{{route('course.french')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <circle cx="25" cy="25" r="25" fill="#f0f0f0"></circle>
                                         <path fill="#d80027"
@@ -138,7 +138,7 @@
                             <div class="single_brands">
                                 {{-- <img src="/assets/img/lg-3.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/german">
+                                   href="{{route('course.germany')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <path fill="#ffda44"
                                               d="M1.555 33.696a25.009 25.009 0 0046.89 0L25 31.522z"></path>
@@ -156,7 +156,7 @@
                             <div class="single_brands">
                                 {{--<img src="/assets/img/lg-4.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/turkish">
+                                   href="{{route('course.turkish')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <defs>
                                             <style>.turkey_svg__cls-2 {
@@ -187,7 +187,7 @@
                             <div class="single_brands">
                                 {{--<img src="/assets/img/lg-5.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/italian">
+                                   href="{{route('course.italy')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <circle cx="25" cy="25" r="25" fill="#f0f0f0"></circle>
                                         <path fill="#d80027"
@@ -204,7 +204,7 @@
                             <div class="single_brands">
                                 {{--  <img src="/assets/img/lg-6.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/chinese">
+                                   href="{{route('course.chinese')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <defs>
                                             <style>.china_svg__cls-2 {
@@ -247,7 +247,7 @@
                             <div class="single_brands">
                                 {{-- <img src="/assets/img/lg-7.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/arabic">
+                                   href="{{route('course.arabic')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <defs>
                                             <style>.saudi-arabia_svg__cls-2 {
@@ -292,7 +292,7 @@
                             <div class="single_brands">
                                 {{--  <img src="/assets/img/lg-8.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/russian">
+                                   href="{{route('course.russian')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
                                         <circle cx="25" cy="25" r="25" fill="#f0f0f0"></circle>
                                         <path fill="#0052b4"
@@ -309,7 +309,7 @@
                             <div class="single_brands">
                                 {{-- <img src="/assets/img/lg-9.png" class="img-fluid" alt="" />--}}
                                 <a class="MuiButtonBase-root jss202" tabindex="0" aria-disabled="false"
-                                   href="/find-teachers/spanish">
+                                   href="{{route('course.spanish')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" id="spain_svg__spain" width="50" height="50"
                                          viewBox="0 0 50 50">
                                         <defs>

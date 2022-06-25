@@ -17,12 +17,26 @@ use Illuminate\Support\Facades\Route;
 //Index
 Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses'])->name('courses');
+Route::get('/courses/category/{id}', [\App\Http\Controllers\IndexController::class, 'coursesCat'])->name('coursesCat');
 Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'courseShow'])->name('course.show');
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
-Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
-Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
+Route::get('/placement', [\App\Http\Controllers\IndexController::class, 'createPlacement'])->name('addPlacement');
+Route::post('/placement', [\App\Http\Controllers\IndexController::class, 'storePlacement'])->name('storePlacement');
 Route::get('/blog', [\App\Http\Controllers\IndexController::class, 'allBlog'])->name('allBlog');
 Route::get('/blog/{id}', [\App\Http\Controllers\IndexController::class, 'showBlog'])->name('showBlog');
+Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
+Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
+
+//Language Flag
+Route::get('/course/english', [\App\Http\Controllers\FlagController::class, 'courseEnglish'])->name('course.english');
+Route::get('/course/spanish', [\App\Http\Controllers\FlagController::class, 'courseSpanish'])->name('course.spanish');
+Route::get('/course/french', [\App\Http\Controllers\FlagController::class, 'courseFrench'])->name('course.french');
+Route::get('/course/russian', [\App\Http\Controllers\FlagController::class, 'courseRussian'])->name('course.russian');
+Route::get('/course/turkish', [\App\Http\Controllers\FlagController::class, 'courseTurkish'])->name('course.turkish');
+Route::get('/course/chinese', [\App\Http\Controllers\FlagController::class, 'courseChinese'])->name('course.chinese');
+Route::get('/course/italy', [\App\Http\Controllers\FlagController::class, 'courseItaly'])->name('course.italy');
+Route::get('/course/germany', [\App\Http\Controllers\FlagController::class, 'courseGermany'])->name('course.germany');
+Route::get('/course/arabic', [\App\Http\Controllers\FlagController::class, 'courseArabic'])->name('course.arabic');
 
 //Auth
 Auth::routes();
@@ -46,6 +60,7 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::patch('/addToSavedCourse/{id}', [\App\Http\Controllers\HomeController::class, 'addToSavedCourse'])->name('addToSavedCourse');
     Route::get('/my-pays', [\App\Http\Controllers\HomeController::class, 'myPays'])->name('myPays');
     Route::get('/my-account', [\App\Http\Controllers\HomeController::class, 'myAccount'])->name('myAccount');
+    Route::patch('/my-account', [\App\Http\Controllers\HomeController::class, 'settingsUpdate'])->name('settingsUpdate');
     //Ticket System
     Route::get('new-ticket', [\App\Http\Controllers\TicketController::class, 'create'])->name('ticket.create');
     Route::post('new-ticket', [\App\Http\Controllers\TicketController::class, 'store'])->name('ticket.store');
@@ -98,6 +113,10 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'showCollaborate'])->name('admin.showCollaborate');
     Route::get('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'singleCollaborate'])->name('admin.singleCollaborate');
     Route::delete('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'deleteCollaborate'])->name('admin.deleteCollaborate');
+    //Placement
+    Route::get('/placement', [\App\Http\Controllers\Admin\AdminController::class, 'showPlacement'])->name('admin.showPlacement');
+    Route::get('/placement/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'singlePlacement'])->name('admin.singlePlacement');
+    Route::delete('/placement/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'deletePlacement'])->name('admin.deletePlacement');
     //Ticket
     Route::get('/tickets', [\App\Http\Controllers\TicketController::class, 'userTickets'])->name('admin.tickets');
     Route::post('/close_ticket/{ticket_id}', [\App\Http\Controllers\TicketController::class, 'close'])->name('admin.tickets.delete');
