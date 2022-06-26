@@ -94,8 +94,10 @@
                     <div class="edu_wraper border">
                         <h4 class="edu_title">سرفصل های دوره</h4>
                         <div id="accordionExample" class="accordion shadow circullum">
-                        @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->get(); @endphp
+                        @php $lesson = \App\Models\Lesson::where('user_id',$course->user_id)->where('l_course',$course->title)->get(); @endphp
+                        @php $season = \App\Models\Season::where('user_id',$course->user_id)->where('course',$course->title)->get(); @endphp
                         @foreach($lesson as $val)
+                            @foreach($season as $sea)
                             <!-- Part 1 -->
                                 <div class="card">
                                     <div id="headingOne" class="card-header bg-white shadow-sm border-0">
@@ -103,47 +105,23 @@
                                                                             data-target="#collapseOne"
                                                                             aria-expanded="true"
                                                                             aria-controls="collapseOne"
-                                                                            class="d-block position-relative text-dark collapsible-link py-2">دوره
-                                                اول: مقدمه و معرفی مدرس</a></h6>
+                                                                            class="d-block position-relative text-dark collapsible-link py-2">{{$sea->title}}</a></h6>
                                     </div>
                                     <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample"
                                          class="collapse show">
                                         <div class="card-body pl-3 pr-3">
                                             <ul class="lectures_lists">
-                                                <li>
+                                                <li {{($val->l_free == 'on') ? '' : 'class="unview'}}>
                                                     <div class="lectures_lists_title"><i class="ti-control-play"></i>دوره:
-                                                        01
+                                                        {{$loop->index+1}}
                                                     </div>
-                                                    معرفی دوره
-                                                </li>
-                                                <li>
-                                                    <div class="lectures_lists_title"><i class="ti-control-play"></i>دوره:
-                                                        02
-                                                    </div>
-                                                    ساخت منوها در بخش مدیریت
-                                                </li>
-                                                <li>
-                                                    <div class="lectures_lists_title"><i class="ti-control-play"></i>دوره:
-                                                        03
-                                                    </div>
-                                                    متاباکس و ذخیره اطلاعات برای پست ها
-                                                </li>
-                                                <li class="unview">
-                                                    <div class="lectures_lists_title"><i class="ti-control-play"></i>دوره:
-                                                        04
-                                                    </div>
-                                                    استفاده از قالب استاندارد وردپرس در پلاگین ها
-                                                </li>
-                                                <li class="unview">
-                                                    <div class="lectures_lists_title"><i class="ti-control-play"></i>دوره:
-                                                        05
-                                                    </div>
-                                                    ذخیره و بازیابی تنظیمات در وردپرس
+                                                    {{$val->title}}
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             @endforeach
                         </div>
                     </div>

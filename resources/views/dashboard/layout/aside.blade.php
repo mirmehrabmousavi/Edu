@@ -11,9 +11,8 @@
             <ul id="side-menu">
                 @if(auth()->user()->is_seller == 1 || auth()->user()->is_admin === 1)
                     <li class="active"><a href="{{route('home')}}"><i class="ti-user"></i>داشبورد</a></li>
-                    <li><a href="{{route('addCourse')}}"><i class="ti-plus"></i>افزودن دوره جدید</a></li>
                     <li><a href="{{route('myCourse')}}"><i class="ti-book"></i>دوره های من</a></li>
-                    <li><a href="{{route('addClass')}}"><i class="ti-plus"></i>افزودن کلاس جدید</a></li>
+                    <li><a href="{{route('myLesson')}}"><i class="ti-book"></i>درس های من</a></li>
                     <li><a href="{{route('myClass')}}"><i class="ti-book"></i>کلاس های من</a></li>
                     <li><a href="{{route('savedCourse')}}"><i class="ti-heart"></i>دوره های مورد علاقه</a></li>
                     <li><a href="#"><i class="ti-heart"></i>دوره های خریده شده</a></li>

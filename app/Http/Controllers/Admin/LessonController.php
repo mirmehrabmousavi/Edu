@@ -35,20 +35,12 @@ class LessonController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'desc' => 'required',
-            'number' => 'required',
         ]);
 
         Lesson::create([
             'title' => $request->title,
-            'number' => $request->number,
-            'desc' => $request->desc,
-            'seo_title' => $request->seo_title,
-            'seo_desc' => $request->seo_desc,
             'l_file' => $request->l_file,
             'l_video' => $request->l_video,
-            'time' => $request->time,
-            'status' => $request->status,
             'season' => $request->season,
             'l_course' => $request->l_course,
             'l_free' => $request->l_free,
@@ -74,20 +66,12 @@ class LessonController extends Controller
         $lesson = Lesson::findOrFail($id);
         $request->validate([
             'title' => 'required',
-            'desc' => 'required',
-            'number' => 'required',
         ]);
 
         $lesson->update([
             'title' => $request->title,
-            'number' => $request->number,
-            'desc' => $request->desc,
-            'seo_title' => $request->seo_title,
-            'seo_desc' => $request->seo_desc,
             'l_file' => $request->l_file,
             'l_video' => $request->l_video,
-            'time' => $request->time,
-            'status' => $request->status,
             'season' => $request->season,
             'l_course' => $request->l_course,
             'l_free' => $request->l_free,

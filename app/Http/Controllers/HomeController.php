@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,7 @@ class HomeController extends Controller
             @unlink(public_path('upload/course/' . $request->file('c_poster')));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/course'), $filename);
-            $c_poster = '/upload/course/'.$filename;
+            $c_poster = '/upload/course/' . $filename;
         }
 
         if ($request->file('c_demo') && !empty($request->file('c_demo'))) {
@@ -58,7 +59,7 @@ class HomeController extends Controller
             @unlink(public_path('upload/course/' . $request->file('c_demo')));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/course'), $filename);
-            $c_demo = '/upload/course/'.$filename;
+            $c_demo = '/upload/course/' . $filename;
         }
 
         Course::create([
@@ -116,7 +117,7 @@ class HomeController extends Controller
             @unlink(public_path('upload/course/' . $request->file('c_poster')));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/course'), $filename);
-            $course['c_poster'] = '/upload/course/'.$filename;
+            $course['c_poster'] = '/upload/course/' . $filename;
         }
 
         if ($request->file('c_demo') && !empty($request->file('c_demo'))) {
@@ -124,7 +125,7 @@ class HomeController extends Controller
             @unlink(public_path('upload/course/' . $request->file('c_demo')));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/course'), $filename);
-            $course['c_demo'] = '/upload/course/'.$filename;
+            $course['c_demo'] = '/upload/course/' . $filename;
         }
 
         $course->time = $request->time;
@@ -143,6 +144,117 @@ class HomeController extends Controller
         return redirect(route('myCourse'))->with($notification);
     }
 
+
+    public function myLesson()
+    {
+        $lessons = \App\Models\Lesson::where('user_id', auth()->user()->email)->paginate(5);
+        return view('dashboard.my-lesson', compact('lessons'));
+    }
+
+    public function addLesson()
+    {
+        $cat = Category::all();
+        return view('dashboard.add-lesson', compact('cat'));
+    }
+
+    public function storeLesson(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $lesson = new Lesson();
+        $lesson->title = $request->title;
+
+        if ($request->file('l_file') && !empty($request->file('l_file'))) {
+            $file = $request->file('l_file');
+            @unlink(public_path('upload/lesson/' . $request->file('l_file')));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/lesson'), $filename);
+            $lesson['l_file'] = '/upload/lesson/' . $filename;
+        }
+
+        if ($request->file('l_video') && !empty($request->file('l_video'))) {
+            $file = $request->file('l_video');
+            @unlink(public_path('upload/lesson/' . $request->file('l_video')));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/lesson'), $filename);
+            $lesson['l_video'] = '/upload/lesson/' . $filename;
+        }
+
+        $lesson->season = $request->season;
+        $lesson->l_course = $request->l_course;
+        $lesson->l_free = $request->l_free;
+        $lesson->user_id = auth()->user()->email;
+        $lesson->save();
+
+        $notification = array(
+            'message' => 'با موفقیت ذخیره شدید :)',
+            'alert-type' => 'success'
+        );
+
+        return redirect(route('myLesson'))->with($notification);
+    }
+
+    public function editLesson($id)
+    {
+        $lesson = Lesson::findOrFail($id);
+        $cat = Category::all();
+        return view('dashboard.edit-lesson', compact('lesson', 'cat'));
+    }
+
+    public function updateLesson($id, Request $request)
+    {
+        $lesson = Lesson::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $lesson->title = $request->title;
+
+        if ($request->file('l_file') && !empty($request->file('l_file'))) {
+            $file = $request->file('l_file');
+            @unlink(public_path('upload/lesson/' . $request->file('l_file')));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/lesson'), $filename);
+            $lesson['l_file'] = '/upload/lesson/' . $filename;
+        }
+
+        if ($request->file('l_video') && !empty($request->file('l_video'))) {
+            $file = $request->file('l_video');
+            @unlink(public_path('upload/lesson/' . $request->file('l_video')));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/lesson'), $filename);
+            $lesson['l_video'] = '/upload/lesson/' . $filename;
+        }
+
+        $lesson->season = $request->season;
+        $lesson->l_course = $request->l_course;
+        $lesson->l_free = $request->l_free;
+        $lesson->user_id = auth()->user()->email;
+        $lesson->save();
+
+        $notification = array(
+            'message' => 'با موفقیت بروزرسانی شدید :)',
+            'alert-type' => 'success'
+        );
+
+        return redirect(route('myLesson'))->with($notification);
+    }
+
+    public function deletelesson($id)
+    {
+        $lesson = Lesson::findOrFail($id);
+        @unlink(public_path('upload/lesson/' . $lesson->file('l_video')));
+        @unlink(public_path('upload/lesson/' . $lesson->file('l_file')));
+        $lesson->delete();
+        $notification = [
+            'message' => 'با موفقیت حذف شد',
+            'alert-type' => 'success'
+        ];
+        return redirect(route('myLesson'))->with($notification);
+    }
+
     public function myClass()
     {
         return view('dashboard.my-class');
@@ -155,15 +267,15 @@ class HomeController extends Controller
 
     public function savedCourse()
     {
-        $courses = Course::where('status_upload','منتشر شده')->where('user_id',auth()->user()->email)->where('saved',1)->paginate(5);
-        return view('dashboard.saved-course',compact('courses'));
+        $courses = Course::where('status_upload', 'منتشر شده')->where('user_id', auth()->user()->email)->where('saved', 1)->paginate(5);
+        return view('dashboard.saved-course', compact('courses'));
     }
 
     public function addToSavedCourse($id)
     {
         $course = Course::findOrFAil($id);
         $course->update([
-           'saved' => 1,
+            'saved' => 1,
         ]);
 
         $notification = array(
@@ -182,7 +294,7 @@ class HomeController extends Controller
     public function myAccount()
     {
         $user = Auth::user();
-        return view('dashboard.my-account',compact('user'));
+        return view('dashboard.my-account', compact('user'));
     }
 
     public function settingsUpdate(Request $request)
@@ -200,9 +312,9 @@ class HomeController extends Controller
 
         if ($request->file('profile')) {
             $file = $request->file('profile');
-            @unlink(public_path('upload/admin/settings/'.$data->profile));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'),$filename);
+            @unlink(public_path('upload/admin/settings/' . $data->profile));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filename);
             $data['profile'] = $filename;
         }
 

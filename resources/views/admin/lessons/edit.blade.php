@@ -33,58 +33,6 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">شماره درس</label>
-                                                        <input type="text" class="form-control" name="number"
-                                                               id="account-username" placeholder="شماره درس"
-                                                               value="{{$lesson->number}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label for="account-username">توضیحات دوره</label>
-                                                <textarea class="form-control" id="editor" rows="3" name="desc"
-                                                          placeholder="توضیحات دوره"
-                                                          required=""
-                                                          data-validation-required-message="">{{$lesson->desc}}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">عنوان سئو</label>
-                                                        <input type="text" class="form-control" name="seo_title"
-                                                               id="account-username" placeholder="عنوان سئو"
-                                                               value="{{$lesson->seo_title}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">توضیحات سئو</label>
-                                                        <input type="text" class="form-control" name="seo_desc"
-                                                               id="account-username" placeholder="توضیحات سئو"
-                                                               value="{{$lesson->seo_desc}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
@@ -114,37 +62,13 @@
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <label for="account-username">زمان درس</label>
-                                                        <input type="text" class="form-control" name="time"
-                                                               id="account-username" placeholder="زمان درس"
-                                                               value="{{$lesson->time}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
-                                                        <label for="account-username">وضعیت درس</label>
-                                                        <input type="text" class="form-control" name="status"
-                                                               id="account-username" placeholder="وضعیت درس"
-                                                               value="{{$lesson->status}}"
-                                                               required="" data-validation-required-message="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <div class="controls">
                                                         <label for="account-username">فصل</label>
-                                                        <input type="number" class="form-control" name="season"
-                                                               id="account-username"
-                                                               placeholder="فصل" value="{{$lesson->season}}"
-                                                               required="" data-validation-required-message="">
+                                                        <select name="season" class="form-control">
+                                                            @php $season = \App\Models\Season::all(); @endphp
+                                                            @foreach($season as $seasons)
+                                                                <option value="{{$seasons->title}}">{{$seasons->title}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -155,8 +79,7 @@
                                                         <select name="l_course" id="l_course" class="form-control">
                                                             @php $course = \App\Models\Course::all(); @endphp
                                                             @foreach($course as $courses)
-                                                                <option
-                                                                    value="{{$courses->title}}">{{$courses->title}}</option>
+                                                                <option value="{{$courses->title}}">{{$courses->title}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

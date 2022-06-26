@@ -49,16 +49,28 @@ Route::post('ckeditor/upload', [\App\Http\Controllers\HomeController::class, 'ck
 Route::group(['middleware' => 'auth','teacher'], function () {
     //User Dashboard
     Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //Course
     Route::get('/my-course', [\App\Http\Controllers\HomeController::class, 'myCourse'])->name('myCourse');
     Route::get('/add-course', [\App\Http\Controllers\HomeController::class, 'addCourse'])->name('addCourse');
     Route::post('/add-course', [\App\Http\Controllers\HomeController::class, 'storeCourse'])->name('storeCourse');
     Route::get('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'editCourse'])->name('editCourse');
     Route::patch('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'updateCourse'])->name('updateCourse');
+    //Lesson
+    Route::get('/my-lesson', [\App\Http\Controllers\HomeController::class, 'myLesson'])->name('myLesson');
+    Route::get('/add-lesson', [\App\Http\Controllers\HomeController::class, 'addLesson'])->name('addLesson');
+    Route::post('/add-lesson', [\App\Http\Controllers\HomeController::class, 'storeLesson'])->name('storeLesson');
+    Route::get('/edit-lesson/{id}/', [\App\Http\Controllers\HomeController::class, 'editLesson'])->name('editLesson');
+    Route::patch('/edit-lesson/{id}/', [\App\Http\Controllers\HomeController::class, 'updateLesson'])->name('updateLesson');
+    Route::delete('/delete-lesson/{id}/', [\App\Http\Controllers\HomeController::class, 'deleteLesson'])->name('deleteLesson');
+    //Class
     Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
     Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
+    //SavedCourse
     Route::get('/saved-course', [\App\Http\Controllers\HomeController::class, 'savedCourse'])->name('savedCourse');
     Route::patch('/addToSavedCourse/{id}', [\App\Http\Controllers\HomeController::class, 'addToSavedCourse'])->name('addToSavedCourse');
+    //Pays
     Route::get('/my-pays', [\App\Http\Controllers\HomeController::class, 'myPays'])->name('myPays');
+    //MyAccount
     Route::get('/my-account', [\App\Http\Controllers\HomeController::class, 'myAccount'])->name('myAccount');
     Route::patch('/my-account', [\App\Http\Controllers\HomeController::class, 'settingsUpdate'])->name('settingsUpdate');
     //Ticket System
@@ -88,6 +100,13 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('category/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('admin.editCategory');
     Route::patch('category/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateCategory'])->name('admin.updateCategory');
     Route::delete('category/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('admin.deleteCategory');
+    //Season
+    Route::get('season', [\App\Http\Controllers\Admin\SeasonController::class, 'index'])->name('admin.indexSeason');
+    Route::get('season/create', [\App\Http\Controllers\Admin\SeasonController::class, 'create'])->name('admin.createSeason');
+    Route::post('season/create', [\App\Http\Controllers\Admin\SeasonController::class, 'store'])->name('admin.storeSeason');
+    Route::get('season/edit/{id}', [\App\Http\Controllers\Admin\SeasonController::class, 'edit'])->name('admin.editSeason');
+    Route::patch('season/edit/{id}', [\App\Http\Controllers\Admin\SeasonController::class, 'update'])->name('admin.updateSeason');
+    Route::delete('season/delete/{id}', [\App\Http\Controllers\Admin\SeasonController::class, 'delete'])->name('admin.deleteSeason');
     //Course
     Route::get('course', [\App\Http\Controllers\Admin\CourseController::class, 'indexCourse'])->name('admin.indexCourse');
     Route::get('course/create', [\App\Http\Controllers\Admin\CourseController::class, 'createCourse'])->name('admin.createCourse');

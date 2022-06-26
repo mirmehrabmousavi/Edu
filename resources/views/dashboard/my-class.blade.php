@@ -21,8 +21,15 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="dashboard_container">
                     <div class="dashboard_container_header">
-                        <div class="dashboard_fl_1">
-                            <h4>مشاهده کلاس ها</h4>
+                        <div class="dashboard_container_header">
+                            <div class="dashboard_fl_1">
+                                <h4>کلاس ها</h4>
+                            </div>
+                            <div class="dashboard_fl_2">
+                                <div class="form-group col-lg-12 col-md-12">
+                                    <a href="{{route('addClass')}}" class="btn btn-theme">افزودن کلاس</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="dashboard_container_body">

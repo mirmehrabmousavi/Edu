@@ -26,24 +26,6 @@
                     <li class="is-shown"><a href="{{route('admin.home')}}"><i class="feather icon-circle"></i><span class="menu-item">داشبورد ادمین</span></a></li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="{{route('admin.indexCourse')}}">
-                    <i class="feather icon-menu"></i>
-                    <span class="menu-title">دوره ها</span>
-                </a>
-                <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.indexCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">دوره ها</span></a></li>
-                    <li class="is-shown"><a href="{{route('admin.createCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دوره</span></a></li>
-                </ul>
-            </li>
-            <li class=" nav-item"><a href="{{route('admin.indexLesson')}}">
-                    <i class="feather icon-menu"></i>
-                    <span class="menu-title">درس ها</span>
-                </a>
-                <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.indexLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
-                    <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن درس</span></a></li>
-                </ul>
-            </li>
             <li class=" nav-item"><a href="{{route('admin.indexCategory')}}">
                     <i class="feather icon-menu"></i>
                     <span class="menu-title">دسته بندی</span>
@@ -51,6 +33,50 @@
                 <ul class="menu-content" style="">
                     <li class="is-shown"><a href="{{route('admin.indexCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">دسته بندی ها</span></a></li>
                     <li class="is-shown"><a href="{{route('admin.createCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دسته بندی</span></a></li>
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{route('admin.indexCourse')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">دوره ها</span>
+                </a>
+                <ul class="menu-content" style="">
+
+                    @php $cat = \App\Models\Category::all() @endphp
+                    @if(empty($cat))
+                        <li class="is-shown"><a href="{{route('admin.indexCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">دوره ها</span></a></li>
+                        <li class="is-shown"><a href="{{route('admin.createCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دوره</span></a></li>
+                    @else
+                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن دوره حداقل یک دسته بندی اضافه کنید</p></div></li>
+                    @endif
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{route('admin.indexLesson')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">درس ها</span>
+                </a>
+                <ul class="menu-content" style="">
+
+                    @php $courses = \App\Models\Course::all() @endphp
+                    @if(empty($courses))
+                        <li class="is-shown"><a href="{{route('admin.indexLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
+                        <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن درس</span></a></li>
+                    @else
+                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن درس حداقل یک دوره اضافه کنید</p></div></li>
+                    @endif
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{route('admin.indexSeason')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">فصل ها</span>
+                </a>
+                <ul class="menu-content" style="">
+                    @php $courses = \App\Models\Course::all() @endphp
+                    @if(empty($courses))
+                        <li class="is-shown"><a href="{{route('admin.indexSeason')}}"><i class="feather icon-circle"></i><span class="menu-item">فصل ها</span></a></li>
+                        <li class="is-shown"><a href="{{route('admin.createSeason')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن فصل</span></a></li>
+                    @else
+                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن فصل حداقل یک دوره اضافه کنید</p></div></li>
+                    @endif
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexBlog')}}">

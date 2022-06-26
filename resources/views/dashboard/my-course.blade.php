@@ -27,19 +27,9 @@
                             <h4>همه دوره ها</h4>
                         </div>
                         <div class="dashboard_fl_2">
-                            <ul class="mb0">
-                                <li class="list-inline-item">
-
-                                </li>
-                                <li class="list-inline-item">
-                                    <form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control" type="search" placeholder="نام دوره"
-                                               aria-label="Search">
-                                        <button class="btn my-2 my-sm-0" type="submit"><i class="ti-search"></i>
-                                        </button>
-                                    </form>
-                                </li>
-                            </ul>
+                            <div class="form-group col-lg-12 col-md-12">
+                                <a href="{{route('addCourse')}}" class="btn btn-theme">افزودن دوره</a>
+                            </div>
                         </div>
                     </div>
                     <div class="dashboard_container_body">
