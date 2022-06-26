@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ad6fee32ffbf8917cdfbe42268c739d",
+    "content-hash": "52b1a0fd72a533ca2c4f38427fae8ed0",
     "packages": [
         {
             "name": "alexusmai/laravel-file-manager",
@@ -484,6 +484,72 @@
                 }
             ],
             "time": "2022-01-18T15:43:28+00:00"
+        },
+        {
+            "name": "econea/nusoap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/f00b4r/nusoap.git",
+                "reference": "93075b9b6ad6211c90144d4ebe9c2e3734a9aa21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/f00b4r/nusoap/zipball/93075b9b6ad6211c90144d4ebe9c2e3734a9aa21",
+                "reference": "93075b9b6ad6211c90144d4ebe9c2e3734a9aa21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-parallel-lint": "~1.2.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.10.x-dev",
+                    "dev-develop": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "Fixed NuSOAP for PHP 5.4 - 8.1",
+            "homepage": "https://github.com/pwnlabs/nusoap",
+            "keywords": [
+                "client",
+                "http",
+                "nusoap",
+                "php",
+                "soap",
+                "transport",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/f00b4r/nusoap/issues",
+                "source": "https://github.com/f00b4r/nusoap/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/f3l1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-17T05:56:15+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2468,6 +2534,65 @@
             "time": "2021-12-04T23:24:31+00:00"
         },
         {
+            "name": "pishran/zarinpal",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pishran/Zarinpal.git",
+                "reference": "60cc929a0ffc78326d98c7f1316229bc8e1e0145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pishran/Zarinpal/zipball/60cc929a0ffc78326d98c7f1316229bc8e1e0145",
+                "reference": "60cc929a0ffc78326d98c7f1316229bc8e1e0145",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0|^8.0|^9.0",
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pishran\\Zarinpal\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Pishran\\Zarinpal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Farid Aghili",
+                    "email": "farid@pishranit.ir",
+                    "homepage": "https://www.faridaghili.ir",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Zarinpal library for Laravel.",
+            "homepage": "https://github.com/pishran/zarinpal",
+            "keywords": [
+                "laravel",
+                "payment",
+                "zarinpal"
+            ],
+            "support": {
+                "issues": "https://github.com/pishran/Zarinpal/issues",
+                "source": "https://github.com/pishran/Zarinpal/tree/v4.3.1"
+            },
+            "time": "2022-04-17T12:39:39+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "1.1.2",
             "source": {
@@ -3122,6 +3247,70 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "srmklive/paypal",
+            "version": "3.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/srmklive/laravel-paypal.git",
+                "reference": "d9ad3ef9b27299788b4896aab8beeea40b24deca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/srmklive/laravel-paypal/zipball/d9ad3ef9b27299788b4896aab8beeea40b24deca",
+                "reference": "d9ad3ef9b27299788b4896aab8beeea40b24deca",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~7.0",
+                "illuminate/support": "~6.0|~7.0|~8.0|~9.0",
+                "nesbot/carbon": "~2.0",
+                "php": ">=7.2|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0|^9.0",
+                "symfony/var-dumper": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Srmklive\\PayPal\\Providers\\PayPalServiceProvider"
+                    ],
+                    "aliases": {
+                        "PayPal": "Srmklive\\PayPal\\Facades\\PayPal"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Srmklive\\PayPal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raza Mehdi",
+                    "email": "srmk@outlook.com"
+                }
+            ],
+            "description": "Laravel plugin For Processing Payments Through Paypal Express Checkout. Can Be Used Independently With Other Applications.",
+            "keywords": [
+                "http",
+                "laravel paypal",
+                "paypal",
+                "rest",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/srmklive/laravel-paypal/issues",
+                "source": "https://github.com/srmklive/laravel-paypal/tree/3.0.15"
+            },
+            "time": "2022-05-06T06:00:49+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8254,7 +8443,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "econea/nusoap": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

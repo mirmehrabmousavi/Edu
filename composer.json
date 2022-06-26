@@ -7,12 +7,15 @@
     "require": {
         "php": "^7.3|^8.0",
         "alexusmai/laravel-file-manager": "^2.5",
+        "econea/nusoap": "dev-master",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "pishran/zarinpal": "^4.3",
+        "srmklive/paypal": "~3.0",
         "unisharp/laravel-filemanager": "^2.5"
     },
     "require-dev": {
