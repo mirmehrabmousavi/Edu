@@ -357,23 +357,23 @@
             </div>
 
             <div class="row">
-                @foreach($cat as $cat)
+                @foreach($cat as $category)
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="edu_cat_2 cat-{{$loop->index+1}}">
                             <div class="edu_cat_icons">
-                                <a class="pic-main" href="{{--{{route('category.detail',['id' => $cat->id])}}--}}"><img
+                                <a class="pic-main" href="{{route('coursesCat',['id' => $category->id])}}"><img
                                         src="/assets/img/{{$loop->index+1}}.png" class="img-fluid"
                                         alt=""/></a>
                             </div>
                             <div class="edu_cat_data">
                                 <h4 class="title"><a
-                                        href="{{--{{route('category.detail',['id' => $cat->id])}}--}}">{{$cat->category_name}}</a>
+                                        href="{{route('coursesCat',['id' => $category->id])}}">{{$category->category_name}}</a>
                                 </h4>
                                 <ul class="meta">
                                     @php
-                                        $cat = \App\Models\Category::where('parent_id',null)->get();
+                                        $categories = \App\Models\Category::where('parent_id',null)->get();
                                     @endphp
-                                    @foreach($cat as $catt)
+                                    @foreach($categories as $catt)
                                     @php
                                         $course = \App\Models\Course::where('category_id',$catt->category_name)->get();
                                     @endphp

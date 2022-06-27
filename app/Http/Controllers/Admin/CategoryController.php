@@ -35,13 +35,11 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-            'category_slug' => 'required|unique:categories',
             'parent_id' => 'nullable'
         ]);
 
         Category::create([
             'category_name' => $request->category_name,
-            'category_slug' => $request->category_slug,
             'parent_id' =>$request->parent_id
         ]);
 
@@ -60,7 +58,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $request->validate([
             'category_name'     => 'required',
-            'category_slug' => ['required', Rule::unique('categories')->ignore($category->id)],
             'parent_id'=> 'nullable'
         ]);
         if($request->category_name != $category->category_name || $request->parent_id != $category->parent_id)
@@ -84,7 +81,6 @@ class CategoryController extends Controller
         }
 
         $category->category_name = $request->category_name;
-        $category->category_slug = $request->category_slug;
         $category->parent_id = $request->parent_id;
         $category->save();
         return redirect()->back()->with('success', 'با موفقیت انمجام شد.');

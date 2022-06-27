@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
+            <div class="alert alert-warning"><p><i class="fa fa-info-circle"></i>    برای افزودن فصل حداقل یک دوره اضافه کنید</p></div>
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">فصل</h4>

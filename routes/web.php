@@ -27,14 +27,6 @@ Route::get('/blog/{id}', [\App\Http\Controllers\IndexController::class, 'showBlo
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
 
-//PayPal
-Route::get('create-transaction', [\App\Http\Controllers\PaymentController::class, 'createTransaction'])->name('createTransaction');
-Route::get('process-transaction', [\App\Http\Controllers\PaymentController::class, 'processTransaction'])->name('processTransaction');
-Route::get('success-transaction', [\App\Http\Controllers\PaymentController::class, 'successTransaction'])->name('successTransaction');
-Route::get('cancel-transaction', [\App\Http\Controllers\PaymentController::class, 'cancelTransaction'])->name('cancelTransaction');
-
-//ZarinPal
-
 //Language Flag
 Route::get('/course/english', [\App\Http\Controllers\FlagController::class, 'courseEnglish'])->name('course.english');
 Route::get('/course/spanish', [\App\Http\Controllers\FlagController::class, 'courseSpanish'])->name('course.spanish');
@@ -90,6 +82,16 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     //collaboration
     Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
     Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
+
+    //Payment
+    Route::get('create-transaction', [\App\Http\Controllers\PaymentController::class, 'createTransaction'])->name('createTransaction');
+    Route::get('process-transaction', [\App\Http\Controllers\PaymentController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('success-transaction', [\App\Http\Controllers\PaymentController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('cancel-transaction', [\App\Http\Controllers\PaymentController::class, 'cancelTransaction'])->name('cancelTransaction');
+    Route::get('bill/{id}', [\App\Http\Controllers\HomeController::class, 'bill'])->name('goBilling');
+    Route::get('zarin-pay/{id}/purchase', [\App\Http\Controllers\PaymentController::class, 'redirectZarin'])->name('purchase');
+    Route::get('zarin-pay/{id}/purchase/result', [\App\Http\Controllers\PaymentController::class, 'zarinResult'])->name('purchase.result');
+    //Route::get('zarin-pay/{id}/{d_price}', [\App\Http\Controllers\PaymentController::class, 'redirectZarin'])->name('redirectToZarinPal');
 });
 
 //Admin

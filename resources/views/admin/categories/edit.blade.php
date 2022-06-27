@@ -21,11 +21,6 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-label-group">
-                                            <input type="text" class="form-control" placeholder="اسلاگ دسته بندی" name="category_slug" value="{{$category->category_slug}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-label-group">
                                             <select class="form-control" name="parent_id" id="basicSelect">
                                                 <option value="">None</option>
                                                 @if($categories)

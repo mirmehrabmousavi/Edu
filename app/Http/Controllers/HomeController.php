@@ -340,4 +340,10 @@ class HomeController extends Controller
 
         return redirect()->route('my-account')->with($notification);
     }
+
+    public function bill($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('course.bill',compact('course'));
+    }
 }

@@ -15,7 +15,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">نام دسته بندی</th>
-                                <th scope="col">slug دسته بندی</th>
                                 <th scope="col">ایدی والد</th>
                                 <th scope="col"></th>
                             </tr>
@@ -25,7 +24,6 @@
                                 <tr>
                                     <th scope="row">{{$loop->index+1}}</th>
                                     <td>{{$category->category_name}}</td>
-                                    <td>{{$category->category_slug}}</td>
                                     <td>{{($category->parent_id == null) ? 'بدون والد' : $category->parent_id}}</td>
                                     <td>
                                         <a href="{{Route('admin.editCategory', $category->id)}}" class="btn btn-outline-primary round mr-1 mb-1 waves-effect waves-light">ویرایش</a>

@@ -14,7 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "pishran/zarinpal": "^4.3",
+        "shetabit/payment": "^4.3",
         "srmklive/paypal": "~3.0",
         "unisharp/laravel-filemanager": "^2.5"
     },

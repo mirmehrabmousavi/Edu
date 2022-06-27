@@ -67,13 +67,13 @@
                     <div class="property_video xl mb-4">
                         <div class="thumb">
                             <img class="pro_img img-fluid w100"
-                                 src="{{($course->c_poster != null) ? '/upload/course/'.$course->c_poster : url('/upload/no-image.png')}}"
+                                 src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}"
                                  alt="7.jpg">
                             <div class="overlay_icon">
                                 <div class="bb-video-box">
                                     <div class="bb-video-box-inner">
                                         <div class="bb-video-box-innerup">
-                                            <a href="{{($course->c_demo != null) ? '/upload/course/'.$course->c_demo : ($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}"
+                                            <a href="{{($course->c_demo != null) ? $course->c_demo : ($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}"
                                                data-toggle="modal" data-target="#popup-video" class="theme-cl"><i
                                                     class="ti-control-play"></i></a>
                                         </div>
@@ -309,7 +309,7 @@
                                 @csrf
                                 @method('patch')
                             </form>
-                            <a href="#" class="btn btn-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
+                            <a href="{{route('goBilling',['id' => $course->id])}}" class="btn btn-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
                         </div>
 
 

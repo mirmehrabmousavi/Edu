@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
 
-             <li class="nav-item mr-auto"><a class="navbar-brand" href="#">
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="#">
                     {{--<div class="brand-logo"></div>--}}
                     <h2 class="brand-text mb-0">مدیریت</h2>
                 </a></li>
@@ -21,9 +21,12 @@
                     <span class="menu-title">داشبورد ها</span>
                 </a>
                 <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('index')}}"><i class="feather icon-circle"></i><span class="menu-item">صفحه اصلی</span></a></li>
-                    <li class="is-shown"><a href="{{route('home')}}"><i class="feather icon-circle"></i><span class="menu-item">داشبورد مدرس</span></a></li>
-                    <li class="is-shown"><a href="{{route('admin.home')}}"><i class="feather icon-circle"></i><span class="menu-item">داشبورد ادمین</span></a></li>
+                    <li class="is-shown"><a href="{{route('index')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">صفحه اصلی</span></a></li>
+                    <li class="is-shown"><a href="{{route('home')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">داشبورد مدرس</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.home')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">داشبورد ادمین</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexCategory')}}">
@@ -31,8 +34,10 @@
                     <span class="menu-title">دسته بندی</span>
                 </a>
                 <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.indexCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">دسته بندی ها</span></a></li>
-                    <li class="is-shown"><a href="{{route('admin.createCategory')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دسته بندی</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.indexCategory')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">دسته بندی ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createCategory')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">افزودن دسته بندی</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexCourse')}}">
@@ -40,14 +45,16 @@
                     <span class="menu-title">دوره ها</span>
                 </a>
                 <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{route('admin.indexCourse')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">دوره ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createCourse')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن دوره</span></a></li>
 
-                    @php $cat = \App\Models\Category::all() @endphp
-                    @if(empty($cat))
-                        <li class="is-shown"><a href="{{route('admin.indexCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">دوره ها</span></a></li>
-                        <li class="is-shown"><a href="{{route('admin.createCourse')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن دوره</span></a></li>
-                    @else
-                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن دوره حداقل یک دسته بندی اضافه کنید</p></div></li>
-                    @endif
+                    <li class="is-shown">
+                        <div class="alert alert-warning"><p style="font-size: 10px">برای افزودن دوره حداقل یک دسته بندی
+                                اضافه کنید</p></div>
+                    </li>
+
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexLesson')}}">
@@ -56,13 +63,15 @@
                 </a>
                 <ul class="menu-content" style="">
 
-                    @php $courses = \App\Models\Course::all() @endphp
-                    @if(empty($courses))
-                        <li class="is-shown"><a href="{{route('admin.indexLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
-                        <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن درس</span></a></li>
-                    @else
-                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن درس حداقل یک دوره اضافه کنید</p></div></li>
-                    @endif
+                    <li class="is-shown"><a href="{{route('admin.indexLesson')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">درس ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createLesson')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن درس</span></a></li>
+
+                    <li class="is-shown">
+                        <div class="alert alert-warning"><p style="font-size: 10px">برای افزودن درس حداقل یک دوره اضافه کنید</p></div>
+                    </li>
+
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexSeason')}}">
@@ -70,13 +79,16 @@
                     <span class="menu-title">فصل ها</span>
                 </a>
                 <ul class="menu-content" style="">
-                    @php $courses = \App\Models\Course::all() @endphp
-                    @if(empty($courses))
-                        <li class="is-shown"><a href="{{route('admin.indexSeason')}}"><i class="feather icon-circle"></i><span class="menu-item">فصل ها</span></a></li>
-                        <li class="is-shown"><a href="{{route('admin.createSeason')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن فصل</span></a></li>
-                    @else
-                        <li class="is-shown"><div class="alert alert-warning"><p style="font-size: 10px">برای افزودن فصل حداقل یک دوره اضافه کنید</p></div></li>
-                    @endif
+
+                    <li class="is-shown"><a href="{{route('admin.indexSeason')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">فصل ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createSeason')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن فصل</span></a></li>
+
+                    <li class="is-shown">
+                        <div class="alert alert-warning"><p style="font-size: 10px">برای افزودن فصل حداقل یک دوره اضافه کنید</p></div>
+                    </li>
+
                 </ul>
             </li>
             <li class=" nav-item"><a href="{{route('admin.indexBlog')}}">
@@ -84,8 +96,10 @@
                     <span class="menu-title">بلاگ</span>
                 </a>
                 <ul class="menu-content" style="">
-                    <li class="is-shown"><a href="{{route('admin.indexBlog')}}"><i class="feather icon-circle"></i><span class="menu-item">بلاگ ها</span></a></li>
-                    <li class="is-shown"><a href="{{route('admin.createBlog')}}"><i class="feather icon-circle"></i><span class="menu-item">افزودن بلاگ</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.indexBlog')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">بلاگ ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createBlog')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن بلاگ</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item">
@@ -106,7 +120,8 @@
                     <i class="feather icon-rewind"></i>
                     <span class="menu-title">درخواست مدرسین</span>
                     @php $coll = \App\Models\Collaborate::all(); @endphp
-                    <span class="badge badge badge-primary badge-pill float-right mr-2">{{($coll) ? count($coll) : '0'}}</span>
+                    <span
+                        class="badge badge badge-primary badge-pill float-right mr-2">{{($coll) ? count($coll) : '0'}}</span>
                 </a>
             </li>
             <li class=" nav-item">
@@ -114,7 +129,8 @@
                     <i class="feather icon-message-circle"></i>
                     <span class="menu-title">تیکت ها</span>
                     @php $tickets = \App\Models\Ticket::where('status','باز است')->get(); @endphp
-                    <span class="badge badge badge-primary badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
+                    <span
+                        class="badge badge badge-primary badge-pill float-right mr-2">{{($tickets) ? count($tickets) : '0'}}</span>
                 </a>
             </li>
             <li class=" nav-item">

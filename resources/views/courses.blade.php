@@ -150,7 +150,9 @@
                             <!-- Single Related Items -->
                                 <div class="product_item">
                                     <div class="thumbnail">
-                                        <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}" class="img-fluid" alt=""></a>
+                                        <a href="{{route('course.show',['id' => $course->id])}}">
+                                            <img src="{{(empty($course->c_poster)) ?  url('/upload/no-image.png') : $course->c_poster}}" class="img-fluid" alt="">
+                                        </a>
                                     </div>
                                     <div class="info">
                                         <h6 class="product-title"><a href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a></h6>

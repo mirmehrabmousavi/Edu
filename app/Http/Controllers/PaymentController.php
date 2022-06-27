@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Shetabit\Multipay\Invoice;
+use Shetabit\Payment\Facade\Payment;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaymentController extends Controller
@@ -80,41 +84,21 @@ class PaymentController extends Controller
             ->with('error', $response['message'] ?? 'You have canceled the transaction.');
     }
 
-    public function redirectZarin()
+    public function redirectZarin($id)
     {
-        $response = zarinpal()
-            ->merchantId('00000000-0000-0000-0000-000000000000') // تعیین مرچنت کد در حین اجرا - اختیاری
-            ->amount(100) // مبلغ تراکنش
-            ->request()
-            ->description('transaction info') // توضیحات تراکنش
-            ->callbackUrl('https://domain.com/verification') // آدرس برگشت پس از پرداخت
-            ->mobile('09123456789') // شماره موبایل مشتری - اختیاری
-            ->email('name@domain.com') // ایمیل مشتری - اختیاری
-            ->send();
+        $course = Course::findOrFail($id);
+        $invoice = new Invoice();
+        $invoice->amount($course->price_off);
 
-        if (!$response->success()) {
-            return $response->error()->message();
-        }
+        $payment = Payment::callbackUrl(route('purchase.result',['id' => $course->id]));
+        $payment->purchase($invoice,function($driver,$transactionId) {
 
-        return $response->redirect();
+        });
+        $payment->pay()->render();
     }
 
-    public function verifyStatus()
+    public function zarinResult(Request $request,$id)
     {
-        $authority = request()->query('Authority'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-        $status = request()->query('Status'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-
-        $response = zarinpal()
-            ->merchantId('00000000-0000-0000-0000-000000000000') // تعیین مرچنت کد در حین اجرا - اختیاری
-            ->amount(100)
-            ->verification()
-            ->authority($authority)
-            ->send();
-
-        if (!$response->success()) {
-            return $response->error()->message();
-        }
-
-        return $response->referenceId();
+        $request->dd();
     }
 }
