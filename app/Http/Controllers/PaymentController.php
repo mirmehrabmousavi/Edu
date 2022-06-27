@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Shetabit\Multipay\Drivers\Zarinpal\Zarinpal;
 use Shetabit\Multipay\Invoice;
 use Shetabit\Payment\Facade\Payment;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
