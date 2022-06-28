@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     //Class
     Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
     Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
+    //PurchasedCourse
+    Route::get('/purchased-course', [\App\Http\Controllers\HomeController::class, 'purchasedCourse'])->name('purchasedCourse');
     //SavedCourse
     Route::get('/saved-course', [\App\Http\Controllers\HomeController::class, 'savedCourse'])->name('savedCourse');
     Route::patch('/addToSavedCourse/{id}', [\App\Http\Controllers\HomeController::class, 'addToSavedCourse'])->name('addToSavedCourse');
@@ -84,10 +86,6 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
 
     //Payment
-    Route::get('create-transaction', [\App\Http\Controllers\PaymentController::class, 'createTransaction'])->name('createTransaction');
-    Route::get('process-transaction', [\App\Http\Controllers\PaymentController::class, 'processTransaction'])->name('processTransaction');
-    Route::get('success-transaction', [\App\Http\Controllers\PaymentController::class, 'successTransaction'])->name('successTransaction');
-    Route::get('cancel-transaction', [\App\Http\Controllers\PaymentController::class, 'cancelTransaction'])->name('cancelTransaction');
     Route::get('bill/{id}', [\App\Http\Controllers\HomeController::class, 'bill'])->name('goBilling');
     Route::get('zarin-pay/{id}/purchase', [\App\Http\Controllers\PaymentController::class, 'redirectZarin'])->name('purchase');
     Route::get('zarin-pay/{id}/purchase/result', [\App\Http\Controllers\PaymentController::class, 'zarinResult'])->name('purchase.result');
@@ -138,6 +136,8 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'editBlog'])->name('admin.editBlog');
     Route::patch('blog/edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'updateBlog'])->name('admin.updateBlog');
     Route::delete('blog/delete/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'deleteBlog'])->name('admin.deleteBlog');
+    //Pays
+    Route::get('pays', [\App\Http\Controllers\Admin\AdminController::class, 'pays'])->name('admin.pays');
     //collaboration
     Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'showCollaborate'])->name('admin.showCollaborate');
     Route::get('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'singleCollaborate'])->name('admin.singleCollaborate');

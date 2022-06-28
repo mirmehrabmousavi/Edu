@@ -309,7 +309,12 @@
                                 @csrf
                                 @method('patch')
                             </form>
-                            <a href="{{route('goBilling',['id' => $course->id])}}" class="btn btn-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
+                            @php $purchased = \App\Models\PurchasedCourse::where('user_id',auth()->user()->email)->where('course_id',$course->id)->exists() @endphp
+                            @if($purchased)
+                                <p class="btn btn-theme enroll-btn">دانشجوی دوره هستید</p>
+                            @else
+                                <a href="{{route('goBilling',['id' => $course->id])}}" class="btn btn-theme enroll-btn">خرید دوره<i class="ti-angle-left"></i></a>
+                            @endif
                         </div>
 
 

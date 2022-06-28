@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\PurchasedCourse;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -265,7 +267,16 @@ class HomeController extends Controller
         return view('dashboard.add-class');
     }
 
+    public function purchasedCourse()
+    {
+        $purchasedCourse = PurchasedCourse::where('user_id',Auth::user()->email)->first();
+        $course = Course::where('status_upload', 'منتشر شده')->where('user_id',$purchasedCourse->user_id)->paginate(8);
+        return view('dashboard.purchased-course',compact('course'));
+    }
+
     public function savedCourse()
+
+
     {
         $courses = Course::where('status_upload', 'منتشر شده')->where('user_id', auth()->user()->email)->where('saved', 1)->paginate(5);
         return view('dashboard.saved-course', compact('courses'));
@@ -288,7 +299,8 @@ class HomeController extends Controller
 
     public function myPays()
     {
-        return view('dashboard.pays');
+        $transaction = Transaction::where('user_id',\auth()->user()->id)->paginate(15);
+        return view('dashboard.pays',compact('transaction'));
     }
 
     public function myAccount()

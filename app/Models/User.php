@@ -36,6 +36,16 @@ class User extends Authenticatable
         'is_seller',
     ];
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class,'user_id');
+    }
+
+   /* public function purchasedCourse()
+    {
+        return $this->hasMany(PurchasedCourse::class,'user_id');
+    }*/
+
     /**
      * The attributes that should be hidden for serialization.
      *

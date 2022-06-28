@@ -7,14 +7,13 @@
     <meta name="description" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
     <title>آموزشگاه زبان های خارجی رایا</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Custom CSS -->
     <link href="/assets/css/styles.css" rel="stylesheet">
-
     <!-- Custom Color Option -->
     <link href="/assets/css/colors.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" type="text/css">

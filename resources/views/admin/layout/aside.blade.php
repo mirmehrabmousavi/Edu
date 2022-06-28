@@ -103,7 +103,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{--{{route('admin.pays')}}--}}">
+                <a href="{{route('admin.pays')}}">
                     <i class="feather icon-dollar-sign"></i>
                     <span class="menu-title">پرداخت ها</span>
                     <span class="badge badge badge-primary badge-pill float-right mr-2">123</span>

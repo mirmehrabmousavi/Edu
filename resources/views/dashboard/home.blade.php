@@ -162,30 +162,14 @@
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            {{--<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="content-box-01">
                     <div class="content-box-01-head mb-3"><h5 class="mb-0">پرداختی ها</h5></div>
                     <div class="content-box-01-full mb-4">
-                        @php $coures = \App\Models\Course::latest()->paginate(3) @endphp
-                        @foreach($courses as $course)
-                            <div class="learnup-list">
-                                <div class="learnup-list-thumb">
-                                    <a href="{{route('course.show',['id' => $course->id])}}"><img
-                                            src="{{($course->c_poster != null) ? $course->c_poster : url('/upload/no-image.png')}}"
-                                            class="img-fluid"
-                                            alt=""/></a>
-                                </div>
-                                <div class="learnup-list-caption">
-                                    <h6><a href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a>
-                                    </h6>
-                                    <div class="learnup-info mt-2"><span class="ml-3">{{$course->time}}</span><span>456 شرکت کننده</span>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+
                     </div>
                 </div>
-            </div>
+            </div>--}}
 
             {{--    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="content-box-01">

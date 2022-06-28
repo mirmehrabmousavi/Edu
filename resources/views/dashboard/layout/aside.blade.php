@@ -15,7 +15,7 @@
                     <li><a href="{{route('myLesson')}}"><i class="ti-book"></i>درس های من</a></li>
                     <li><a href="{{route('myClass')}}"><i class="ti-book"></i>کلاس های من</a></li>
                     <li><a href="{{route('savedCourse')}}"><i class="ti-heart"></i>دوره های مورد علاقه</a></li>
-                    <li><a href="#"><i class="ti-heart"></i>دوره های خریده شده</a></li>
+                    <li><a href="{{route('purchasedCourse')}}"><i class="ti-heart"></i>دوره های خریده شده</a></li>
                     <li><a href="{{route('ticket.create')}}"><i class="ti-pencil"></i>ارسال تیکت</a></li>
                     <li><a href="{{route('myTickets')}}"><i class="ti-menu"></i>تیکت ها</a></li>
                     <li><a href="{{route('myPays')}}"><i class="ti-bag"></i>پرداخت ها</a></li>
@@ -28,7 +28,7 @@
                 @else
                     <li class="active"><a href="{{route('home')}}"><i class="ti-user"></i>داشبورد</a></li>
                     <li><a href="{{route('savedCourse')}}"><i class="ti-heart"></i>دوره های مورد علاقه</a></li>
-                    <li><a href="#"><i class="ti-heart"></i>دوره های خریده شده</a></li>
+                    <li><a href="{{route('purchasedCourse')}}"><i class="ti-heart"></i>دوره های خریده شده</a></li>
                     <li><a href="{{route('myClass')}}"><i class="ti-heart"></i>کلاس های من</a></li>
                     <li><a href="{{route('ticket.create')}}"><i class="ti-pencil"></i>ارسال تیکت</a></li>
                     <li><a href="{{route('myTickets')}}"><i class="ti-heart"></i>تیکت ها</a></li>

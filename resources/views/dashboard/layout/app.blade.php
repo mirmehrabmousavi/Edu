@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
     <title>آموزشگاه زبان های خارجی رایا</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">

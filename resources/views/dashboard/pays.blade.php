@@ -31,94 +31,57 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">عنوان پرداخت</th>
+                                    <th scope="col">جمع کل</th>
                                     <th scope="col">تاریخ</th>
                                     <th scope="col">وضعیت</th>
-                                    <th scope="col">جمع کل</th>
                                     <th scope="col">عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($transaction as $val)
                                 <tr>
-                                    <th scope="row">#0000149</th>
-                                    <td>2مهر 1399</td>
-                                    <td><span class="payment_status inprogress">درحال بررسی</span></td>
-                                    <td>110000 ت</td>
-                                    <td>
+                                    <th scope="row">#0000{{+$loop->index+1}}</th>
+                                    @php $course = \App\Models\Course::where('id',$val->course_id)->first() @endphp
+                                    <td>{{$course->title}}</td>
+                                    <td>{{$val->paid}}</td>
+                                    <td>{{$val->created_at->diffForHumans()}}</td>
+                                    @php
+                                        $status = 'موفق';
+                                        $color = '';
+                                        switch ($val->status) {
+                                            case 0:
+                                                $status = 'کنسل شده';
+                                                $color = 'cancel';
+                                                break;
+                                            case 1:
+                                                $status = 'در انتظار پرداخت';
+                                                $color = 'pending';
+                                                break;
+                                            case 2:
+                                                $status = 'موفق';
+                                                $color = 'complete';
+                                                break;
+                                        }
+                                    @endphp
+                                    <td><span class="payment_status {{$color}}">{{$status}}</span></td>
+                                    {{--<td>
                                         <div class="dash_action_link">
                                             <a href="#" class="view">مشاهده</a>
                                             <a href="#" class="cancel">کنسل</a>
                                         </div>
-                                    </td>
+                                    </td>--}}
                                 </tr>
-                                <tr>
-                                    <th scope="row">#0000150</th>
-                                    <td>4شهریور 1399</td>
-                                    <td><span class="payment_status complete">تکمیل</span></td>
-                                    <td>119000 ت</td>
-                                    <td>
-                                        <div class="dash_action_link">
-                                            <a href="#" class="view">مشاهده</a>
-                                            <a href="#" class="cancel">کنسل</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#0000151</th>
-                                    <td>7مرداد 1399</td>
-                                    <td><span class="payment_status complete">تکمیل</span></td>
-                                    <td>149000 ت</td>
-                                    <td>
-                                        <div class="dash_action_link">
-                                            <a href="#" class="view">مشاهده</a>
-                                            <a href="#" class="cancel">کنسل</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#0000152</th>
-                                    <td>10تیر 1399</td>
-                                    <td><span class="payment_status pending">در انتظار پرداخت</span></td>
-                                    <td>199000 ت</td>
-                                    <td>
-                                        <div class="dash_action_link">
-                                            <a href="#" class="view">مشاهده</a>
-                                            <a href="#" class="cancel">کنسل</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#0000153</th>
-                                    <td>21خرداد 1399</td>
-                                    <td><span class="payment_status hold">در صف نتظار</span></td>
-                                    <td>166000 ت</td>
-                                    <td>
-                                        <div class="dash_action_link">
-                                            <a href="#" class="view">مشاهده</a>
-                                            <a href="#" class="cancel">کنسل</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">#0000154</th>
-                                    <td>11اردیبهشت 1399</td>
-                                    <td><span class="payment_status cancel">کنسل</span></td>
-                                    <td>862000 ت</td>
-                                    <td>
-                                        <div class="dash_action_link">
-                                            <a href="#" class="view">مشاهده</a>
-                                            <a href="#" class="cancel">کنسل</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        {{$transaction->links('pagination.paginate')}}
                     </div>
 
                 </div>
             </div>
         </div>
         <!-- /Row -->
-
     </div>
 @endsection

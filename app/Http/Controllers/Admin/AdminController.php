@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Placement;
 use App\Models\Ticket;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -150,6 +151,12 @@ class AdminController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function pays()
+    {
+        $transaction = Transaction::latest()->paginate(15);
+        return view('admin.pays',compact('transaction'));
     }
 
     public function fileManager()
