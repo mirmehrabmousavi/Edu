@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Option;
 use App\Models\Placement;
+use App\Models\Settings;
 use App\Models\Ticket;
 use App\Models\Transaction;
 use App\Models\User;
@@ -45,7 +47,31 @@ class AdminController extends Controller
     public function settings()
     {
         $admin = Auth::user();
-        return view('admin.settings',compact('admin'));
+        $option = Option::where('id',1)->get();
+        return view('admin.settings',compact('admin','option'));
+    }
+
+    public function indexUpdate(Request $request)
+    {
+        $settings = Option::where('id', 1)->get();
+        foreach ($settings as $option) {
+            $option->title = $request->title;
+            $option->ico = $request->ico;
+            $option->banner_txt_1 = $request->banner_txt_1;
+            $option->banner_img_1 = $request->banner_img_1;
+            $option->video_file = $request->video_file;
+            $option->video_poster = $request->video_poster;
+            $option->banner_txt_2 = $request->banner_txt_2;
+            $option->banner_img_2 = $request->banner_img_2;
+            $option->save();
+        }
+
+        $notification = [
+            'message' => 'با موفقیت بروزرسانی شد.',
+            'alert-type' => 'success'
+        ];
+
+        return redirect(route('admin.settings'))->with($notification);
     }
 
     public function settingsUpdate(Request $request)

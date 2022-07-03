@@ -98,6 +98,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
     //Settings
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
+    Route::patch('settings/index/update', [\App\Http\Controllers\Admin\AdminController::class, 'indexUpdate'])->name('admin.index.update');
     Route::patch('settings/update', [\App\Http\Controllers\Admin\AdminController::class, 'settingsUpdate'])->name('admin.settings.update');
     Route::patch('password/update', [\App\Http\Controllers\Admin\AdminController::class, 'passwordUpdate'])->name('admin.password.update');
     Route::patch('social/create', [\App\Http\Controllers\Admin\AdminController::class, 'createSocial'])->name('admin.create.social');

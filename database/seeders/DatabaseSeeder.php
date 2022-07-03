@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Option;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -34,6 +35,24 @@ class DatabaseSeeder extends Seeder
                 'password'=> bcrypt('123456'),
             ],
         ];
+
+        $option = [
+            [
+                'title' => '/upload/no-image.jpg',
+                'ico' => '/upload/no-image.jpg',
+                'banner_txt_1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                'banner_img_1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                'video_file' => '',
+                'video_poster' => '/upload/no-image.jpg',
+                'banner_txt_2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                'banner_img_2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            ]
+        ];
+
+      foreach($option as $value) {
+          Option::create($value);
+      }
+
 
         foreach ($user as $key => $value) {
             User::create($value);

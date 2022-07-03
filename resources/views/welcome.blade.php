@@ -4,12 +4,12 @@
     <!-- ============================ Hero Banner  Start================================== -->
     <div class="image-cover hero_banner hero-inner-2" style="background:#152974;" data-overlay="0">
         <div class="container">
+            @foreach($option as $val)
             <!-- Type -->
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="banner-search-2 transparent">
-                        <h1 class="big-header-capt cl_2 mb-2 f_2">تجربه یادگیری آسان، اجتماعی و تعاملی آنلاین</h1>
-                        <p>هر موضوعی را در هر زمان مطالعه کنید. هزاران دوره آموزشی را با کمترین قیمت جستجو کنید!</p>
+                        {!! $val->banner_txt_1 !!}
                         <div class="mt-4">
                             <a href="#" class="btn btn-modern dark" data-toggle="modal"
                                data-target="#signup">ثبت نام کنید<span><i class="ti-arrow-left"></i></span></a>
@@ -19,10 +19,10 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="flixio pt-5">
-                        <img class="img-fluid" src="/assets/img/eloip.png" alt="">
+                        <img class="img-fluid" src="{{$val->banner_img_1}}" alt="">
                     </div>
                 </div>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -469,27 +469,36 @@
     <!-- ========================== About Facts List Section =============================== -->
     <section>
         <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="vid" style="align-items: center; text-align: center">
+                      @foreach($option as $val)
+                      <video controls autoplay
+                             src="{{$val->video_file}}"
+                             poster="{{$val->video_poster}}">
+
+                          Sorry, your browser doesn't support embedded videos,
+                          but don't worry, you can <a href="{{$val->video_file}}">download it</a>
+                          and watch it with your favorite video player!
+
+
+                      </video>
+                      @endforeach
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================== About Facts List Section =============================== -->
+    <section>
+        <div class="container">
 
             <div class="row align-items-center">
-
+@foreach($option as $val)
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="about-short">
-                        <div class="sec-heading mb-3">
-                            <h2>مسیرهای <span class="theme-cl">یادگیری </span>و مجموعه های آموزشی</h2>
-                        </div>
-                        <p>حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای
-                            طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
-                        <p>برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا
-                            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو
-                            در زبان فارسی ایجاد کرد.</p>
-                        <div class="cource_facts">
-                            <ul>
-                                <li><span class="theme-cl">7+</span>ساعت آموزش</li>
-                                <li><span class="theme-cl">77</span>نفر دانشجو</li>
-                                <li><span class="theme-cl">84+</span>حوزه تخصصی</li>
-                            </ul>
-                        </div>
+                        {!! $val->banner_txt_2 !!}}
                         <a href="#" class="btn btn-modern">درباره ما<span><i class="ti-arrow-left"></i></span></a>
                     </div>
                 </div>
@@ -497,11 +506,11 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="list_facts_wrap_img">
 
-                        <img src="/assets/img/edu_2.png" class="img-fluid" alt="">
+                        <img src="{{$val->banner_img_2}}" class="img-fluid" alt="">
 
                     </div>
                 </div>
-
+                    @endforeach
             </div>
 
         </div>
@@ -616,8 +625,8 @@
                                 <div class="testimonial-icon-thumb"><span class="quotes"><i
                                             class="fas fa-quote-right"></i></span><img src="/assets/img/user-2.jpg"
                                                                                        class="img-fluid" alt=""></div>
-                                <h5>مژده قاسمی</h5>
-                                <span>مدیر عامل شرکت</span>
+                                <h5>فائزه نعمتی</h5>
+                                <span>زبان آموز زبان آلمانی کلاس گروهی و خصوصی</span>
                                 <div class="testi-rate">
                                     <i class="fa fa-star filled"></i>
                                     <i class="fa fa-star filled"></i>
@@ -627,8 +636,13 @@
                                 </div>
                             </div>
                             <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود
-                                    طراحی اساسا مورد استفاده قرار گیرد.</p>
+                                <p>سلام وقتتون بخیر
+                                    من به صورت تصادفی توی اینستاگرام با پیجتون آشنا شدم
+                                    و بخاطر قیمت خیلی مناسبی که داشتین دوره اول ثبت نام کردم
+                                    کیفیت کلاس هاتون بسیار بالا و خوبه استاد صبوری دارن که این برای من خیلی مهم بود سطح بالای سواد استاد و توضیح تمامی مطالب کتاب
+                                    به روش ساده و مفید و پاسخگویی تمام وقت استاد و ادمین اموزشگاه
+                                    واقعا همه چی عالیه 😍♥️همین کیفیت عالی باعث شد من کلاسا رو خصوصی با موسسه شما بردارم
+                                    ممنونم ازتون</p>
                             </div>
                         </div>
 
@@ -638,8 +652,8 @@
                                 <div class="testimonial-icon-thumb"><span class="quotes"><i
                                             class="fas fa-quote-right"></i></span><img src="/assets/img/user-1.jpg"
                                                                                        class="img-fluid" alt=""></div>
-                                <h5>دانیال ویلسون</h5>
-                                <span>مدرس ریاضی</span>
+                                <h5>محمد سالار منش </h5>
+                                <span>زبان آموز کلاس خصوصی آلمانی</span>
                                 <div class="testi-rate">
                                     <i class="fa fa-star filled"></i>
                                     <i class="fa fa-star filled"></i>
@@ -649,8 +663,7 @@
                                 </div>
                             </div>
                             <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
+                                <p>سلام و درود ممنون از اموزش خوبتون ما به شخصه یعنی من و خانمم بسیار از کلاس و استاد و صمیمیت و دلسوزی استاد واقعا راضی هستیم با توجه به اینکه ما قبلا هم یک دوره در کلاس دوره ای در اموزشگاه دیگه شرکت کرده بودیم ولی تو کلاس شما واقعا کلاس مفهومی و روان توضیح داده میشه و واقعا میگم عالی ممنون از کانال رایا واستاد عزیز بهرنگ که واقعا کم نذاشت برامون🌹🌹🙏🙏</p>
                             </div>
                         </div>
 
@@ -658,10 +671,10 @@
                         <div class="testimonial-wraps">
                             <div class="testimonial-icon">
                                 <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-3.jpg"
+                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-2.jpg"
                                                                                        class="img-fluid" alt=""></div>
-                                <h5>آدام واردیلیا</h5>
-                                <span>مدیر عامل شرکت</span>
+                                <h5>فروزان رحیمی</h5>
+                                <span>زبان آموز کلاس گروهی آلمانی</span>
                                 <div class="testi-rate">
                                     <i class="fa fa-star filled"></i>
                                     <i class="fa fa-star filled"></i>
@@ -671,96 +684,14 @@
                                 </div>
                             </div>
                             <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
+                                <p>خوشحالم از اینکه با موسسه رایا ،یادگیری زبان آلمانی رو میگذرونم وبرای من شانس بزرگی بود به چند علت :
+                                    نظارت مستقیم آموزشگاه بر کیفیت کلاسها و بازخورد مناسب
 
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-4.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>الهام کرمی</h5>
-                                <span>مدرس فیزیک</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
+                                    استاد بسیار بسیار عالی که یادگیری زبان سخت المانی رو با وجود مشغله کاری،برای من بسیار شیرین و دوست داشتنی کردن
+                                    بازه زمانی مناسب برای تمام کردن سطوح زبان آلمانی
 
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-5.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>مسعود راد</h5>
-                                <span>مدیر فروش</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-6.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>الهام کرمی</h5>
-                                <span>دیجیتال مارکتنیگ</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-7.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>آدام واردیلیا</h5>
-                                <span>مدیر عامل شرکت</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردها و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                                    اساسا مورد استفاده قرار گیرد.</p>
+                                    نهایتا هزینه مناسب کلاسها
+                                    ممنونم از دوستان مجموعه آموزشی رایا و خسته نباشید.</p>
                             </div>
                         </div>
 

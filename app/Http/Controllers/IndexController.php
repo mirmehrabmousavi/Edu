@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Collaborate;
 use App\Models\Course;
+use App\Models\Option;
 use App\Models\Placement;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class IndexController extends Controller
         $courses = Course::where('status_upload','منتشر شده')->paginate(5);
         $user = User::where('is_seller',1)->paginate(4);
         $blogs = Blog::latest()->paginate(3);
-        return view('welcome',compact('cat','courses','user','blogs'));
+        $option = Option::where('id',1)->get();
+        return view('welcome',compact('cat','courses','user','blogs','option'));
     }
 
     public function courses()
