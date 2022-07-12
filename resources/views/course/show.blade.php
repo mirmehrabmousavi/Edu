@@ -116,6 +116,8 @@
                                                         {{$loop->index+1}}
                                                     </div>
                                                     {{$val->title}}
+                                                    <a href="{{$val->l_file}}" class="btn btn-sm btn-light rounded mr-4"><i class="fa fa-download"></i></a>
+                                                    <a href="{{$val->l_video}}" class="btn btn-sm btn-light rounded mr-4"><i class="fa fa-video"></i></a>
                                                 </li>
                                             </ul>
                                         </div>

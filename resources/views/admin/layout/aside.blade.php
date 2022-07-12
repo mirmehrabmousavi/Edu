@@ -102,6 +102,17 @@
                                 class="feather icon-circle"></i><span class="menu-item">افزودن بلاگ</span></a></li>
                 </ul>
             </li>
+            <li class=" nav-item"><a href="{{route('onlineClass.index')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">زوم</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{route('onlineClass.index')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">متصل کردن زوم</span></a></li>
+                    <li class="is-shown"><a href="{{route('onlineClass.create')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن زوم</span></a></li>
+                </ul>
+            </li>
             <li class=" nav-item">
                 <a href="{{route('admin.pays')}}">
                     <i class="feather icon-dollar-sign"></i>

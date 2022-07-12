@@ -96,6 +96,8 @@ Route::group(['middleware' => 'auth','teacher'], function () {
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
+    //Zoom
+    Route::resource('/onlineClass', \App\Http\Controllers\Admin\OnlineClassController::class);
     //Settings
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/index/update', [\App\Http\Controllers\Admin\AdminController::class, 'indexUpdate'])->name('admin.index.update');

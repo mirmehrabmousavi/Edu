@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "macsidigital/laravel-zoom": "^5.0",
         "shetabit/payment": "^4.3",
         "srmklive/paypal": "~3.0",
         "unisharp/laravel-filemanager": "^2.5"
