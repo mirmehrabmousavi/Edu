@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::post('/add-course', [\App\Http\Controllers\HomeController::class, 'storeCourse'])->name('storeCourse');
     Route::get('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'editCourse'])->name('editCourse');
     Route::patch('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'updateCourse'])->name('updateCourse');
+    Route::patch('/edit-course/{id}/', [\App\Http\Controllers\HomeController::class, 'updateCourse'])->name('updateCourse');
     //Lesson
     Route::get('/my-lesson', [\App\Http\Controllers\HomeController::class, 'myLesson'])->name('myLesson');
     Route::get('/add-lesson', [\App\Http\Controllers\HomeController::class, 'addLesson'])->name('addLesson');
@@ -63,8 +64,12 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::patch('/edit-lesson/{id}/', [\App\Http\Controllers\HomeController::class, 'updateLesson'])->name('updateLesson');
     Route::delete('/delete-lesson/{id}/', [\App\Http\Controllers\HomeController::class, 'deleteLesson'])->name('deleteLesson');
     //Class
-    Route::get('/my-class', [\App\Http\Controllers\HomeController::class, 'myClass'])->name('myClass');
-    Route::get('/add-class', [\App\Http\Controllers\HomeController::class, 'addClass'])->name('addClass');
+    Route::get('/my-class', [\App\Http\Controllers\ClassController::class, 'myClass'])->name('myClass');
+    Route::get('/add-class', [\App\Http\Controllers\ClassController::class, 'addClass'])->name('addClass');
+    Route::post('/add-class', [\App\Http\Controllers\ClassController::class, 'storeClass'])->name('storeClass');
+    Route::get('/edit-class/{id}', [\App\Http\Controllers\ClassController::class, 'editClass'])->name('editClass');
+    Route::patch('/edit-class/{id}', [\App\Http\Controllers\ClassController::class, 'updateClass'])->name('updateClass');
+    Route::delete('/delete-class/{id}', [\App\Http\Controllers\ClassController::class, 'deleteClass'])->name('deleteClass');
     //PurchasedCourse
     Route::get('/purchased-course', [\App\Http\Controllers\HomeController::class, 'purchasedCourse'])->name('purchasedCourse');
     //SavedCourse
@@ -84,7 +89,6 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     //collaboration
     Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
     Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
-
     //Payment
     Route::get('bill/{id}', [\App\Http\Controllers\HomeController::class, 'bill'])->name('goBilling');
     Route::get('zarin-pay/{id}/purchase', [\App\Http\Controllers\PaymentController::class, 'redirectZarin'])->name('purchase');
@@ -96,8 +100,13 @@ Route::group(['middleware' => 'auth','teacher'], function () {
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
-    //Zoom
-    Route::resource('/onlineClass', \App\Http\Controllers\Admin\OnlineClassController::class);
+    //Zoom Class
+    Route::get('/onlineClass', [\App\Http\Controllers\Admin\OnlineClassController::class, 'index'])->name('onlineClass.index');
+    Route::get('/onlineClass/create', [\App\Http\Controllers\Admin\OnlineClassController::class, 'create'])->name('onlineClass.create');
+    Route::post('/onlineClass/create', [\App\Http\Controllers\Admin\OnlineClassController::class, 'store'])->name('onlineClass.store');
+    Route::get('/onlineClass/edit/{id}', [\App\Http\Controllers\Admin\OnlineClassController::class, 'edit'])->name('onlineClass.edit');
+    Route::patch('/onlineClass/edit/{id}', [\App\Http\Controllers\Admin\OnlineClassController::class, 'update'])->name('onlineClass.update');
+    Route::delete('/onlineClass/delete/{id}', [\App\Http\Controllers\Admin\OnlineClassController::class, 'destroy'])->name('onlineClass.destroy');
     //Settings
     Route::get('settings', [\App\Http\Controllers\Admin\AdminController::class, 'settings'])->name('admin.settings');
     Route::patch('settings/index/update', [\App\Http\Controllers\Admin\AdminController::class, 'indexUpdate'])->name('admin.index.update');

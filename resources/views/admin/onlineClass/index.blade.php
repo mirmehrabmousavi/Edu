@@ -19,6 +19,7 @@
                                 <th scope="col">تاریخ شروع کلاس</th>
                                 <th scope="col">مدت زمان دوره</th>
                                 <th scope="col">لینک ورود به کلاس</th>
+                                <th scope="col">گذرواژه</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -26,12 +27,14 @@
                             @foreach($onlineClasses as $value)
                                 <tr>
                                     <th scope="row">{{$loop->index+1}}</th>
-                                    <td>{{$value->user()->email}}</td>
+                                    <td>{{$value->user_id}}</td>
                                     <td>{{$value->topic}}</td>
                                     <td>{{$value->start_at}}</td>
                                     <td>{{$value->duration}}</td>
-                                    <td class="text-success"><a href="{{$val->join_url}}" target="_blank">ورود به کلاس</a></td>
+                                    <td class="text-success"><a href="{{$value->join_url}}" target="_blank">ورود به کلاس</a></td>
+                                    <td>{{$value->password}}</td>
                                     <td>
+                                        <a class="btn btn-outline-primary round mr-1 mb-1 waves-effect waves-light" href="{{route('onlineClass.edit',['id' => $value->id])}}">ویرایش</a>
                                         <a class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light" href="{{ route('onlineClass.destroy',['id' => $value->id]) }}" onclick="event.preventDefault();
                                                      document.getElementById('del').submit();">حذف</a>
                                         <form id="del" action="{{ route('onlineClass.destroy',['id' => $value->id]) }}" method="POST" class="d-none">

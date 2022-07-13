@@ -16,12 +16,10 @@ class CreateOnlineClassesTable extends Migration
         Schema::create('online_classes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('meeting_id');
             $table->string('topic');
-            $table->dateTime('start_at');
+            $table->dateTime('start_time');
             $table->integer('duration')->comment('minutes');
             $table->string('password')->comment('meeting password');
-            $table->text('start_url');
             $table->text('join_url');
             $table->timestamps();
         });

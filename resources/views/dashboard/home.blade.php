@@ -114,19 +114,18 @@
                 <div class="content-box-01">
                     <div class="content-box-01-head mb-3"><h5 class="mb-0">کلاس های من</h5></div>
                     <div class="content-box-01-full mb-4">
-
+                        @php $class = \App\Models\OnlineClass::where('user_id',auth()->user()->id)->paginate(3); @endphp
+                        @foreach($class as $val)
                         <div class="learnup-list">
-                            <div class="learnup-list-thumb">
-                                <a href="detail-6.html"><img src="assets/img/co-5.jpg" class="img-fluid"
-                                                             alt=""/></a>
-                            </div>
                             <div class="learnup-list-caption">
-                                <h6><a href="detail-6.html">آموزش Kendo در ASP.Net MVC</a></h6>
-                                <div class="learnup-info mt-2"><span class="ml-3">2ساعت 22دقیقه</span><span>4,52,236 شرکت کننده</span>
+                                <h6>{{$val->topic}}</h6>
+                                <p>مدت زمان : {{$val->duration}} دقیقه</p>
+                                <div class="learnup-info mt-2">
+                                    زمان شروع : {{$val->start_time}}
                                 </div>
                             </div>
                         </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -162,35 +161,24 @@
                 </div>
             </div>
 
-            {{--<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="content-box-01">
-                    <div class="content-box-01-head mb-3"><h5 class="mb-0">پرداختی ها</h5></div>
+                    <div class="content-box-01-head mb-3"><h5 class="mb-0">تراکنش های اخیر</h5></div>
                     <div class="content-box-01-full mb-4">
-
-                    </div>
-                </div>
-            </div>--}}
-
-            {{--    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                    <div class="content-box-01">
-                        <div class="content-box-01-head mb-3"><h5 class="mb-0">کلاس های من</h5></div>
-                        <div class="content-box-01-full mb-4">
-
+                        @php $transaction = App\Models\Transaction::where('user_id',\auth()->user()->id)->paginate(3); @endphp
+                        @foreach($transaction as $val)
                             <div class="learnup-list">
-                                <div class="learnup-list-thumb">
-                                    <a href="detail-6.html"><img src="assets/img/co-5.jpg" class="img-fluid"
-                                                                 alt=""/></a>
-                                </div>
                                 <div class="learnup-list-caption">
-                                    <h6><a href="detail-6.html">آموزش Kendo در ASP.Net MVC</a></h6>
-                                    <div class="learnup-info mt-2"><span class="ml-3">2ساعت 22دقیقه</span><span>4,52,236 شرکت کننده</span>
+                                    <h6>{{$val->paid}}</h6>
+                                    <div class="learnup-info mt-2">
+                                        {{$val->status}}
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                        @endforeach
                     </div>
-                </div>--}}
+                </div>
+            </div>
 
         </div>
         <!-- Row End -->

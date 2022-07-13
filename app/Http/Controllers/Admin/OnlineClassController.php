@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Traits\MeetingZoomTrait;
 use App\Models\OnlineClass;
 use Illuminate\Http\Request;
-use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineClassController extends Controller
 {
-    use MeetingZoomTrait;
 
     public function index()
     {
@@ -25,23 +22,20 @@ class OnlineClassController extends Controller
 
     public function store(Request $request)
     {
-        $meeting = $this->createMeeting($request);
-    dd($meeting);
-      /*  OnlineClass::create([
-            'user_id' => auth()->user()->id,
-            'meeting_id' => $meeting->id,
-            'topic' => $request->topic,
-            'start_at' => $request->start_time,
-            'duration' => $meeting->duration,
-            'password' => $meeting->password,
-            'start_url' => $meeting->start_url,
-            'join_url' => $meeting->join_url,
-        ]);
-        $notification = [
-            'message' => 'با موفقیت ساخته شد',
-            'alert-type' => 'success'
-        ];
-        return redirect()->route('onlineClasses.index')->with($notification);*/
+            OnlineClass::create([
+                'user_id' => $request->user()->id,
+               'topic' => $request->topic,
+               'start_time' => $request->start_time,
+               'duration' => $request->duration,
+               'join_url' => $request->join_url,
+               'password' => $request->password,
+            ]);
+
+            $notification = [
+                'message' => 'با موفقیت ذخیره شد',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('onlineClass.index')->with($notification);
     }
 
     public function show($id)
@@ -51,20 +45,38 @@ class OnlineClassController extends Controller
 
     public function edit($id)
     {
-        //
+        $onlineClass = OnlineClass::findOrFail($id);
+        return view('onlineClasses.edit',compact('onlineClass'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $onlineClass = OnlineClass::findOrFail($id);
+            $onlineClass->update([
+                'user_id' => $request->user()->id,
+                'topic' => $request->topic,
+                'start_time' => $request->start_time,
+                'duration' => $request->duration,
+                'join_url' => $request->join_url,
+                'password' => $request->password,
+            ]);
+
+            $notification = [
+                'message' => 'با موفقیت بروزرسانی شد',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('online_classes.index')->with($notification);
+        }catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         try {
-            $meeting = Zoom::meeting()->find($request->id);
-            $meeting->delete();
-            OnlineClass::where('meeting_id', $request->id)->delete();
+            $onlineClass = OnlineClass::findOrFail($id);
+            $onlineClass->delete();
             $notification = [
                 'message' => 'با موفقیت حذف شد',
                 'alert-type' => 'success'
