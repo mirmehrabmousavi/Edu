@@ -29,6 +29,8 @@ class OnlineClassController extends Controller
                'duration' => $request->duration,
                'join_url' => $request->join_url,
                'password' => $request->password,
+                'poster' => $request->poster,
+                'price' => $request->price,
             ]);
 
             $notification = [
@@ -60,6 +62,8 @@ class OnlineClassController extends Controller
                 'duration' => $request->duration,
                 'join_url' => $request->join_url,
                 'password' => $request->password,
+                'poster' => $request->poster,
+                'price' => $request->price,
             ]);
 
             $notification = [

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OnlineClass extends Model
 {
     use HasFactory;
-    public $fillable= ['user_id','topic','start_time','duration','password','join_url'];
+    public $fillable= ['user_id','topic','start_time','duration','password','join_url','poster','price'];
 
     public function user()
     {

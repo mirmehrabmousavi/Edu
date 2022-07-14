@@ -618,15 +618,16 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="reviews_third" id="reviews-slide" dir="rtl">
-
+                        @php $comments = \App\Models\Advice::all(); @endphp
+                        @foreach($comments as $val)
                         <!-- single -->
                         <div class="testimonial-wraps">
                             <div class="testimonial-icon">
                                 <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-2.jpg"
+                                            class="fas fa-quote-right"></i></span><img src="{{$val->profile}}"
                                                                                        class="img-fluid" alt=""></div>
-                                <h5>فائزه نعمتی</h5>
-                                <span>زبان آموز زبان آلمانی کلاس گروهی و خصوصی</span>
+                                <h5>{{$val->name}}</h5>
+                                <span>{{$val->group}}</span>
                                 <div class="testi-rate">
                                     <i class="fa fa-star filled"></i>
                                     <i class="fa fa-star filled"></i>
@@ -636,64 +637,10 @@
                                 </div>
                             </div>
                             <div class="facts-detail">
-                                <p>سلام وقتتون بخیر
-                                    من به صورت تصادفی توی اینستاگرام با پیجتون آشنا شدم
-                                    و بخاطر قیمت خیلی مناسبی که داشتین دوره اول ثبت نام کردم
-                                    کیفیت کلاس هاتون بسیار بالا و خوبه استاد صبوری دارن که این برای من خیلی مهم بود سطح بالای سواد استاد و توضیح تمامی مطالب کتاب
-                                    به روش ساده و مفید و پاسخگویی تمام وقت استاد و ادمین اموزشگاه
-                                    واقعا همه چی عالیه 😍♥️همین کیفیت عالی باعث شد من کلاسا رو خصوصی با موسسه شما بردارم
-                                    ممنونم ازتون</p>
+                                <p>{{$val->message}}</p>
                             </div>
                         </div>
-
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-1.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>محمد سالار منش </h5>
-                                <span>زبان آموز کلاس خصوصی آلمانی</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>سلام و درود ممنون از اموزش خوبتون ما به شخصه یعنی من و خانمم بسیار از کلاس و استاد و صمیمیت و دلسوزی استاد واقعا راضی هستیم با توجه به اینکه ما قبلا هم یک دوره در کلاس دوره ای در اموزشگاه دیگه شرکت کرده بودیم ولی تو کلاس شما واقعا کلاس مفهومی و روان توضیح داده میشه و واقعا میگم عالی ممنون از کانال رایا واستاد عزیز بهرنگ که واقعا کم نذاشت برامون🌹🌹🙏🙏</p>
-                            </div>
-                        </div>
-
-                        <!-- single -->
-                        <div class="testimonial-wraps">
-                            <div class="testimonial-icon">
-                                <div class="testimonial-icon-thumb"><span class="quotes"><i
-                                            class="fas fa-quote-right"></i></span><img src="/assets/img/user-2.jpg"
-                                                                                       class="img-fluid" alt=""></div>
-                                <h5>فروزان رحیمی</h5>
-                                <span>زبان آموز کلاس گروهی آلمانی</span>
-                                <div class="testi-rate">
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                    <i class="fa fa-star filled"></i>
-                                </div>
-                            </div>
-                            <div class="facts-detail">
-                                <p>خوشحالم از اینکه با موسسه رایا ،یادگیری زبان آلمانی رو میگذرونم وبرای من شانس بزرگی بود به چند علت :
-                                    نظارت مستقیم آموزشگاه بر کیفیت کلاسها و بازخورد مناسب
-
-                                    استاد بسیار بسیار عالی که یادگیری زبان سخت المانی رو با وجود مشغله کاری،برای من بسیار شیرین و دوست داشتنی کردن
-                                    بازه زمانی مناسب برای تمام کردن سطوح زبان آلمانی
-
-                                    نهایتا هزینه مناسب کلاسها
-                                    ممنونم از دوستان مجموعه آموزشی رایا و خسته نباشید.</p>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>

@@ -104,20 +104,32 @@
             </li>
             <li class=" nav-item"><a href="{{route('onlineClass.index')}}">
                     <i class="feather icon-menu"></i>
-                    <span class="menu-title">زوم</span>
+                    <span class="menu-title">کلاس ها</span>
                 </a>
                 <ul class="menu-content" style="">
                     <li class="is-shown"><a href="{{route('onlineClass.index')}}"><i class="feather icon-circle"></i><span
-                                class="menu-item">متصل کردن زوم</span></a></li>
+                                class="menu-item">کلاس ها</span></a></li>
                     <li class="is-shown"><a href="{{route('onlineClass.create')}}"><i
-                                class="feather icon-circle"></i><span class="menu-item">افزودن زوم</span></a></li>
+                                class="feather icon-circle"></i><span class="menu-item">افزودن کلاس</span></a></li>
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{route('admin.indexComment')}}">
+                    <i class="feather icon-menu"></i>
+                    <span class="menu-title">نظر ها</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li class="is-shown"><a href="{{route('admin.indexComment')}}"><i class="feather icon-circle"></i><span
+                                class="menu-item">نظر ها</span></a></li>
+                    <li class="is-shown"><a href="{{route('admin.createComment')}}"><i
+                                class="feather icon-circle"></i><span class="menu-item">افزودن نظر</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item">
                 <a href="{{route('admin.pays')}}">
                     <i class="feather icon-dollar-sign"></i>
                     <span class="menu-title">پرداخت ها</span>
-                    <span class="badge badge badge-primary badge-pill float-right mr-2">123</span>
+                    @php $pays = \App\Models\Transaction::all(); @endphp
+                    <span class="badge badge badge-primary badge-pill float-right mr-2">{{count($pays)}}</span>
                 </a>
             </li>
             <li class=" nav-item">

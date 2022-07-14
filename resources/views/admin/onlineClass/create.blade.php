@@ -82,6 +82,43 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">پوستر</label>
+                                                        <input type="text" class="form-control" name="poster"
+                                                               id="account-username" placeholder="پوستر"
+                                                               value=""
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">قیمت</label>
+                                                        <input type="text" class="form-control" name="price"
+                                                               id="account-username"
+                                                               placeholder="قیمت" value=""
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <label for="account-username">قیمت (دلار)</label>
+                                                        <input type="text" class="form-control" name="d_price"
+                                                               id="account-username"
+                                                               placeholder="قیمت (دلار)" value=""
+                                                               required="" data-validation-required-message="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                         <button type="submit"
                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">

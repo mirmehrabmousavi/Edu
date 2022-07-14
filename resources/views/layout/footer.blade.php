@@ -107,8 +107,6 @@
                     <ul class="footer-bottom-social">
                         @php $admin = \App\Models\User::where('is_admin',1)->get(); @endphp
                         @foreach($admin as $user)
-                        <li><a href="{{$user->facebook}}"><i class="ti-facebook"></i></a></li>
-                        <li><a href="{{$user->twitter}}"><i class="ti-twitter"></i></a></li>
                         <li><a href="{{$user->instagram}}"><i class="ti-instagram"></i></a></li>
                         <li><a href="{{$user->linkedin}}"><i class="ti-linkedin"></i></a></li>
                         @endforeach

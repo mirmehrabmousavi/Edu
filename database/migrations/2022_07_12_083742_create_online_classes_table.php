@@ -21,6 +21,8 @@ class CreateOnlineClassesTable extends Migration
             $table->integer('duration')->comment('minutes');
             $table->string('password')->comment('meeting password');
             $table->text('join_url');
+            $table->text('poster')->nullable();
+            $table->text('price');
             $table->timestamps();
         });
     }

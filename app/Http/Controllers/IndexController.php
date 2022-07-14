@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Collaborate;
 use App\Models\Course;
+use App\Models\OnlineClass;
 use App\Models\Option;
 use App\Models\Placement;
 use App\Models\User;
@@ -113,5 +114,14 @@ class IndexController extends Controller
         $blogs = Blog::latest()->paginate(5);
         $blog = Blog::findOrFail($id);
         return view('blog.show',compact('blog','blogs'));
+    }
+
+    public function classes()
+    {
+        $users = User::all();
+        $cat = Category::where('parent_id',null)->get();
+        $teachers = User::where('is_seller',1)->get();
+        $classes = OnlineClass::all();
+        return view('classes',compact('classes','cat','teachers','users'));
     }
 }

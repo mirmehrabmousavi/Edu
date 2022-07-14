@@ -11,7 +11,7 @@
                         <h4 class="property_block_title">تکمیل فرم درخواست</h4>
                     </div>
 
-                    <form class="prc_wrap-body" action="{{route('storeCollaborate')}}" method="POST">
+                    <form class="prc_wrap-body" action="{{route('storeCollaborate')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
@@ -42,10 +42,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>آدرس</label>
-                            <textarea class="form-control simple" name="address"></textarea>
-                        </div>
+                       <div class="col-lg-12 col-md-12">
+                           <div class="form-group">
+                               <label>آدرس</label>
+                               <input type="text" class="form-control simple" name="address">
+                           </div>
+                       </div>
+
 
                         <div class="form-group">
                             <label>عنوان</label>
@@ -55,6 +58,17 @@
                         <div class="form-group">
                             <label>پیام</label>
                             <textarea class="form-control simple" name="desc"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>رزومه</label>
+                            <textarea class="form-control simple" name="resume"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>ارسال ویدیو ویس و یا فایل</label>
+                            <input type="file" name="file" class="form-control simple">
                         </div>
 
                         <div class="form-group">

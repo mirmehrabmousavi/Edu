@@ -19,6 +19,7 @@ Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('i
 Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses'])->name('courses');
 Route::get('/courses/category/{id}', [\App\Http\Controllers\IndexController::class, 'coursesCat'])->name('coursesCat');
 Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'courseShow'])->name('course.show');
+Route::get('/classes', [\App\Http\Controllers\IndexController::class, 'classes'])->name('classes');
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
 Route::get('/placement', [\App\Http\Controllers\IndexController::class, 'createPlacement'])->name('addPlacement');
 Route::post('/placement', [\App\Http\Controllers\IndexController::class, 'storePlacement'])->name('storePlacement');
@@ -100,6 +101,13 @@ Route::group(['middleware' => 'auth','teacher'], function () {
 Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     //Admin Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.home');
+    //AddComment
+    Route::get('/comment', [\App\Http\Controllers\Admin\CommentController::class, 'indexComment'])->name('admin.indexComment');
+    Route::get('/comment/create', [\App\Http\Controllers\Admin\CommentController::class, 'createComment'])->name('admin.createComment');
+    Route::post('/comment/create', [\App\Http\Controllers\Admin\CommentController::class, 'storeComment'])->name('admin.storeComment');
+    Route::get('/comment/edit/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'editComment'])->name('admin.editComment');
+    Route::patch('/comment/edit/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'updateComment'])->name('admin.updateComment');
+    Route::delete('/comment/delete/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'deleteComment'])->name('admin.deleteComment');
     //Zoom Class
     Route::get('/onlineClass', [\App\Http\Controllers\Admin\OnlineClassController::class, 'index'])->name('onlineClass.index');
     Route::get('/onlineClass/create', [\App\Http\Controllers\Admin\OnlineClassController::class, 'create'])->name('onlineClass.create');

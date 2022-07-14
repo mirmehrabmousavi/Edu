@@ -24,15 +24,23 @@ class CollaborateController extends Controller
            'desc' => 'required',
         ]);
 
-        Collaborate::create([
-           'name' => $request->name,
-           'family' => $request->family,
-           'email' => $request->email,
-           'number' => $request->number,
-           'address' => $request->address,
-           'title' => $request->title,
-           'desc' => $request->desc,
-        ]);
+            $data = new Collaborate();
+           $data->name = $request->name;
+           $data->family = $request->family;
+           $data->email = $request->email;
+           $data->number = $request->number;
+           $data->address = $request->address;
+           $data->title = $request->title;
+           $data->desc = $request->desc;
+           $data->resume = $request->resume;
+        if ($request->file('file')) {
+            $file = $request->file('file');
+            @unlink(public_path('upload/collaborate'.$data->file));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/collaborate'),$filename);
+            $data['file'] = $filename;
+        }
+        $data->save();
 
         $notification = array(
             'message' => 'با موفقیت ارسال شدید :)',

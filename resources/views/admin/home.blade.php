@@ -50,7 +50,7 @@
                                 <i class="feather icon-dollar-sign text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">20</h2>
+                        <h2 class="text-bold-700 mt-1">{{count($pays)}}</h2>
                         <p>تعداد پرداخت ها</p>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                                 <i class="feather icon-cloud text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700 mt-1">12</h2>
+                        <h2 class="text-bold-700 mt-1">{{count($classes)}}</h2>
                         <p>تعداد کلاس ها</p>
                     </div>
                 </div>

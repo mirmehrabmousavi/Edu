@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Collaborate extends Model
+class Advice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','desc','address','email','number','name','family','resume','file'];
+    protected $fillable = ['profile','name','group','message'];
 }

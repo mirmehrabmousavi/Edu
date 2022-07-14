@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\OnlineClass;
 use App\Models\Option;
 use App\Models\Placement;
 use App\Models\Settings;
@@ -41,7 +42,9 @@ class AdminController extends Controller
         $tickets = Ticket::all();
         $categories = Category::all();
         $lessons = Lesson::all();
-        return view('admin.home',compact('users','teachers','courses','tickets','categories','lessons'));
+        $classes = OnlineClass::all();
+        $pays = Transaction::all();
+        return view('admin.home',compact('users','teachers','courses','tickets','categories','lessons','classes','pays'));
     }
 
     public function settings()
@@ -91,7 +94,7 @@ class AdminController extends Controller
             $file = $request->file('profile');
             @unlink(public_path('upload/admin/settings/'.$data->profile));
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'),$filename);
+            $file->move(public_path('upload/admin/settings'),$filename);
             $data['profile'] = $filename;
         }
 
