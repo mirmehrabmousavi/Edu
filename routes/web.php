@@ -20,6 +20,7 @@ Route::get('/courses', [\App\Http\Controllers\IndexController::class, 'courses']
 Route::get('/courses/category/{id}', [\App\Http\Controllers\IndexController::class, 'coursesCat'])->name('coursesCat');
 Route::get('/courses/{id}', [\App\Http\Controllers\IndexController::class, 'courseShow'])->name('course.show');
 Route::get('/classes', [\App\Http\Controllers\IndexController::class, 'classes'])->name('classes');
+Route::get('/classes/{id}', [\App\Http\Controllers\IndexController::class, 'classShow'])->name('class.show');
 Route::get('/teachers', [\App\Http\Controllers\IndexController::class, 'teachers'])->name('teachers');
 Route::get('/placement', [\App\Http\Controllers\IndexController::class, 'createPlacement'])->name('addPlacement');
 Route::post('/placement', [\App\Http\Controllers\IndexController::class, 'storePlacement'])->name('storePlacement');

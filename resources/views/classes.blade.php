@@ -172,10 +172,10 @@
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star"></i>
                                         </div>
-                                        <p>مدرس : {{$val->user_id}}</p>
-                                        <p>مدت زمان : {{$val->user_id}}</p>
-                                        <p>ناریخ شروع : {{$val->start_time}}</p>
-                                        <span class="price"><p class="price_ver">{{$val->price}} تومان</p></span></div>
+                                        @php $user  = \App\Models\User::find($val->user_id); @endphp
+                                        <p>مدرس : {{$user->email}}</p>
+                                        <p>مدت زمان : {{$val->duration}} دقیقه</p>
+                                        <span class="price"><p class="price_ver">@if(empty($val->price)) رایگان @else {{$val->price}} تومان @endif</p></span></div>
                                 </div>
                             @endforeach
                         </div>
@@ -201,22 +201,20 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="education_block_grid style_2">
                                     <div class="education_block_thumb n-shadow">
-                                        <a href="{{route('course.show',['id' => $val->id])}}"><img
-                                                src="{{$val->poster}}" class="img-fluid" alt=""></a>
-                                        <div class="cources_price">{{$val->price}}</div>
+                                        <a href="{{route('class.show',['id' => $val->id])}}"><img
+                                                src="{{(empty($val->poster) ? '/upload/no-image.png' : $val->poster)}}" class="img-fluid" alt=""></a>
+                                        <div class="cources_price">{{$val->price}} دلار</div>
                                     </div>
 
                                     <div class="education_block_body">
                                         <h4 class="bl-title"><a
-                                                href="{{route('course.show',['id' => $val->id])}}">{{$val->topic}}</a>
+                                                href="{{route('class.show',['id' => $val->id])}}">{{$val->topic}}</a>
                                         </h4>
                                     </div>
 
                                     <div class="cources_info_style3">
                                         <ul>
-                                            <li><i class="ti-eye ml-2"></i>{{$val->user_id}}</li>
-                                            <li><i class="ti-time ml-2"></i>{{$val->start_time}}</li>
-                                            <li><i class="ti-star text-warning ml-2"></i>{{$val->duration}}</li>
+                                            <li><i class="ti-star text-warning ml-2"></i>مدت زمان : {{$val->duration}}</li>
                                         </ul>
                                     </div>
 
@@ -227,12 +225,12 @@
                                                         src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}"
                                                         class="img-fluid" alt=""></a></div>
                                             <h5>
-                                                <a href="{{--{{route('teacher.show',['id' => auth()->user()->id])}}--}}">{{$val->user_id}}</a>
+                                                @php $user  = \App\Models\User::find($val->user_id); @endphp
+                                                <a href="{{--{{route('teacher.show',['id' => auth()->user()->id])}}--}}">{{$user->email}}</a>
                                             </h5>
                                         </div>
-                                        @php $mcourse = \App\Models\OnlineClass::where('user_id',$val->user_id)->get(); @endphp
-                                        <div class="foot_lecture"><i
-                                                class="ti-control-skip-forward ml-2"></i>{{count($mcourse)}} کلاس آموزشی
+                                        <div class="foot_lecture">
+                                            قیمت : @if(empty($val->price)) رایگان @else {{$val->price}} تومان @endif
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +240,7 @@
                         <!-- Row -->
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                              {{--  {{$classes->links('pagination.paginate')}}--}}
+                                {{$classes->links('pagination.paginate')}}
                             </div>
                         </div>
                         <!-- /Row -->

@@ -121,7 +121,13 @@ class IndexController extends Controller
         $users = User::all();
         $cat = Category::where('parent_id',null)->get();
         $teachers = User::where('is_seller',1)->get();
-        $classes = OnlineClass::all();
+        $classes = OnlineClass::latest()->paginate(10);
         return view('classes',compact('classes','cat','teachers','users'));
+    }
+
+    public function classShow($id)
+    {
+        $class = OnlineClass::findOrFail($id);
+        return view('class.show',compact('class'));
     }
 }

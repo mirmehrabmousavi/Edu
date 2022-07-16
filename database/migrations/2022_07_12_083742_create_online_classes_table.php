@@ -23,6 +23,7 @@ class CreateOnlineClassesTable extends Migration
             $table->text('join_url');
             $table->text('poster')->nullable();
             $table->text('price');
+            $table->text('d_price');
             $table->timestamps();
         });
     }
