@@ -40,6 +40,10 @@
                                 <td class="font-weight-bold">توضیحات :</td>
                                 <td>{{$coll->desc}}</td>
                             </tr>
+                            <tr>
+                                <td class="font-weight-bold">رزومه :</td>
+                                <td>{{$coll->resume}}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

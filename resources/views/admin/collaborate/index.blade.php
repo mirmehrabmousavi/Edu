@@ -20,6 +20,7 @@
                                 <th scope="col">آدرس</th>
                                 <th scope="col">عنوان</th>
                                 <th scope="col">توضیحات</th>
+                                <th scope="col">رزومه</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                     <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->address}}</a></td>
                                     <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->title}}</a></td>
                                     <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->desc}}</a></td>
+                                    <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->resume}}</a></td>
                                     <td>
                                         <a class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light" href="{{ route('admin.deleteCollaborate',['id' => $value->id]) }}" onclick="event.preventDefault();
                                                      document.getElementById('del').submit();">حذف</a>

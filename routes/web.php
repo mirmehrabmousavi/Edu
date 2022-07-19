@@ -28,6 +28,9 @@ Route::get('/blog', [\App\Http\Controllers\IndexController::class, 'allBlog'])->
 Route::get('/blog/{id}', [\App\Http\Controllers\IndexController::class, 'showBlog'])->name('showBlog');
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
+//collaboration
+Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
+Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
 
 //Language Flag
 Route::get('/course/english', [\App\Http\Controllers\FlagController::class, 'courseEnglish'])->name('course.english');
@@ -88,9 +91,6 @@ Route::group(['middleware' => 'auth','teacher'], function () {
     Route::get('my-tickets', [\App\Http\Controllers\TicketController::class, 'index'])->name('myTickets');
     Route::get('tickets/{ticket}', [\App\Http\Controllers\TicketController::class, 'show']);
     Route::post('comment', [\App\Http\Controllers\TicketController::class, 'postComment']);
-    //collaboration
-    Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
-    Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
     //Payment
     Route::get('bill/{id}', [\App\Http\Controllers\HomeController::class, 'bill'])->name('goBilling');
     Route::get('zarin-pay/{id}/purchase', [\App\Http\Controllers\PaymentController::class, 'redirectZarin'])->name('purchase');

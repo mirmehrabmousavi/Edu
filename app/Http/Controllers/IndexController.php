@@ -18,10 +18,11 @@ class IndexController extends Controller
     {
         $cat = Category::where('parent_id',null)->get();
         $courses = Course::where('status_upload','منتشر شده')->paginate(5);
-        $user = User::where('is_seller',1)->paginate(4);
+        $users = User::where('is_seller',1)->paginate(3);
         $blogs = Blog::latest()->paginate(3);
         $option = Option::where('id',1)->get();
-        return view('welcome',compact('cat','courses','user','blogs','option'));
+        $classes = OnlineClass::latest()->paginate(5);
+        return view('welcome',compact('cat','courses','users','blogs','option','classes'));
     }
 
     public function courses()
