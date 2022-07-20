@@ -33,17 +33,17 @@
 
                                     <div class="form-group col-md-6">
                                         <label>عنوان</label>
-                                        <input type="text" name="topic" class="form-control" placeholder="عنوان">
+                                        <input type="text" name="topic" class="form-control" placeholder="عنوان" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>تاریخ شروع</label>
-                                        <input type="datetime-local" name="start_time" class="form-control" placeholder="تاریخ شروع">
+                                        <input type="datetime-local" name="start_time" class="form-control" placeholder="تاریخ شروع" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>مدت زمان کلاس</label>
-                                        <input type="text" name="duration" class="form-control" placeholder="مدت زمان کلاس">
+                                        <input type="text" name="duration" class="form-control" placeholder="مدت زمان کلاس" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
@@ -52,12 +52,12 @@
 
                                     <div class="form-group col-md-6">
                                         <label>لینک ورود به کلاس</label>
-                                        <input type="text" name="join_url" class="form-control" placeholder="لینک ورود به کلاس">
+                                        <input type="text" name="join_url" class="form-control" placeholder="لینک ورود به کلاس" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>گذرواژه</label>
-                                        <input type="text" name="password" class="form-control" placeholder="گذرواژه">
+                                        <input type="text" name="password" class="form-control" placeholder="گذرواژه" required>
                                     </div>
 
                                 </div>

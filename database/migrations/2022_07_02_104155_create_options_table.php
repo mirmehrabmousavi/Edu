@@ -15,14 +15,14 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('ico');
-            $table->string('banner_txt_1');
-            $table->string('banner_img_1');
-            $table->string('video_poster');
-            $table->string('video_file');
-            $table->string('banner_txt_2');
-            $table->string('banner_img_2');
+            $table->string('title')->nullable();
+            $table->string('ico')->nullable();
+            $table->string('banner_txt_1')->nullable();
+            $table->string('banner_img_1')->nullable();
+            $table->string('video_poster')->nullable();
+            $table->string('video_file')->nullable();
+            $table->string('banner_txt_2')->nullable();
+            $table->string('banner_img_2')->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان"
                                                                value="{{$blog->title}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
 
                                                     </div>
                                                 </div>
@@ -39,9 +39,9 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">پوستر</label>
-                                                        <input type="file" class="form-control" name="image"
-                                                               id="account-username" placeholder="پوستر">
-                                                        <img src="{{'/upload/admin/blog/'.$blog->image}}" alt="" height="70" width="70">
+                                                        <input type="text" class="form-control" name="image"
+                                                               id="account-username" placeholder="پوستر" required>
+                                                        <img src="{{$blog->image}}" alt="" height="70" width="70">
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,7 +51,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">توضیحات</label>
-                                                <textarea class="form-control ckeditor" id="editor" name="desc">
+                                                <textarea class="form-control ckeditor" id="editor" name="desc" required>
                                                     {{$blog->desc}}
                                                 </textarea>
                                             </div>
@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">بر چسب ها</label>
-                                                <textarea class="form-control" name="tags">{{$blog->tags}}</textarea>
+                                                <textarea class="form-control" name="tags" required>{{$blog->tags}}</textarea>
                                             </div>
                                         </div>
                                     </div>

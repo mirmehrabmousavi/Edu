@@ -24,7 +24,7 @@
                                                         <input type="text" class="form-control" name="profile"
                                                                id="account-username" placeholder="پروفایل"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -35,7 +35,7 @@
                                                         <input type="text" class="form-control" name="name"
                                                                id="account-username" placeholder="نام"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -50,7 +50,7 @@
                                                         <input type="text" class="form-control" name="group"
                                                                id="account-username" placeholder="گروه"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,7 +63,7 @@
                                                     <div class="controls">
                                                         <label for="account-username">پیام</label>
                                                         <textarea name="message"
-                                                                  rows="10" class="form-control ckeditor"  id="editor" placeholder="پیام"></textarea>
+                                                                  rows="10" class="form-control ckeditor"  id="editor" placeholder="پیام" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>

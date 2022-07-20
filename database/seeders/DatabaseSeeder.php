@@ -18,18 +18,18 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $user = [
             [
-                'number'=> '09369949693',
+                'number'=> '09127041207',
                 'email'=>'admin@gmail.com',
                 'is_admin'=> 1,
                 'password'=> bcrypt('123456'),
             ],
             [
-                'number'=> '093699949699',
+                'number'=> '09127041207',
                 'email'=>'a@a.com',
                 'password'=> bcrypt('123456'),
             ],
             [
-                'number'=> '09190622401',
+                'number'=> '09127041207',
                 'email'=>'seller@gmail.com',
                 'is_seller' => 1,
                 'password'=> bcrypt('123456'),
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 'ico' => '/upload/no-image.jpg',
                 'banner_txt_1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'banner_img_1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'video_file' => '',
+                'video_file' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'video_poster' => '/upload/no-image.jpg',
                 'banner_txt_2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'banner_img_2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

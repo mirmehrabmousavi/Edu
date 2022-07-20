@@ -41,10 +41,9 @@
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <label for="account-username">پوستر</label>
-                                                        <input type="file" class="form-control" name="image"
+                                                        <input type="text" class="form-control" name="image"
                                                                id="account-username" placeholder="پوستر"
-                                                               value=""
-                                                               required="" data-validation-required-message="">
+                                                               value="" required="" data-validation-required-message="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -54,7 +53,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">توضیحات</label>
-                                                <textarea class="form-control ckeditor" id="editor" name="desc"></textarea>
+                                                <textarea class="form-control ckeditor" id="editor" name="desc" required="" data-validation-required-message=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="account-username">برچسب (با , برچسب های خود را وارد کنید)</label>
-                                                <textarea class="form-control" name="tags"></textarea>
+                                                <textarea class="form-control" name="tags" required="" data-validation-required-message=""></textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -25,7 +25,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان درس"
                                                                value="{{$lesson->title}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -40,7 +40,7 @@
                                                         <input type="text" class="form-control" name="l_file"
                                                                id="account-username" placeholder="فایل درس"
                                                                value="{{$lesson->l_file}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,7 +51,7 @@
                                                         <input type="text" class="form-control" name="l_video"
                                                                id="account-username"
                                                                placeholder="ویدیو درس" value="{{$lesson->l_video}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>

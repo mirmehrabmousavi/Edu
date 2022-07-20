@@ -49,37 +49,37 @@
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت</label>
-                                        <input type="text" value="{{$course->price}}" name="price" class="form-control" placeholder="قیمت">
+                                        <input type="text" value="{{$course->price}}" name="price" class="form-control" placeholder="قیمت" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده</label>
-                                        <input type="text" value="{{$course->price_off}}" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده">
+                                        <input type="text" value="{{$course->price_off}}" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت (دلار)</label>
-                                        <input type="text" value="{{$course->d_price}}" name="d_price" class="form-control" placeholder="قیمت (دلار)">
+                                        <input type="text" value="{{$course->d_price}}" name="d_price" class="form-control" placeholder="قیمت (دلار)" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده (دلار)</label>
-                                        <input type="text" value="{{$course->d_price_off}}" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)">
+                                        <input type="text" value="{{$course->d_price_off}}" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>پوستر دوره</label>
-                                        <input type="file" name="c_poster" class="form-control" placeholder="پوستر دوره">
+                                        <input type="file" name="c_poster" class="form-control" placeholder="پوستر دوره" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>دمو دوره</label>
-                                        <input type="file" name="c_demo" class="form-control" placeholder="دمو دوره">
+                                        <input type="file" name="c_demo" class="form-control" placeholder="دمو دوره" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>مدت زمان دوره</label>
-                                        <input type="text" value="{{$course->time}}" name="time" class="form-control" placeholder="مدت زمان دوره">
+                                        <input type="text" value="{{$course->time}}" name="time" class="form-control" placeholder="مدت زمان دوره" required>
                                     </div>
 
                                     <div class="form-group col-md-6">

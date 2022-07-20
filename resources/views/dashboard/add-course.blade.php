@@ -1,4 +1,4 @@
-@extends('dashboard.layout.app')
+ required@extends('dashboard.layout.app')
 @section('content')
     <div class="col-lg-9 col-md-9 col-sm-12">
 
@@ -48,22 +48,22 @@
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت</label>
-                                        <input type="text" name="price" class="form-control" placeholder="قیمت">
+                                        <input type="text" name="price" class="form-control" placeholder="قیمت" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده</label>
-                                        <input type="text" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده">
+                                        <input type="text" name="price_off" class="form-control" placeholder="قیمت تخفیف خورده" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت (دلار)</label>
-                                        <input type="text" name="d_price" class="form-control" placeholder="قیمت (دلار)">
+                                        <input type="text" name="d_price" class="form-control" placeholder="قیمت (دلار)" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>قیمت تخفیف خورده (دلار)</label>
-                                        <input type="text" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)">
+                                        <input type="text" name="d_price_off" class="form-control" placeholder="قیمت تخفیف خورده (دلار)" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
@@ -78,12 +78,12 @@
 
                                     <div class="form-group col-md-6">
                                         <label>مدت زمان دوره</label>
-                                        <input type="text" name="time" class="form-control" placeholder="مدت زمان دوره">
+                                        <input type="text" name="time" class="form-control" placeholder="مدت زمان دوره" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>وضعیت دوره</label>
-                                        <input type="text" name="status" class="form-control" placeholder="وضعیت دوره">
+                                        <input type="text" name="status" class="form-control" placeholder="وضعیت دوره" required>
                                     </div>
 
                                     <div class="form-group col-md-6">

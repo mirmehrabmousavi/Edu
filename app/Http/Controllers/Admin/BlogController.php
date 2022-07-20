@@ -31,21 +31,16 @@ class BlogController extends Controller
 
     public function storeBlog(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'title' => 'required',
+            'image' => 'required',
             'desc' => 'required',
-        ]);
-
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            //@unlink(public_path('upload/admin_images/'.$data->image));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin/blog'),$filename);
-        }
+            'tags' => 'required',
+        ]);*/
 
         Blog::create([
            'title' => $request->title,
-           'image' => $filename,
+           'image' => $request->image,
            'desc' => $request->desc,
            'tags' => $request->tags,
            'user_id' => auth()->user()->email
@@ -69,21 +64,16 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        $request->validate([
+       /* $request->validate([
             'title' => 'required',
+            'image' => 'required',
             'desc' => 'required',
-        ]);
-
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            @unlink(public_path('upload/admin/blog/'.$blog->image));
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin/blog'),$filename);
-        }
+            'tags' => 'required',
+        ]);*/
 
         $blog->update([
             'title' => $request->title,
-            'image' => $filename,
+            'image' => $request->image,
             'desc' => $request->desc,
             'tags' => $request->tags,
             'user_id' => auth()->user()->email
@@ -100,7 +90,6 @@ class BlogController extends Controller
     public function deleteBlog($id)
     {
         $blog = Blog::findOrFail($id);
-        @unlink(public_path('upload/admin/blog/'.$blog->image));
         $blog->delete();
 
         $notification = array(

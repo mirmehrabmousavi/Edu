@@ -56,18 +56,29 @@ class AdminController extends Controller
 
     public function indexUpdate(Request $request)
     {
-        $settings = Option::where('id', 1)->get();
-        foreach ($settings as $option) {
-            $option->title = $request->title;
-            $option->ico = $request->ico;
-            $option->banner_txt_1 = $request->banner_txt_1;
-            $option->banner_img_1 = $request->banner_img_1;
-            $option->video_file = $request->video_file;
-            $option->video_poster = $request->video_poster;
-            $option->banner_txt_2 = $request->banner_txt_2;
-            $option->banner_img_2 = $request->banner_img_2;
-            $option->save();
-        }
+        $settings = Option::find(1);
+
+      /*  $request->validate([
+            'title' => 'required',
+            'ico' => 'required',
+            'banner_txt_1' => 'required',
+            'banner_img_1' => 'required',
+            'video_file' => 'required',
+            'video_poster' => 'required',
+            'banner_txt_2' => 'required',
+            'banner_img_2' => 'required',
+        ]);*/
+
+        $settings->title = $request->title;
+        $settings->ico = $request->ico;
+        $settings->banner_txt_1 = $request->banner_txt_1;
+        $settings->banner_img_1 = $request->banner_img_1;
+        $settings->video_file = $request->video_file;
+        $settings->video_poster = $request->video_poster;
+        $settings->banner_txt_2 = $request->banner_txt_2;
+        $settings->banner_img_2 = $request->banner_img_2;
+        $settings->save();
+
 
         $notification = [
             'message' => 'با موفقیت بروزرسانی شد.',

@@ -23,7 +23,7 @@
                                                         <label for="account-username">عنوان</label>
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان"
-                                                               required="" data-validation-required-message="">
+                                                               required>
 
                                                     </div>
                                                 </div>

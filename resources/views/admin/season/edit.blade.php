@@ -26,7 +26,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان"
                                                                value="{{$season->title}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
 
                                                     </div>
                                                 </div>

@@ -24,7 +24,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان درس"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -39,7 +39,7 @@
                                                         <input type="text" class="form-control" name="l_file"
                                                                id="account-username" placeholder="فایل درس"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -50,7 +50,7 @@
                                                         <input type="text" class="form-control" name="l_video"
                                                                id="account-username"
                                                                placeholder="ویدیو درس" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>

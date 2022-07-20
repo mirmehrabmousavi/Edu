@@ -25,7 +25,7 @@
                                                         <input type="text" class="form-control" name="profile"
                                                                id="account-username" placeholder="پروفایل"
                                                                value="{{$comment->profile}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -36,7 +36,7 @@
                                                         <input type="text" class="form-control" name="name"
                                                                id="account-username" placeholder="نام"
                                                                value="{{$comment->name}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,7 +51,7 @@
                                                         <input type="text" class="form-control" name="group"
                                                                id="account-username" placeholder="گروه"
                                                                value="{{$comment->group}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,7 +64,7 @@
                                                     <div class="controls">
                                                         <label for="account-username">پیام</label>
                                                         <textarea name="message" id="editor" cols="30"
-                                                                  rows="10" class="form-control ckeditor" placeholder="پیام">{{$comment->message}}</textarea>
+                                                                  rows="10" class="form-control ckeditor" placeholder="پیام" required>{{$comment->message}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

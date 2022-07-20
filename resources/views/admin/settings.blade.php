@@ -56,8 +56,7 @@
                                                         <label for="account-name">عنوان سایت</label>
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-name" placeholder="عنوان سایت"
-                                                               value="{{$options->title}}" required=""
-                                                               data-validation-required-message="">
+                                                               value="{{$options->title}}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,15 +66,14 @@
                                                         <label for="account-e-mail">ایکون سایت</label>
                                                         <input type="text" class="form-control" name="ico"
                                                                id="account-e-mail" placeholder="ایکون سایت"
-                                                               value="{{$options->ico}}" required=""
-                                                               data-validation-required-message="">
+                                                               value="{{$options->ico}}" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">متن بنر 1</label>
-                                                    <textarea  class="form-control ckeditor" id="editor" name="banner_txt_1" cols="30" placeholder="متن بنر 1" rows="10">
+                                                    <textarea  class="form-control ckeditor" id="editor" name="banner_txt_1" cols="30" placeholder="متن بنر 1" rows="10" required>
                                                         {{$options->banner_txt_1}}
                                                     </textarea>
                                                 </div>
@@ -85,29 +83,27 @@
                                                     <label for="number">تصویر بنر 1</label>
                                                     <input type="text" class="form-control" name="banner_img_1" id="number"
                                                            placeholder="تصویر بنر 1" value="{{$options->banner_img_1}}"
-                                                           required="" data-validation-required-message="">
+                                                           required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">پوستر ویدیو</label>
                                                     <input type="text" class="form-control" name="video_poster" id="number"
-                                                           placeholder="پوستر ویدیو" value="{{$options->video_poster}}" required=""
-                                                           data-validation-required-message="">
+                                                           placeholder="پوستر ویدیو" value="{{$options->video_poster}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">فایل ویدیو</label>
                                                     <input type="text" class="form-control" name="video_file" id="number"
-                                                           placeholder="فایل ویدیو" value="{{$options->video_file}}" required=""
-                                                           data-validation-required-message="">
+                                                           placeholder="فایل ویدیو" value="{{$options->video_file}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">متن بنر 2</label>
-                                                    <textarea class="form-control ckeditor" id="editor" name="banner_txt_2" cols="30" placeholder="متن بنر 2" rows="10">
+                                                    <textarea class="form-control ckeditor" id="editor" name="banner_txt_2" cols="30" placeholder="متن بنر 2" rows="10" required>
                                                         {{$options->banner_txt_2}}
                                                     </textarea>
                                                 </div>
@@ -116,8 +112,7 @@
                                                 <div class="form-group">
                                                     <label for="number">تصویر بنر 2</label>
                                                     <input type="text" class="form-control" name="banner_img_2" id="number"
-                                                           placeholder="تصویر بنر 2" value="{{$options->banner_img_2}}" required=""
-                                                           data-validation-required-message="">
+                                                           placeholder="تصویر بنر 2" value="{{$options->banner_img_2}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
@@ -171,8 +166,7 @@
                                                         <label for="account-username">نام</label>
                                                         <input type="text" class="form-control" name="fname"
                                                                id="account-username" placeholder="نام"
-                                                               value="{{$admin->fname}}" required=""
-                                                               data-validation-required-message="">
+                                                               value="{{$admin->fname}}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,8 +176,7 @@
                                                         <label for="account-name">نام خانوادگی</label>
                                                         <input type="text" class="form-control" name="lname"
                                                                id="account-name" placeholder="نام خانوادگی"
-                                                               value="{{$admin->lname}}" required=""
-                                                               data-validation-required-message="">
+                                                               value="{{$admin->lname}}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,23 +205,21 @@
                                                     <label for="number">کد پستی</label>
                                                     <input type="text" class="form-control" name="postcode" id="number"
                                                            placeholder="کد پستی" value="{{$admin->postcode}}"
-                                                           required="" data-validation-required-message="">
+                                                           required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">آدرس</label>
                                                     <input type="text" class="form-control" name="address" id="number"
-                                                           placeholder="آدرس" value="{{$admin->address}}" required=""
-                                                           data-validation-required-message="">
+                                                           placeholder="آدرس" value="{{$admin->address}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="number">شغل</label>
                                                     <input type="text" class="form-control" name="job" id="number"
-                                                           placeholder="شغل" value="{{$admin->job}}" required=""
-                                                           data-validation-required-message="">
+                                                           placeholder="شغل" value="{{$admin->job}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -321,7 +312,7 @@
                                                     <label for="account-facebook">فیسبوک</label>
                                                     <input type="text" id="account-facebook" name="facebook"
                                                            class="form-control" value="{{$admin->facebook}}"
-                                                           placeholder="شبکه اجتماعی خود را وارد کنید">
+                                                           placeholder="شبکه اجتماعی خود را وارد کنید" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -329,7 +320,7 @@
                                                     <label for="account-facebook">تویتر</label>
                                                     <input type="text" id="account-facebook" name="twitter"
                                                            class="form-control" value="{{$admin->twitter}}"
-                                                           placeholder="شبکه اجتماعی خود را وارد کنید">
+                                                           placeholder="شبکه اجتماعی خود را وارد کنید" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -337,7 +328,7 @@
                                                     <label for="account-facebook">لیکداین</label>
                                                     <input type="text" id="account-facebook" name="linkedin"
                                                            class="form-control" value="{{$admin->linkedin}}"
-                                                           placeholder="شبکه اجتماعی خود را وارد کنید">
+                                                           placeholder="شبکه اجتماعی خود را وارد کنید" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -345,7 +336,7 @@
                                                     <label for="account-facebook">اینستاگرام</label>
                                                     <input type="text" id="account-facebook" name="instagram"
                                                            class="form-control" value="{{$admin->instagram}}"
-                                                           placeholder="شبکه اجتماعی خود را وارد کنید">
+                                                           placeholder="شبکه اجتماعی خود را وارد کنید" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">

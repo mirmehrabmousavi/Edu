@@ -25,7 +25,7 @@
                                                         <input type="text" class="form-control" name="topic"
                                                                id="account-username" placeholder="عنوان کلاس"
                                                                value="{{$onlineClass->topic}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -40,7 +40,7 @@
                                                         <input type="datetime-local" class="form-control" name="start_time"
                                                                id="account-username" placeholder="تاریخ شروع کلاس"
                                                                value="{{$onlineClass->start_time}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,7 +51,7 @@
                                                         <input type="text" class="form-control" name="duration"
                                                                id="account-username"
                                                                placeholder="مدت زمان کلاس" value="{{$onlineClass->duration}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                                         <input type="text" class="form-control" name="join_url"
                                                                id="account-username" placeholder="لینک دعوت به کلاس"
                                                                value="{{$onlineClass->join_url}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,7 +77,7 @@
                                                         <input type="text" class="form-control" name="password"
                                                                id="account-username"
                                                                placeholder="گذرواژه ورود به کلاس" value="{{$onlineClass->password}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>

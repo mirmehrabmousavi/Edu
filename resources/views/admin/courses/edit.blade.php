@@ -23,7 +23,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان دوره"
                                                                value="{{$course->title}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@
                                                 <input type="text" class="form-control" name="b_desc"
                                                        id="account-username" placeholder="خلاصه توضیحات دوره"
                                                        value="{{$course->b_desc}}"
-                                                       required="" data-validation-required-message="">
+                                                       required>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                                                         <input type="text" class="form-control" name="price"
                                                                id="account-username" placeholder="قیمت دوره"
                                                                value="{{$course->price}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,7 +71,7 @@
                                                         <input type="text" class="form-control" name="price_off"
                                                                id="account-username"
                                                                placeholder="قیمت تخفیف خورده" value="{{$course->price_off}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                         <input type="text" class="form-control" name="d_price"
                                                                id="account-username" placeholder="قیمت دوره(دلار)"
                                                                value="{{$course->d_price}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                         <input type="text" class="form-control" name="d_price_off"
                                                                id="account-username"
                                                                placeholder="قیمت تخفیف خورده(دلار)" value="{{$course->d_price_off}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +112,7 @@
                                                         <input type="text" class="form-control" name="seo_title"
                                                                id="account-username" placeholder="عنوان سئو"
                                                                value="{{$course->seo_title}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,7 +123,7 @@
                                                         <input type="text" class="form-control" name="seo_desc"
                                                                id="account-username" placeholder="توضیحات سئو"
                                                                value="{{$course->seo_desc}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@
                                                         <input type="text" class="form-control" name="c_poster"
                                                                id="account-username" placeholder="پوستر دوره"
                                                                value="{{$course->c_poster}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +149,7 @@
                                                         <input type="text" class="form-control" name="c_demo"
                                                                id="account-username"
                                                                placeholder="دمو دوره" value="{{$course->c_demo}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,7 +164,7 @@
                                                         <input type="text" class="form-control" name="time"
                                                                id="account-username" placeholder="زمان دوره"
                                                                value="{{$course->time}}"
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>

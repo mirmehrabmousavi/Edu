@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-label-group">
-                                            <input type="text" class="form-control" placeholder="نام دسته بندی" name="category_name" value="{{$category->category_name}}">
+                                            <input type="text" class="form-control" placeholder="نام دسته بندی" name="category_name" value="{{$category->category_name}}" required>
                                         </div>
                                     </div>
                                     <div class="col-12">

@@ -25,7 +25,7 @@
                                                         <input type="text" class="form-control" name="title"
                                                                id="account-username" placeholder="عنوان دوره"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -49,7 +49,7 @@
                                                 <input type="text" class="form-control" name="b_desc"
                                                        id="account-username" placeholder="خلاصه توضیحات دوره"
                                                        value=""
-                                                       required="" data-validation-required-message="">
+                                                       required>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                                         <input type="text" class="form-control" name="price"
                                                                id="account-username" placeholder="قیمت دوره"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,7 +73,7 @@
                                                         <input type="text" class="form-control" name="price_off"
                                                                id="account-username"
                                                                placeholder="قیمت تخفیف خورده" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                                         <input type="text" class="form-control" name="d_price"
                                                                id="account-username" placeholder="قیمت دوره"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,7 +99,7 @@
                                                         <input type="text" class="form-control" name="d_price_off"
                                                                id="account-username"
                                                                placeholder="قیمت تخفیف خورده" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,7 +114,7 @@
                                                         <input type="text" class="form-control" name="seo_title"
                                                                id="account-username" placeholder="عنوان سئو"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +125,7 @@
                                                         <input type="text" class="form-control" name="seo_desc"
                                                                id="account-username" placeholder="توضیحات سئو"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@
                                                         <input type="text" class="form-control" name="c_poster"
                                                                id="account-username" placeholder="پوستر دوره"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@
                                                         <input type="text" class="form-control" name="c_demo"
                                                                id="account-username"
                                                                placeholder="دمو دوره" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +166,7 @@
                                                         <input type="text" class="form-control" name="time"
                                                                id="account-username" placeholder="زمان دوره"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>

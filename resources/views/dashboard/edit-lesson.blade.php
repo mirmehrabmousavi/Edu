@@ -1,4 +1,4 @@
-@extends('dashboard.layout.app')
+ required@extends('dashboard.layout.app')
 @section('content')
     <div class="col-lg-9 col-md-9 col-sm-12">
 
@@ -38,12 +38,12 @@
 
                                     <div class="form-group col-md-6">
                                         <label>فایل درس</label>
-                                        <input type="file" name="l_file" class="form-control" placeholder="فایل درس">
+                                        <input type="file" name="l_file" class="form-control" placeholder="فایل درس" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>ویدیو درس</label>
-                                        <input type="file" name="l_video" class="form-control" placeholder="ویدیو درس">
+                                        <input type="file" name="l_video" class="form-control" placeholder="ویدیو درس" required>
                                     </div>
 
                                     <div class="form-group col-md-6">

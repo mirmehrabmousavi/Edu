@@ -24,7 +24,7 @@
                                                         <input type="text" class="form-control" name="topic"
                                                                id="account-username" placeholder="عنوان کلاس"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -39,7 +39,7 @@
                                                         <input type="datetime-local" class="form-control" name="start_time"
                                                                id="account-username" placeholder="تاریخ شروع کلاس"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -50,7 +50,7 @@
                                                         <input type="text" class="form-control" name="duration"
                                                                id="account-username"
                                                                placeholder="مدت زمان کلاس" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +65,7 @@
                                                         <input type="text" class="form-control" name="join_url"
                                                                id="account-username" placeholder="لینک دعوت به کلاس"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@
                                                         <input type="text" class="form-control" name="password"
                                                                id="account-username"
                                                                placeholder="گذرواژه ورود به کلاس" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@
                                                         <input type="text" class="form-control" name="poster"
                                                                id="account-username" placeholder="پوستر"
                                                                value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                         <input type="text" class="form-control" name="price"
                                                                id="account-username"
                                                                placeholder="قیمت" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                                         <input type="text" class="form-control" name="d_price"
                                                                id="account-username"
                                                                placeholder="قیمت (دلار)" value=""
-                                                               required="" data-validation-required-message="">
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
