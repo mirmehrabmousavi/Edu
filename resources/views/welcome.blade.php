@@ -487,7 +487,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center align-content-center mt-6">
+            <div class="row align-items-center align-content-center" style="margin-top: 100px">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <a href="{{route('addPlacement')}}" class="btn btn-primary waves-effect d-block">تعیین سطح و مشاوره رایگان</a>
                 </div>
@@ -604,7 +604,7 @@
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <div class="sec-heading center">
                         <p>استاتید برتر</p>
-                        <h2>معلم های <span class="theme-cl">تدریس خصوصی</span> زبان های مختلف</h2>
+                        <h2>مدرس های <span class="theme-cl">زبان های مختلف</span></h2>
                     </div>
                 </div>
             </div>
@@ -728,5 +728,8 @@
         </div>
     </section>
     <!-- ========================== Brand Section =============================== -->
-
+    @php $num = \App\Models\User::find(1); @endphp
+    <a href="https://wa.me/{{$num->number}}" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
 @endsection

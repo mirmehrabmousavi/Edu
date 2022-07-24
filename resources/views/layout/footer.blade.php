@@ -107,8 +107,8 @@
                     <ul class="footer-bottom-social">
                         @php $admin = \App\Models\User::where('is_admin',1)->get(); @endphp
                         @foreach($admin as $user)
-                        <li><a href="{{$user->facebook}}"><img src="/upload/telegram1.png" height="20" width="20"></a></li>
-                        <li><a href="{{$user->twitter}}"><img src="/upload/youtube1.png" height="20" width="20"></a></li>
+                        <li><a href="{{$user->facebook}}"><i class="fa fa-telegram"></i></a></li>
+                        <li><a href="{{$user->twitter}}"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="{{$user->instagram}}"><i class="ti-instagram"></i></a></li>
                         <li><a href="{{$user->linkedin}}"><i class="ti-linkedin"></i></a></li>
                         @endforeach

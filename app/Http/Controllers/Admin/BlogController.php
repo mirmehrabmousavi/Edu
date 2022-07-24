@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use PHPUnit\Exception;
 
 class BlogController extends Controller
 {
@@ -31,27 +32,35 @@ class BlogController extends Controller
 
     public function storeBlog(Request $request)
     {
-        /*$request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'desc' => 'required',
-            'tags' => 'required',
-        ]);*/
+        try {
+            $request->validate([
+                'title' => 'required',
+                'image' => 'required',
+                'desc' => 'required',
+                'tags' => 'required',
+            ]);
 
-        Blog::create([
-           'title' => $request->title,
-           'image' => $request->image,
-           'desc' => $request->desc,
-           'tags' => $request->tags,
-           'user_id' => auth()->user()->email
-        ]);
+            Blog::create([
+                'title' => $request->title,
+                'image' => $request->image,
+                'desc' => $request->desc,
+                'tags' => $request->tags,
+                'user_id' => auth()->user()->email
+            ]);
 
-        $notification = array(
-            'message' => 'با موفقیت ذخیره شدید :)',
-            'alert-type' => 'success'
-        );
-
-        return redirect(route('admin.indexBlog'))->with($notification);
+            $notification = array(
+                'message' => 'با موفقیت ذخیره شدید :)',
+                'alert-type' => 'success'
+            );
+            return redirect(route('admin.indexBlog'))->with($notification);
+        }catch (Exception $e)
+        {
+            $notification = array(
+                'message' => 'ارور فیلد ها را کامل کنید',
+                'alert-type' => 'success'
+            );
+            return redirect(route('admin.indexBlog'))->with($notification);
+        }
     }
 
     public function editBlog($id)
@@ -64,12 +73,12 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-       /* $request->validate([
+        $request->validate([
             'title' => 'required',
             'image' => 'required',
             'desc' => 'required',
             'tags' => 'required',
-        ]);*/
+        ]);
 
         $blog->update([
             'title' => $request->title,

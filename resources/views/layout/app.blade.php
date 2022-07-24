@@ -17,7 +17,7 @@
     <!-- Custom Color Option -->
     <link href="/assets/css/colors.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" type="text/css">
-
+    <link rel="stylesheet" href="/app-assets/fonts/font-awesome/css/font-awesome.css">
 </head>
 
 <body class="red-skin rtl">
@@ -63,7 +63,6 @@
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     @if(Session::has('message'))
