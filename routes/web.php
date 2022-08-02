@@ -29,7 +29,7 @@ Route::get('/blog/{id}', [\App\Http\Controllers\IndexController::class, 'showBlo
 Route::get('/aboutus', [\App\Http\Controllers\IndexController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [\App\Http\Controllers\IndexController::class, 'contactus'])->name('contactus');
 //collaboration
-Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->name('addCollaborate');
+Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'createCollaborate'])->middleware('auth')->name('addCollaborate');
 Route::post('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'storeCollaborate'])->name('storeCollaborate');
 
 //Language Flag
@@ -163,6 +163,7 @@ Route::group(['prefix' => 'admin', ['middleware' => 'admin']], function () {
     Route::get('/collaborate', [\App\Http\Controllers\CollaborateController::class, 'showCollaborate'])->name('admin.showCollaborate');
     Route::get('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'singleCollaborate'])->name('admin.singleCollaborate');
     Route::delete('/collaborate/{id}', [\App\Http\Controllers\CollaborateController::class, 'deleteCollaborate'])->name('admin.deleteCollaborate');
+    Route::patch('/collaborate/{email}/confirm/{id}', [\App\Http\Controllers\CollaborateController::class, 'confirmCollaborate'])->name('admin.confirmCollaborate');
     //Placement
     Route::get('/placement', [\App\Http\Controllers\Admin\AdminController::class, 'showPlacement'])->name('admin.showPlacement');
     Route::get('/placement/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'singlePlacement'])->name('admin.singlePlacement');

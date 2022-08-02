@@ -37,6 +37,12 @@
                                     <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->desc}}</a></td>
                                     <td><a href="{{route('admin.singleCollaborate',['id' => $value->id])}}">{{$value->resume}}</a></td>
                                     <td>
+                                        <a class="btn btn-outline-success round mr-1 mb-1 waves-effect waves-light" href="{{ route('admin.confirmCollaborate',['email' => $value->email,'id' => $value->id]) }}" onclick="event.preventDefault();
+                                                     document.getElementById('save').submit();">تایید</a>
+                                        <form id="save" action="{{ route('admin.confirmCollaborate',['email' => $value->email,'id' => $value->id]) }}" method="POST" class="d-none">
+                                            @csrf
+                                            @method('patch')
+                                        </form>
                                         <a class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light" href="{{ route('admin.deleteCollaborate',['id' => $value->id]) }}" onclick="event.preventDefault();
                                                      document.getElementById('del').submit();">حذف</a>
                                         <form id="del" action="{{ route('admin.deleteCollaborate',['id' => $value->id]) }}" method="POST" class="d-none">

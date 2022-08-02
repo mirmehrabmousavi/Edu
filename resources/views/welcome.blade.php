@@ -371,14 +371,10 @@
                                 </h4>
                                 <ul class="meta">
                                     @php
-                                        $categories = \App\Models\Category::where('parent_id',null)->get();
+                                        $course = \App\Models\Course::where('category_id',$category->category_name)->get();
                                     @endphp
-                                    @foreach($categories as $catt)
-                                        @php
-                                            $course = \App\Models\Course::where('category_id',$catt->category_name)->get();
-                                        @endphp
-                                    @endforeach
-                                    <li class="video"><i class="ti-video-clapper"></i>{{count($course)}} دوره آموزشی</li>
+                                    <li class="video"><i class="ti-video-clapper"></i>{{count($course)}} دوره آموزشی
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -410,13 +406,15 @@
                         <div class="education_block_list_layout style-2">
 
                             <div class="education_block_thumb n-shadow">
-                                <a href="{{route('course.show',['id' => $course->id])}}"><img src="{{$course->c_poster}}" class="img-fluid" alt="{{$course->c_alt_img}}"></a>
+                                <a href="{{route('course.show',['id' => $course->id])}}"><img
+                                        src="{{$course->c_poster}}" class="img-fluid" alt="{{$course->c_alt_img}}"></a>
                             </div>
 
                             <div class="list_layout_ecucation_caption">
 
                                 <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a>
+                                    <h4 class="bl-title"><a
+                                            href="{{route('course.show',['id' => $course->id])}}">{{$course->title}}</a>
                                     </h4>
                                     <div class="_course_admin_ol12">مدرس: <strong>{{$course->user_id}}</strong></div>
 
@@ -441,7 +439,8 @@
                                                 <strong class="mid">4.9</strong>
                                             </div>
                                         </div>
-                                        <div class="_course_category_01"><span class="cat-7">{{$course->category_id}}</span></div>
+                                        <div class="_course_category_01"><span
+                                                class="cat-7">{{$course->category_id}}</span></div>
                                     </div>
                                 </div>
 
@@ -450,7 +449,8 @@
                                         <div class="less_offer">{{$course->price}}</div>
                                     </div>
                                     <div class="cources_info_style3">
-                                        <a href="{{route('course.show',['id' => $course->id])}}" class="_cr_detail_arrow"><i class="fa fa-arrow-left"></i></a>
+                                        <a href="{{route('course.show',['id' => $course->id])}}"
+                                           class="_cr_detail_arrow"><i class="fa fa-arrow-left"></i></a>
                                     </div>
                                 </div>
 
@@ -489,7 +489,8 @@
             </div>
             <div class="row align-items-center align-content-center" style="margin-top: 100px">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <a href="{{route('addPlacement')}}" class="btn btn-primary waves-effect d-block">تعیین سطح و مشاوره رایگان</a>
+                    <a href="{{route('addPlacement')}}" class="btn btn-primary waves-effect d-block">تعیین سطح و مشاوره
+                        رایگان</a>
                 </div>
             </div>
         </div>
@@ -514,13 +515,16 @@
                         <div class="education_block_list_layout style-2">
 
                             <div class="education_block_thumb n-shadow">
-                                <a href="{{route('class.show',['id' => $val->id])}}"><img src="{{(empty($val->poster) ? '/upload/no-image.png' : $val->poster)}}" class="img-fluid" alt="{{$val->topic}}"></a>
+                                <a href="{{route('class.show',['id' => $val->id])}}"><img
+                                        src="{{(empty($val->poster) ? '/upload/no-image.png' : $val->poster)}}"
+                                        class="img-fluid" alt="{{$val->topic}}"></a>
                             </div>
 
                             <div class="list_layout_ecucation_caption">
 
                                 <div class="education_block_body">
-                                    <h4 class="bl-title"><a href="{{route('class.show',['id' => $val->id])}}">{{$val->topic}}</a>
+                                    <h4 class="bl-title"><a
+                                            href="{{route('class.show',['id' => $val->id])}}">{{$val->topic}}</a>
                                     </h4>
                                     @php $user = \App\Models\User::find($val->user_id); @endphp
                                     <div class="_course_admin_ol12">مدرس: <strong>{{$user->email}}</strong></div>
@@ -555,7 +559,9 @@
                                         <p>{{(empty($val->d_price)) ? 'رایگان' : $val->d_price.'دلار'}}</p>
                                     </div>
                                     <div class="cources_info_style3">
-                                        <a href="{{route('class.show',['id' => $val->id])}}" class="btn btn-primary rounded waves-effect">خرید <i class="fa fa-shopping-bag"></i></a>
+                                        <a href="{{route('class.show',['id' => $val->id])}}"
+                                           class="btn btn-primary rounded waves-effect">خرید <i
+                                                class="fa fa-shopping-bag"></i></a>
                                     </div>
                                 </div>
 
@@ -619,17 +625,25 @@
                             <div class="singles_items">
                                 <div class="instructor_wrap">
                                     <div class="instructor_thumb">
-                                        <a href="{{--{{route('teacher.show',['id' => $val->id])}}--}}"><img src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}" class="img-fluid"
-                                                                                                            alt=""></a>
+                                        <a href="{{--{{route('teacher.show',['id' => $val->id])}}--}}"><img
+                                                src="{{(!empty(auth()->user()->profile)) ? url('upload/admin_images/'.auth()->user()->profile) : url('upload/no-profile.jpg')}}"
+                                                class="img-fluid"
+                                                alt=""></a>
                                     </div>
                                     <div class="instructor_caption">
-                                        <h4><a href="#">{{(!empty($val->fname)) ? $val->fname . ' ' . $val->lname : $val->email}}</a></h4>
+                                        <h4>
+                                            <a href="#">{{(!empty($val->fname)) ? $val->fname . ' ' . $val->lname : $val->email}}</a>
+                                        </h4>
                                         <span>{{$val->job}}</span>
                                         <ul>
-                                            <li><a href="{{$val->facebook}}" class="cl-fb"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="{{$val->twitter}}" class="cl-twitter"><i class="ti-twitter"></i></a></li>
-                                            <li><a href="{{$val->linkedin}}" class="cl-linked"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="{{$val->instagram}}" class="cl-linked"><i class="ti-instagram"></i></a></li>
+                                            <li><a href="{{$val->facebook}}" class="cl-fb"><i
+                                                        class="ti-facebook"></i></a></li>
+                                            <li><a href="{{$val->twitter}}" class="cl-twitter"><i
+                                                        class="ti-twitter"></i></a></li>
+                                            <li><a href="{{$val->linkedin}}" class="cl-linked"><i
+                                                        class="ti-linkedin"></i></a></li>
+                                            <li><a href="{{$val->instagram}}" class="cl-linked"><i
+                                                        class="ti-instagram"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -663,7 +677,9 @@
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <div class="articles_grid_style">
                             <div class="articles_grid_thumb">
-                                <a href="{{route('showBlog',['id' => $blog->id])}}"><img src="{{($blog->image != null) ? '/upload/admin/blog/'.$blog->image : url('/upload/no-image.png')}}" class="img-fluid" alt=""/></a>
+                                <a href="{{route('showBlog',['id' => $blog->id])}}"><img
+                                        src="{{($blog->image != null) ? '/upload/admin/blog/'.$blog->image : url('/upload/no-image.png')}}"
+                                        class="img-fluid" alt=""/></a>
                             </div>
 
                             <div class="articles_grid_caption">
@@ -705,7 +721,8 @@
                                 <div class="testimonial-icon">
                                     <div class="testimonial-icon-thumb"><span class="quotes"><i
                                                 class="fas fa-quote-right"></i></span><img src="{{$val->profile}}"
-                                                                                           class="img-fluid" alt=""></div>
+                                                                                           class="img-fluid" alt="">
+                                    </div>
                                     <h5>{{$val->name}}</h5>
                                     <span>{{$val->group}}</span>
                                     <div class="testi-rate">
@@ -717,7 +734,7 @@
                                     </div>
                                 </div>
                                 <div class="facts-detail">
-                                    <p>{{$val->message}}</p>
+                                    <p>{!! $val->message !!}</p>
                                 </div>
                             </div>
                         @endforeach

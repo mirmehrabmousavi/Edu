@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collaborate;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CollaborateController extends Controller
@@ -22,6 +23,7 @@ class CollaborateController extends Controller
            'address' => 'required',
            'title' => 'required',
            'desc' => 'required',
+           'resume' => 'required',
         ]);
 
             $data = new Collaborate();
@@ -60,6 +62,21 @@ class CollaborateController extends Controller
     {
         $coll = Collaborate::findOrFail($id);
         return view('admin.collaborate.show',compact('coll'));
+    }
+
+    public function confirmCollaborate($email,$id)
+    {
+        $coll = Collaborate::findOrFail($id);
+        $user = \App\Models\User::where('email',$coll->email)->update([
+            'is_seller' => 1,
+        ]);
+
+        $notification = array(
+            'message' => 'با موفقیت تایید شدید :)',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     public function deleteCollaborate($id)
